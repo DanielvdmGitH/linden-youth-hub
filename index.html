@@ -964,6 +964,11 @@
       .then(()=>showToast('🔗 Link copied to clipboard!'))
       .catch(()=>showToast('🔗 Copy this link: '+window.location.href));
   }
+
+// Auto-fetch live stats when page loads
+document.addEventListener('DOMContentLoaded', function() {
+  fetchProgress();
+});
 </script>
 </body>
 </html>
