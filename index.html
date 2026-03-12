@@ -921,11 +921,9 @@
     if(btn){ btn.disabled=true; btn.textContent='Logging pledge…'; }
     if(SHEET_URL !== 'https://script.google.com/macros/s/AKfycby3MbXrL6y2nhop1FzhhYnPBFQFunkADT5r3xwhGll972h_SbS-r_eOcCFBJsaHwM30/exec'){
       try {
-        await fetch(SHEET_URL, {
-          method:'POST', headers:{'Content-Type':'text/plain'},
-          body: JSON.stringify({ action:'pledge', name, amount, ref, timestamp: new Date().toISOString(), type:'EFT' })
-        });
-      } catch(e){}
+      const _pp = new URLSearchParams({ action:'pledge', name:name, amount:amount, email:email, message:message });
+      await fetch(SHEET_URL + '?' + _pp.toString());
+    } catch(e){}
     }
     closeModal();
     showToast('✅ Thank you, '+name+'! Your pledge of R'+amount.toLocaleString('en-ZA')+' has been logged. EFT ref: '+ref);
@@ -945,11 +943,9 @@
     if(btn){ btn.disabled=true; btn.textContent='Submitting…'; }
     if(SHEET_URL !== 'https://script.google.com/macros/s/AKfycby3MbXrL6y2nhop1FzhhYnPBFQFunkADT5r3xwhGll972h_SbS-r_eOcCFBJsaHwM30/exec'){
       try {
-        await fetch(SHEET_URL, {
-          method:'POST', headers:{'Content-Type':'text/plain'},
-          body: JSON.stringify({ action:'contact', firstName, lastName, email, optIn: optin, consentGiven: consent, timestamp: new Date().toISOString() })
-        });
-      } catch(e){}
+      const _cp = new URLSearchParams({ action:'contact', firstName:firstName, lastName:lastName, email:email, optIn:optin?'true':'false', consentGiven:consent?'true':'false' });
+      await fetch(SHEET_URL + '?' + _cp.toString());
+    } catch(e){}
     }
     const inner = document.getElementById('contactFormInner');
     if(inner) inner.innerHTML = '<div style="text-align:center;padding:28px 0;"><div style="font-size:3rem;margin-bottom:16px;">✅</div><h3 style="font-family:\'Playfair Display\',serif;margin-bottom:10px;">You\'re on the list!</h3><p style="color:var(--warm-gray);font-size:0.9rem;line-height:1.7;">Thank you, '+firstName+'. We\'ve recorded your details.<br>'+(optin?'You\'ll receive project updates — you can unsubscribe at any time.':'You opted out of updates, but we\'ll be in touch.')+'</p><button onclick="closeContactModal()" style="margin-top:20px;background:var(--teal);color:#fff;border:none;padding:12px 28px;border-radius:10px;font-weight:700;cursor:pointer;">Close</button></div>';
