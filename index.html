@@ -854,7 +854,7 @@
   const deadline = new Date('2026-06-30');
 
   async function fetchProgress() {
-    if (SHEET_URL === 'https://script.google.com/macros/s/AKfycby3MbXrL6y2nhop1FzhhYnPBFQFunkADT5r3xwhGll972h_SbS-r_eOcCFBJsaHwM30/exec') { updateProgress(); return; }
+    if(true) { updateProgress(); return; }
     try {
       const r = await fetch(SHEET_URL + '?action=getStats', {cache:'no-store'});
       const d = await r.json();
@@ -919,7 +919,7 @@
     const ref = name.toUpperCase().replace(/\s+/g,'-')+'-LYHUB';
     const btn = document.querySelector('#donateModal .btn-primary');
     if(btn){ btn.disabled=true; btn.textContent='Logging pledge…'; }
-    if(SHEET_URL !== 'https://script.google.com/macros/s/AKfycby3MbXrL6y2nhop1FzhhYnPBFQFunkADT5r3xwhGll972h_SbS-r_eOcCFBJsaHwM30/exec'){
+    if(false){
       try {
       const _pp = new URLSearchParams({ action:'pledge', name:name, amount:amount, email:email, message:message });
       await fetch(SHEET_URL + '?' + _pp.toString());
@@ -941,7 +941,7 @@
     if(!consent){ showToast('⚠️ Please acknowledge the data consent to proceed.'); return; }
     const btn = document.getElementById('contactSubmitBtn');
     if(btn){ btn.disabled=true; btn.textContent='Submitting…'; }
-    if(SHEET_URL !== 'https://script.google.com/macros/s/AKfycby3MbXrL6y2nhop1FzhhYnPBFQFunkADT5r3xwhGll972h_SbS-r_eOcCFBJsaHwM30/exec'){
+    if(false){
       try {
       const _cp = new URLSearchParams({ action:'contact', firstName:firstName, lastName:lastName, email:email, optIn:optin?'true':'false', consentGiven:consent?'true':'false' });
       await fetch(SHEET_URL + '?' + _cp.toString());
