@@ -851,19 +851,37 @@
 
 <script>
   const SHEET_URL = 'https://script.google.com/macros/s/AKfycby3MbXrL6y2nhop1FzhhYnPBFQFunkADT5r3xwhGll972h_SbS-r_eOcCFBJsaHwM30/exec';
-
+  const GOAL = 300000;
   let raised = 0, donors = 0;
-  const goal = 300000;
-  const deadline = new Date('2026-06-30');
+
+  function formatRand(n) {
+    if (n >= 1000000) return 'R' + (n/1000000).toFixed(1) + 'M';
+    if (n >= 1000) return 'R' + (n/1000).toFixed(1) + 'K';
+    return 'R' + n.toLocaleString();
+  }
+
+  function updateDisplay() {
+    const pct = Math.min(100, (raised / GOAL) * 100);
+    const raisedEl = document.querySelector('.raised-display, [id*="raised"], [class*="raised-amount"]');
+    const donorsEl = document.querySelector('.donors-display, [id*="donors"], [class*="donor-count"]');
+    const barEl = document.querySelector('.progress-bar-fill, [class*="progress-fill"], [class*="progress-bar"] > *');
+    const pctEl = document.querySelector('[class*="funded"], [class*="percent"]');
+    if (raisedEl) raisedEl.textContent = formatRand(raised);
+    if (donorsEl) donorsEl.textContent = donors;
+    if (barEl) barEl.style.width = pct.toFixed(1) + '%';
+    if (pctEl) pctEl.textContent = pct.toFixed(1) + '% funded · Phase 1';
+  }
 
   async function fetchProgress() {
     try {
-      const r = await fetch(SHEET_URL + '?action=getStats', {cache:'no-store'});
+      const r = await fetch(SHEET_URL + '?action=getStats', {cache: 'no-store'});
       const d = await r.json();
-      if (d.raised) raised = d.raised;
-      if (d.donors) donors = d.donors;
-    } catch(e) {}
-    updateProgress();
+      if (typeof d.raised === 'number') raised = d.raised;
+      if (typeof d.donors === 'number') donors = d.donors;
+    } catch(e) {
+      console.warn('Stats fetch failed:', e);
+    }
+    updateDisplay();
   }
 
   function fmt(n){
