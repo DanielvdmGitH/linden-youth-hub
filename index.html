@@ -922,7 +922,7 @@
     if(SHEET_URL !== 'https://script.google.com/macros/s/AKfycby3MbXrL6y2nhop1FzhhYnPBFQFunkADT5r3xwhGll972h_SbS-r_eOcCFBJsaHwM30/exec'){
       try {
         await fetch(SHEET_URL, {
-          method:'POST', headers:{'Content-Type':'application/json'},
+          method:'POST', headers:{'Content-Type':'text/plain'},
           body: JSON.stringify({ action:'pledge', name, amount, ref, timestamp: new Date().toISOString(), type:'EFT' })
         });
       } catch(e){}
@@ -946,7 +946,7 @@
     if(SHEET_URL !== 'https://script.google.com/macros/s/AKfycby3MbXrL6y2nhop1FzhhYnPBFQFunkADT5r3xwhGll972h_SbS-r_eOcCFBJsaHwM30/exec'){
       try {
         await fetch(SHEET_URL, {
-          method:'POST', headers:{'Content-Type':'application/json'},
+          method:'POST', headers:{'Content-Type':'text/plain'},
           body: JSON.stringify({ action:'contact', firstName, lastName, email, optIn: optin, consentGiven: consent, timestamp: new Date().toISOString() })
         });
       } catch(e){}
