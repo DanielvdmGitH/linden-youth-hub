@@ -763,7 +763,10 @@
     </div>
     <div class="inp-row">
       <label>Your Name / Organisation</label>
-      <input type="text" placeholder="e.g. Smith Family or Linden Pharmacy" id="donorName">
+      <input id="donorFirstName" type="text" placeholder="First name *" style="width:100%;padding:10px 14px;border:1px solid #ddd;border-radius:8px;font-size:1rem;margin-bottom:10px">
+          <input id="donorLastName" type="text" placeholder="Last name" style="width:100%;padding:10px 14px;border:1px solid #ddd;border-radius:8px;font-size:1rem;margin-bottom:10px">
+          <input id="donorEmail" type="email" placeholder="Email address" style="width:100%;padding:10px 14px;border:1px solid #ddd;border-radius:8px;font-size:1rem;margin-bottom:10px">
+          <label style="display:flex;align-items:flex-start;gap:8px;font-size:0.85rem;color:#555;margin-bottom:6px"><input id="donorOptIn" type="checkbox" style="margin-top:3px"> Keep me updated on the project</label>
     </div>
     <div class="bk-box">
       <h4>EFT Details</h4>
@@ -910,44 +913,46 @@
   });
 
   async function confirmDonation(){
-    const name = document.getElementById('donorName').value.trim();
+    const firstName = (document.getElementById('donorFirstName')||{}).value||'';
+    const lastName  = (document.getElementById('donorLastName')||{}).value||'';
+    const email     = (document.getElementById('donorEmail')||{}).value||'';
+    const optIn     = document.getElementById('donorOptIn') ? document.getElementById('donorOptIn').checked : false;
     const customVal = document.getElementById('customAmt') ? document.getElementById('customAmt').value : '';
-    const amount = selAmt || (customVal ? parseInt(customVal) : null);
-    if(!name){ showToast('⚠️ Please enter your name or organisation.'); return; }
-    if(!amount || amount < 1){ showToast('⚠️ Please select or enter a donation amount.'); return; }
-    const ref = name.toUpperCase().replace(/\s+/g,'-')+'-LYHUB';
+    const amount    = selAmt || (customVal ? parseInt(customVal) : null);
+    if(!amount || amount < 1){ showToast(' ⚠️ Please select or enter a donation amount.'); return; }
+    if(!firstName){ showToast(' Please enter your first name.'); return; }
     const btn = document.querySelector('#donateModal .btn-primary');
-    if(btn){ btn.disabled=true; btn.textContent='Logging pledge…'; }
-    if(false){
-      try {
-      const _pp = new URLSearchParams({ action:'pledge', name:name, amount:amount, email:email, message:message });
-      await fetch(SHEET_URL + '?' + _pp.toString());
+    if(btn){ btn.disabled=true; btn.textContent='Saving…'; }
+    try {
+      const p = new URLSearchParams({ action:'pledge', firstName, lastName, email, amount, optIn:optIn?'true':'false', consentGiven:'true' });
+      await fetch('https://script.google.com/macros/s/AKfycby3MbXrL6y2nhop1FzhhYnPBFQFunkADT5r3xwhGll972h_SbS-r_eOcCFBJsaHwM30/exec' + '?' + p.toString());
     } catch(e){}
-    }
+    if(btn){ btn.disabled=false; btn.textContent='Confirm Pledge'; }
     closeModal();
-    showToast('✅ Thank you, '+name+'! Your pledge of R'+amount.toLocaleString('en-ZA')+' has been logged. EFT ref: '+ref);
-    if(btn){ btn.disabled=false; btn.textContent="✅ I've Completed My EFT"; }
+    showToast('✅ Thank you! Your pledge has been recorded.');
+    setTimeout(fetchProgress, 1500);
   }
 
   async function submitContact(){
-    const firstName = document.getElementById('cf_first').value.trim();
-    const lastName  = document.getElementById('cf_last').value.trim();
-    const email     = document.getElementById('cf_email').value.trim();
-    const optin     = document.getElementById('cf_optin').checked;
-    const consent   = document.getElementById('cf_consent').checked;
-    if(!firstName||!lastName){ showToast('⚠️ Please enter your first and last name.'); return; }
-    if(!email||!email.includes('@')){ showToast('⚠️ Please enter a valid email address.'); return; }
-    if(!consent){ showToast('⚠️ Please acknowledge the data consent to proceed.'); return; }
-    const btn = document.getElementById('contactSubmitBtn');
-    if(btn){ btn.disabled=true; btn.textContent='Submitting…'; }
-    if(false){
-      try {
-      const _cp = new URLSearchParams({ action:'contact', firstName:firstName, lastName:lastName, email:email, optIn:optin?'true':'false', consentGiven:consent?'true':'false' });
-      await fetch(SHEET_URL + '?' + _cp.toString());
-    } catch(e){}
-    }
-    const inner = document.getElementById('contactFormInner');
-    if(inner) inner.innerHTML = '<div style="text-align:center;padding:28px 0;"><div style="font-size:3rem;margin-bottom:16px;">✅</div><h3 style="font-family:\'Playfair Display\',serif;margin-bottom:10px;">You\'re on the list!</h3><p style="color:var(--warm-gray);font-size:0.9rem;line-height:1.7;">Thank you, '+firstName+'. We\'ve recorded your details.<br>'+(optin?'You\'ll receive project updates — you can unsubscribe at any time.':'You opted out of updates, but we\'ll be in touch.')+'</p><button onclick="closeContactModal()" style="margin-top:20px;background:var(--teal);color:#fff;border:none;padding:12px 28px;border-radius:10px;font-weight:700;cursor:pointer;">Close</button></div>';
+    const firstName = document.getElementById('contactFirst').value.trim();
+    const lastName  = document.getElementById('contactLast').value.trim();
+    const email     = document.getElementById('contactEmail').value.trim();
+    const optIn     = document.getElementById('contactOptIn').checked;
+    const consent   = document.getElementById('contactConsent').checked;
+    if(!firstName||!email){ showToast(' Please fill in your name and email.'); return; }
+    if(!consent){ showToast(' Please accept the privacy terms to continue.'); return; }
+    const btn = document.querySelector('#contactModal .btn-primary');
+    if(btn){ btn.disabled=true; btn.textContent='Saving…'; }
+    try {
+      const p = new URLSearchParams({ action:'contact', firstName, lastName, email, optIn:optIn?'true':'false', consentGiven:'true' });
+      const r = await fetch('https://script.google.com/macros/s/AKfycby3MbXrL6y2nhop1FzhhYnPBFQFunkADT5r3xwhGll972h_SbS-r_eOcCFBJsaHwM30/exec' + '?' + p.toString());
+      const d = await r.json();
+      if(d.success){
+        const inner = document.getElementById('contactFormInner');
+        if(inner) inner.innerHTML = '<div style="text-align:center;padding:28px 0"><div style="font-size:3rem;margin-bottom:16px">✅</div><h3 style="color:var(--teal)">You\'re on the list!</h3><p>We\'ll keep you updated on progress.</p></div>';
+      } else { showToast(' Something went wrong. Please try again.'); }
+    } catch(e){ showToast(' Could not connect. Please try again.'); }
+    if(btn){ btn.disabled=false; btn.textContent='Stay Updated'; }
   }
 
   function showToast(msg){
