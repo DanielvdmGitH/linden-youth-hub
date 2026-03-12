@@ -1,0 +1,973 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Linden Youth Hub – Building Fund</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,300&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --teal: #2a8a7e;
+    --teal-dark: #1d6b61;
+    --teal-light: #3db5a6;
+    --teal-pale: #e8f5f3;
+    --cream: #faf8f4;
+    --charcoal: #1a1a1a;
+    --warm-gray: #6b6560;
+    --gold: #e8a020;
+    --gold-light: #f5c84a;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+  body { font-family:'DM Sans',sans-serif; background:var(--cream); color:var(--charcoal); overflow-x:hidden; }
+
+  /* TICKER */
+  .ticker-bar { background:var(--gold); color:#1a1a1a; font-size:0.78rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; padding:8px 0; overflow:hidden; }
+  .ticker-inner { display:flex; animation:ticker 28s linear infinite; white-space:nowrap; }
+  .ticker-inner span { padding:0 48px; }
+  @keyframes ticker { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+
+  /* NAV */
+  nav { position:sticky; top:0; z-index:100; background:rgba(255,255,255,0.96); backdrop-filter:blur(12px); border-bottom:1px solid rgba(42,138,126,0.12); padding:0 24px; }
+  .nav-inner { max-width:1200px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; height:62px; }
+  .nav-logo { font-family:'Bebas Neue',sans-serif; font-size:1.5rem; color:var(--teal-dark); letter-spacing:0.04em; }
+  .nav-logo span { color:var(--gold); }
+  .nav-links { display:flex; gap:4px; list-style:none; }
+  .nav-links a { text-decoration:none; font-size:0.78rem; font-weight:700; color:var(--warm-gray); padding:7px 12px; border-radius:8px; transition:color 0.2s,background 0.2s; letter-spacing:0.05em; text-transform:uppercase; }
+  .nav-links a:hover { color:var(--teal); background:var(--teal-pale); }
+  .nav-cta { background:var(--teal)!important; color:#fff!important; border-radius:8px; }
+  .nav-cta:hover { background:var(--teal-dark)!important; }
+  @media(max-width:700px){.nav-links{display:none;}}
+
+  /* ── HERO – full-bleed vision render ── */
+  .hero {
+    position:relative;
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:flex-end;
+    overflow:hidden;
+    padding-bottom:0;
+  }
+  .hero-bg {
+    position:absolute; inset:0;
+    background-image:url('https://raw.githubusercontent.com/DanielvdmGitH/linden-youth-hub/main/images/vision-render-1.png');
+    background-size:cover;
+    background-position:center 30%;
+    filter:brightness(0.55);
+    transform:scale(1.04);
+    animation:slowZoom 20s ease-in-out infinite alternate;
+  }
+  @keyframes slowZoom { from{transform:scale(1.04)} to{transform:scale(1.12)} }
+  .hero-overlay {
+    position:absolute; inset:0;
+    background:linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.15) 40%, rgba(10,50,45,0.85) 100%);
+  }
+  .hero-content {
+    position:relative; z-index:2;
+    width:100%; max-width:1200px;
+    padding:40px 32px 0;
+    display:flex; flex-direction:column; align-items:center;
+    text-align:center;
+  }
+  .hero-eyebrow {
+    display:inline-block;
+    background:rgba(255,255,255,0.15);
+    border:1px solid rgba(255,255,255,0.3);
+    color:#fff;
+    font-size:0.7rem; font-weight:700; letter-spacing:0.22em; text-transform:uppercase;
+    padding:7px 18px; border-radius:100px;
+    margin-bottom:24px;
+    backdrop-filter:blur(8px);
+    animation:fadeUp 0.5s ease both;
+  }
+  .hero h1 {
+    font-family:'Bebas Neue',sans-serif;
+    font-size:clamp(3.8rem,11vw,8.5rem);
+    color:#fff;
+    line-height:0.9;
+    letter-spacing:0.02em;
+    animation:fadeUp 0.6s 0.1s ease both;
+    text-shadow:0 4px 32px rgba(0,0,0,0.4);
+  }
+  .hero h1 em { color:var(--gold-light); font-style:normal; display:block; }
+  .hero-address {
+    margin-top:16px;
+    display:inline-flex; align-items:center; gap:8px;
+    background:rgba(255,255,255,0.12); border:1px solid rgba(255,255,255,0.25);
+    backdrop-filter:blur(8px);
+    color:rgba(255,255,255,0.9);
+    font-size:0.82rem; font-weight:500; letter-spacing:0.04em;
+    padding:8px 18px; border-radius:100px;
+    text-decoration:none;
+    transition:background 0.2s;
+    animation:fadeUp 0.6s 0.2s ease both;
+  }
+  .hero-address:hover { background:rgba(255,255,255,0.22); }
+  .hero-address svg { width:14px; height:14px; flex-shrink:0; }
+
+  /* PROGRESS BAND */
+  .progress-band {
+    position:relative; z-index:3;
+    width:100%;
+    background:rgba(10,40,36,0.92);
+    backdrop-filter:blur(12px);
+    border-top:1px solid rgba(255,255,255,0.08);
+    padding:32px 24px;
+    margin-top:48px;
+  }
+  .progress-band-inner { max-width:1000px; margin:0 auto; }
+  .progress-top { display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:14px; flex-wrap:wrap; gap:12px; }
+  .raised-display { font-family:'Bebas Neue',sans-serif; font-size:3rem; color:var(--gold-light); line-height:1; }
+  .raised-display sup { font-size:1.2rem; vertical-align:top; margin-top:8px; display:inline-block; }
+  .raised-label { font-size:0.75rem; color:rgba(255,255,255,0.5); text-transform:uppercase; letter-spacing:0.12em; }
+  .goal-display { text-align:right; }
+  .goal-display strong { display:block; font-family:'Bebas Neue',sans-serif; font-size:1.6rem; color:#fff; }
+  .goal-display span { font-size:0.75rem; color:rgba(255,255,255,0.5); text-transform:uppercase; letter-spacing:0.1em; }
+  .pbar-wrap { background:rgba(255,255,255,0.1); border-radius:100px; height:12px; overflow:hidden; margin-bottom:8px; }
+  .pbar-fill { height:100%; border-radius:100px; background:linear-gradient(90deg,var(--teal),var(--teal-light),var(--gold)); width:0%; transition:width 2s cubic-bezier(.4,0,.2,1); }
+  .pbar-pct { font-size:0.75rem; color:rgba(255,255,255,0.5); text-align:right; margin-bottom:20px; }
+  .progress-stats { display:flex; gap:0; border-top:1px solid rgba(255,255,255,0.08); padding-top:20px; flex-wrap:wrap; }
+  .pstat { flex:1; min-width:100px; padding-right:24px; border-right:1px solid rgba(255,255,255,0.08); margin-right:24px; }
+  .pstat:last-child { border-right:none; margin-right:0; padding-right:0; }
+  .pstat-val { font-family:'Bebas Neue',sans-serif; font-size:1.8rem; color:#fff; }
+  .pstat-lbl { font-size:0.68rem; color:rgba(255,255,255,0.45); text-transform:uppercase; letter-spacing:0.12em; font-weight:700; }
+  .deadline-pill { display:inline-flex; align-items:center; gap:6px; background:rgba(232,160,32,0.15); border:1px solid rgba(232,160,32,0.4); color:var(--gold-light); font-size:0.75rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; padding:5px 14px; border-radius:100px; margin-top:16px; }
+  .donate-row { display:flex; gap:12px; margin-top:20px; flex-wrap:wrap; }
+  .btn-primary { flex:1; min-width:200px; background:linear-gradient(135deg,var(--teal),var(--teal-dark)); color:#fff; font-family:'DM Sans',sans-serif; font-size:1rem; font-weight:700; letter-spacing:0.05em; text-transform:uppercase; padding:16px 24px; border:none; border-radius:12px; cursor:pointer; transition:transform 0.15s,box-shadow 0.15s; box-shadow:0 8px 24px rgba(42,138,126,0.4); }
+  .btn-primary:hover { transform:translateY(-2px); box-shadow:0 12px 32px rgba(42,138,126,0.5); }
+  .btn-intl { flex:1; min-width:200px; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.2); color:#fff; font-family:'DM Sans',sans-serif; font-size:1rem; font-weight:700; letter-spacing:0.05em; text-transform:uppercase; padding:16px 24px; border-radius:12px; cursor:pointer; transition:background 0.2s; }
+  .btn-intl:hover { background:rgba(255,255,255,0.15); }
+
+  /* VISION SHOWCASE */
+  .vision-section { padding:0; background:#fff; }
+  .vision-hero-img {
+    width:100%; height:520px;
+    object-fit:cover;
+    object-position:center 40%;
+    display:block;
+  }
+  .vision-split { display:grid; grid-template-columns:1fr 1fr; }
+  @media(max-width:768px){ .vision-split{grid-template-columns:1fr;} .vision-hero-img{height:280px;} }
+  .vision-img-wrap { position:relative; overflow:hidden; }
+  .vision-img-wrap img { width:100%; height:400px; object-fit:cover; display:block; transition:transform 0.5s ease; }
+  .vision-img-wrap:hover img { transform:scale(1.04); }
+  .vision-img-caption {
+    position:absolute; bottom:0; left:0; right:0;
+    padding:24px 28px;
+    background:linear-gradient(to top, rgba(0,0,0,0.75), transparent);
+    color:#fff;
+  }
+  .vision-img-caption h3 { font-family:'Bebas Neue',sans-serif; font-size:1.6rem; letter-spacing:0.03em; }
+  .vision-img-caption p { font-size:0.82rem; color:rgba(255,255,255,0.75); margin-top:4px; }
+  .vision-text-panel { background:var(--charcoal); padding:56px 48px; display:flex; flex-direction:column; justify-content:center; }
+  @media(max-width:768px){ .vision-text-panel{padding:40px 28px;} }
+  .vision-text-panel .lbl { font-size:0.7rem; font-weight:700; letter-spacing:0.22em; text-transform:uppercase; color:var(--gold-light); margin-bottom:14px; }
+  .vision-text-panel h2 { font-family:'Playfair Display',serif; font-size:clamp(1.8rem,3.5vw,2.6rem); color:#fff; line-height:1.2; margin-bottom:20px; }
+  .vision-text-panel p { font-size:0.95rem; color:rgba(255,255,255,0.65); line-height:1.8; margin-bottom:14px; }
+  .vision-quote { border-left:3px solid var(--teal-light); padding:14px 18px; background:rgba(255,255,255,0.05); border-radius:0 10px 10px 0; margin:20px 0; }
+  .vision-quote p { font-style:italic; font-size:1rem; color:rgba(255,255,255,0.85); line-height:1.65; margin:0; }
+  .vision-quote cite { display:block; font-size:0.75rem; color:rgba(255,255,255,0.45); margin-top:8px; font-style:normal; font-weight:700; }
+
+  /* STORY / VIDEO */
+  .story-section { padding:88px 24px; background:var(--cream); }
+  .story-inner { max-width:1100px; margin:0 auto; display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:center; }
+  @media(max-width:768px){.story-inner{grid-template-columns:1fr;gap:40px;}}
+  .video-wrap { position:relative; border-radius:20px; overflow:hidden; box-shadow:0 28px 64px rgba(0,0,0,0.15); aspect-ratio:9/16; max-height:520px; }
+  .video-wrap video { width:100%; height:100%; object-fit:cover; }
+  .video-badge { position:absolute; top:14px; left:14px; background:rgba(0,0,0,0.6); backdrop-filter:blur(8px); color:#fff; font-size:0.68rem; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; padding:6px 14px; border-radius:100px; }
+  .story-lbl { font-size:0.7rem; font-weight:700; letter-spacing:0.22em; text-transform:uppercase; color:var(--teal); margin-bottom:12px; }
+  .story-h2 { font-family:'Playfair Display',serif; font-size:clamp(1.8rem,4vw,2.7rem); line-height:1.18; color:var(--charcoal); margin-bottom:20px; }
+  .story-p { font-size:0.98rem; color:var(--warm-gray); line-height:1.82; margin-bottom:14px; }
+  .quote-block { border-left:4px solid var(--teal-light); padding:16px 20px; background:var(--teal-pale); border-radius:0 12px 12px 0; margin:24px 0; }
+  .quote-block p { font-size:1.05rem; font-style:italic; color:var(--teal-dark); font-weight:500; margin:0; line-height:1.6; }
+  .quote-block cite { display:block; font-size:0.78rem; color:var(--warm-gray); margin-top:8px; font-style:normal; font-weight:700; }
+
+  /* PHOTO GRID */
+  .gallery-section { padding:0 24px 88px; background:var(--cream); }
+  .gallery-inner { max-width:1100px; margin:0 auto; }
+  .section-label { font-size:0.7rem; font-weight:700; letter-spacing:0.22em; text-transform:uppercase; color:var(--teal); margin-bottom:12px; }
+  .section-title { font-family:'Playfair Display',serif; font-size:clamp(2rem,5vw,3rem); line-height:1.14; color:var(--charcoal); margin-bottom:16px; }
+  .section-body { font-size:1rem; color:var(--warm-gray); line-height:1.8; max-width:600px; margin-bottom:40px; }
+  .photo-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
+  @media(max-width:600px){.photo-grid{grid-template-columns:repeat(2,1fr);}}
+  .photo-item { position:relative; border-radius:14px; overflow:hidden; aspect-ratio:9/12; cursor:pointer; }
+  .photo-item img { width:100%; height:100%; object-fit:cover; object-position:center top; transition:transform 0.4s; display:block; }
+  .photo-item:hover img { transform:scale(1.06); }
+  .photo-caption { position:absolute; inset:0; background:linear-gradient(to top,rgba(0,0,0,0.55) 0%,transparent 55%); opacity:0; transition:opacity 0.3s; display:flex; align-items:flex-end; padding:14px; }
+  .photo-item:hover .photo-caption { opacity:1; }
+  .photo-caption span { color:#fff; font-size:0.72rem; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; }
+  .photo-item.wide { grid-column:span 2; aspect-ratio:16/10; }
+
+  /* WHY */
+  .why-section { padding:88px 24px; background:#fff; }
+  .why-inner { max-width:1100px; margin:0 auto; }
+  .why-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:22px; margin-top:48px; }
+  .why-card { background:var(--cream); border-radius:18px; padding:30px 26px; border:1px solid rgba(0,0,0,0.06); transition:transform 0.25s,box-shadow 0.25s; }
+  .why-card:hover { transform:translateY(-5px); box-shadow:0 18px 44px rgba(42,138,126,0.1); }
+  .why-icon { width:50px; height:50px; border-radius:13px; background:var(--teal-pale); display:flex; align-items:center; justify-content:center; font-size:1.5rem; margin-bottom:16px; }
+  .why-card h3 { font-size:1rem; font-weight:700; margin-bottom:8px; }
+  .why-card p { font-size:0.86rem; color:var(--warm-gray); line-height:1.7; }
+
+  /* PHASES */
+  #phases { padding:88px 24px; background:var(--charcoal); }
+  #phases .inner { max-width:1100px; margin:0 auto; }
+  #phases .section-label { color:var(--gold-light); }
+  #phases .section-title { color:#fff; }
+  #phases .section-body { color:rgba(255,255,255,0.55); }
+  .timeline { margin-top:52px; position:relative; }
+  .timeline::before { content:''; position:absolute; left:28px; top:0; bottom:0; width:2px; background:linear-gradient(to bottom,var(--teal-light),var(--gold),rgba(255,255,255,0.08)); }
+  .t-item { display:flex; gap:30px; margin-bottom:44px; position:relative; }
+  .t-dot { width:58px; height:58px; border-radius:50%; flex-shrink:0; display:flex; align-items:center; justify-content:center; font-family:'Bebas Neue',sans-serif; font-size:1.4rem; z-index:1; }
+  .t-dot.on { background:linear-gradient(135deg,var(--teal-light),var(--teal)); color:#fff; box-shadow:0 0 0 6px rgba(42,138,126,0.2),0 0 0 12px rgba(42,138,126,0.08); }
+  .t-dot.off { background:rgba(255,255,255,0.07); border:2px solid rgba(255,255,255,0.12); color:rgba(255,255,255,0.3); }
+  .t-body { flex:1; padding-top:8px; }
+  .t-badge { display:inline-block; font-size:0.66rem; font-weight:700; letter-spacing:0.15em; text-transform:uppercase; padding:3px 10px; border-radius:100px; margin-bottom:10px; }
+  .t-badge.now { background:var(--gold); color:#1a1a1a; }
+  .t-badge.next { background:rgba(255,255,255,0.08); color:rgba(255,255,255,0.45); }
+  .t-body h3 { font-size:1.2rem; font-weight:700; color:#fff; margin-bottom:7px; }
+  .t-body p { font-size:0.88rem; color:rgba(255,255,255,0.52); line-height:1.7; }
+  .t-amount { margin-top:11px; font-family:'Bebas Neue',sans-serif; font-size:1.45rem; color:var(--gold-light); }
+  .t-amount span { font-family:'DM Sans',sans-serif; font-size:0.78rem; color:rgba(255,255,255,0.35); font-weight:400; }
+
+  /* DONATE / PAYMENT */
+  #donate-section { padding:88px 24px; background:var(--teal-pale); }
+  #donate-section .inner { max-width:900px; margin:0 auto; }
+  .donate-cards { display:grid; grid-template-columns:1fr 1fr; gap:24px; margin-top:44px; }
+  @media(max-width:700px){ .donate-cards{grid-template-columns:1fr;} }
+  .donate-card { background:#fff; border-radius:20px; padding:36px 32px; border:1px solid rgba(42,138,126,0.12); }
+  .donate-card-icon { font-size:2rem; margin-bottom:16px; }
+  .donate-card h3 { font-size:1.1rem; font-weight:700; margin-bottom:8px; color:var(--charcoal); }
+  .donate-card p { font-size:0.88rem; color:var(--warm-gray); line-height:1.7; margin-bottom:20px; }
+  .banking-table { width:100%; border-collapse:collapse; margin-bottom:4px; }
+  .banking-table tr td { padding:7px 0; font-size:0.86rem; border-bottom:1px solid #f0f0f0; }
+  .banking-table tr:last-child td { border-bottom:none; }
+  .banking-table td:first-child { color:var(--warm-gray); width:45%; }
+  .banking-table td:last-child { font-weight:700; font-family:monospace; font-size:0.9rem; color:var(--charcoal); }
+  .intl-placeholder { background:linear-gradient(135deg,var(--teal-pale),#d0ece8); border:2px dashed var(--teal-light); border-radius:12px; padding:20px; text-align:center; }
+  .intl-placeholder p { font-size:0.85rem; color:var(--teal-dark); font-weight:600; margin-bottom:12px; }
+  .btn-intl-link { display:inline-block; background:var(--teal); color:#fff; font-size:0.88rem; font-weight:700; text-transform:uppercase; letter-spacing:0.06em; padding:12px 24px; border-radius:10px; text-decoration:none; border:none; cursor:pointer; width:100%; transition:background 0.2s; }
+  .btn-intl-link:hover { background:var(--teal-dark); }
+  .ref-note { font-size:0.76rem; color:var(--warm-gray); margin-top:10px; line-height:1.5; }
+
+  /* MAP + ADDRESS */
+  #location { padding:88px 24px; background:#fff; }
+  #location .inner { max-width:1100px; margin:0 auto; display:grid; grid-template-columns:1fr 1fr; gap:56px; align-items:center; }
+  @media(max-width:768px){ #location .inner{grid-template-columns:1fr;gap:36px;} }
+  .map-embed { border-radius:20px; overflow:hidden; box-shadow:0 16px 48px rgba(0,0,0,0.1); height:400px; }
+  .map-embed iframe { width:100%; height:100%; border:none; display:block; }
+  .address-block .lbl { font-size:0.7rem; font-weight:700; letter-spacing:0.22em; text-transform:uppercase; color:var(--teal); margin-bottom:12px; }
+  .address-block h2 { font-family:'Playfair Display',serif; font-size:clamp(1.6rem,3.5vw,2.4rem); color:var(--charcoal); line-height:1.2; margin-bottom:20px; }
+  .address-detail { display:flex; align-items:flex-start; gap:14px; margin-bottom:20px; }
+  .address-detail .icon { width:44px; height:44px; background:var(--teal-pale); border-radius:12px; display:flex; align-items:center; justify-content:center; font-size:1.2rem; flex-shrink:0; }
+  .address-detail .text strong { display:block; font-size:1rem; font-weight:700; color:var(--charcoal); margin-bottom:3px; }
+  .address-detail .text span { font-size:0.88rem; color:var(--warm-gray); line-height:1.6; }
+  .map-link { display:inline-flex; align-items:center; gap:8px; background:var(--teal); color:#fff; font-size:0.88rem; font-weight:700; text-transform:uppercase; letter-spacing:0.06em; padding:14px 22px; border-radius:12px; text-decoration:none; margin-top:8px; transition:background 0.2s,transform 0.15s; }
+  .map-link:hover { background:var(--teal-dark); transform:translateY(-1px); }
+
+  /* UPDATES */
+  #updates { padding:88px 24px; background:var(--cream); }
+  #updates .inner { max-width:1100px; margin:0 auto; }
+  .updates-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:22px; margin-top:44px; }
+  .upd-card { background:#fff; border-radius:18px; overflow:hidden; border:1px solid rgba(0,0,0,0.06); transition:transform 0.25s,box-shadow 0.25s; }
+  .upd-card:hover { transform:translateY(-4px); box-shadow:0 16px 40px rgba(0,0,0,0.08); }
+  .upd-img { height:200px; overflow:hidden; }
+  .upd-img img { width:100%; height:100%; object-fit:cover; object-position:center top; }
+  .upd-placeholder { height:200px; background:linear-gradient(135deg,var(--teal-pale),#d0ece8); display:flex; align-items:center; justify-content:center; flex-direction:column; gap:8px; }
+  .upd-placeholder span { font-size:2.5rem; }
+  .upd-placeholder p { font-size:0.7rem; color:var(--teal); font-weight:700; text-transform:uppercase; letter-spacing:0.1em; }
+  .upd-body { padding:22px; }
+  .upd-date { font-size:0.68rem; font-weight:700; text-transform:uppercase; letter-spacing:0.12em; color:var(--teal); margin-bottom:7px; }
+  .upd-body h3 { font-size:1rem; font-weight:700; color:var(--charcoal); margin-bottom:7px; }
+  .upd-body p { font-size:0.86rem; color:var(--warm-gray); line-height:1.7; }
+
+  /* SHARE */
+  #share { padding:88px 24px; background:var(--charcoal); }
+  #share .inner { max-width:1100px; margin:0 auto; text-align:center; }
+  #share .section-label { color:var(--gold-light); }
+  #share .section-title { color:#fff; }
+  #share .section-body { color:rgba(255,255,255,0.55); margin:0 auto 40px; }
+  .share-row { display:flex; flex-wrap:wrap; gap:12px; justify-content:center; }
+  .share-btn { display:inline-flex; align-items:center; gap:10px; padding:14px 26px; border-radius:100px; font-size:0.88rem; font-weight:700; cursor:pointer; border:none; transition:transform 0.15s,box-shadow 0.15s; text-decoration:none; }
+  .share-btn:hover { transform:translateY(-2px); box-shadow:0 8px 20px rgba(0,0,0,0.2); }
+  .s-wa { background:#25D366; color:#fff; }
+  .s-copy { background:rgba(255,255,255,0.1); color:#fff; border:1px solid rgba(255,255,255,0.2)!important; }
+  .s-email { background:var(--teal); color:#fff; }
+
+  /* FOOTER */
+  footer { background:#0f0f0f; color:rgba(255,255,255,0.4); text-align:center; padding:48px 24px; font-size:0.8rem; line-height:1.9; }
+  footer strong { color:rgba(255,255,255,0.75); }
+  footer a { color:var(--teal-light); text-decoration:none; }
+
+  /* MODAL */
+  .modal-overlay { position:fixed; inset:0; background:rgba(0,0,0,0.75); backdrop-filter:blur(6px); z-index:999; display:none; align-items:center; justify-content:center; padding:24px; }
+  .modal-overlay.open { display:flex; }
+  .modal { background:#fff; border-radius:24px; padding:44px 36px; width:100%; max-width:460px; position:relative; animation:modalIn 0.3s cubic-bezier(.2,.8,.3,1); max-height:90vh; overflow-y:auto; }
+  .modal-close { position:absolute; top:18px; right:18px; width:34px; height:34px; border:none; background:#f5f5f5; border-radius:50%; cursor:pointer; font-size:1rem; display:flex; align-items:center; justify-content:center; color:var(--warm-gray); }
+  .modal-close:hover { background:#eee; }
+  .modal h2 { font-family:'Playfair Display',serif; font-size:1.75rem; margin-bottom:6px; }
+  .modal .sub { font-size:0.88rem; color:var(--warm-gray); margin-bottom:24px; }
+  .amt-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:9px; margin-bottom:14px; }
+  .amt-btn { padding:13px 6px; border:2px solid #e8e8e8; background:#fff; border-radius:11px; cursor:pointer; font-family:'Bebas Neue',sans-serif; font-size:1.15rem; color:var(--charcoal); transition:all 0.2s; }
+  .amt-btn:hover,.amt-btn.sel { border-color:var(--teal); background:var(--teal-pale); color:var(--teal-dark); }
+  .inp-row { margin-bottom:12px; }
+  .inp-row label { display:block; font-size:0.74rem; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; color:var(--warm-gray); margin-bottom:5px; }
+  .inp-row input { width:100%; padding:13px 14px; border:2px solid #e8e8e8; border-radius:11px; font-family:'DM Sans',sans-serif; font-size:0.92rem; outline:none; transition:border-color 0.2s; }
+  .inp-row input:focus { border-color:var(--teal); }
+  .bk-box { background:var(--teal-pale); border:1px solid rgba(42,138,126,0.18); border-radius:14px; padding:18px 22px; margin:20px 0; }
+  .bk-box h4 { font-size:0.68rem; font-weight:700; text-transform:uppercase; letter-spacing:0.15em; color:var(--teal); margin-bottom:10px; }
+  .bk-row { display:flex; justify-content:space-between; font-size:0.84rem; margin-bottom:6px; }
+  .bk-row span:first-child { color:var(--warm-gray); }
+  .bk-row span:last-child { font-weight:700; font-family:monospace; font-size:0.88rem; }
+  .modal-note { font-size:0.76rem; color:var(--warm-gray); text-align:center; margin-top:10px; line-height:1.6; }
+  @media(max-width:500px){.modal{padding:28px 20px;}.amt-grid{grid-template-columns:repeat(2,1fr);}}
+
+  .toast { position:fixed; bottom:28px; left:50%; transform:translateX(-50%) translateY(80px); background:var(--charcoal); color:#fff; padding:13px 26px; border-radius:100px; font-size:0.86rem; font-weight:600; z-index:9999; transition:transform 0.4s cubic-bezier(.2,.8,.3,1),opacity 0.4s; opacity:0; pointer-events:none; }
+  .toast.show { transform:translateX(-50%) translateY(0); opacity:1; }
+
+  @keyframes fadeUp { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
+  @keyframes modalIn { from{opacity:0;transform:scale(0.94) translateY(14px)} to{opacity:1;transform:scale(1) translateY(0)} }
+</style>
+</head>
+<body>
+
+<!-- TICKER -->
+<div class="ticker-bar">
+  <div class="ticker-inner">
+    <span>🏸 Phase 1: Pickleball Court · Target R300,000 · Deadline June 2026</span>
+    <span>📍 42 7th Street, Linden, Johannesburg · Building for the next generation</span>
+    <span>💚 Every rand invested here stays in this community</span>
+    <span>🌍 International contributors welcome · Card payments available</span>
+    <span>🏸 Phase 1: Pickleball Court · Target R300,000 · Deadline June 2026</span>
+    <span>📍 42 7th Street, Linden, Johannesburg · Building for the next generation</span>
+    <span>💚 Every rand invested here stays in this community</span>
+    <span>🌍 International contributors welcome · Card payments available</span>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <div class="nav-logo">Linden <span>Youth</span> Hub</div>
+    <ul class="nav-links">
+      <li><a href="#story">Our Story</a></li>
+      <li><a href="#vision">The Vision</a></li>
+      <li><a href="#phases">Phases</a></li>
+      <li><a href="#donate-section">Donate</a></li>
+      <li><a href="#stay-updated">Updates</a></li>
+      <li><a href="#location">Find Us</a></li>
+      <li><a href="#share">Share</a></li>
+      <li><a href="#" class="nav-cta" onclick="openModal();return false;">Give Now</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ══ HERO ══ -->
+<div class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">🌍 Linden Community Building Fund · Johannesburg, SA</div>
+    <h1>BUILD THE<br><em>Future</em><br>Together</h1>
+    <a class="hero-address" href="https://maps.google.com/?q=42+7th+Street+Linden+Randburg+Johannesburg+2104+South+Africa" target="_blank">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+      42 7th Street, Linden, Randburg, Johannesburg, 2104
+    </a>
+  </div>
+
+  <!-- PROGRESS BAND -->
+  <div class="progress-band">
+    <div class="progress-band-inner">
+      <div class="progress-top">
+        <div>
+          <div class="raised-display"><sup>R</sup><span id="raisedAmt">0</span></div>
+          <div class="raised-label">raised so far</div>
+        </div>
+        <div class="goal-display">
+          <strong>R300,000</strong>
+          <span>Phase 1 Goal</span>
+        </div>
+      </div>
+      <div class="pbar-wrap"><div class="pbar-fill" id="progressBar"></div></div>
+      <div class="pbar-pct"><span id="pct">0</span>% funded · Phase 1</div>
+      <div class="progress-stats">
+        <div class="pstat"><div class="pstat-val" id="donorCount">0</div><div class="pstat-lbl">Contributors</div></div>
+        <div class="pstat"><div class="pstat-val" id="daysLeft">—</div><div class="pstat-lbl">Days Left</div></div>
+        <div class="pstat"><div class="pstat-val">R300k</div><div class="pstat-lbl">Target</div></div>
+        <div class="pstat"><div class="pstat-val">Jun 2026</div><div class="pstat-lbl">Deadline</div></div>
+      </div>
+      <div class="deadline-pill">⏰ Deadline: June 2026 · Pickleball Court</div>
+      <div class="donate-row">
+        <button class="btn-primary" onclick="openModal()">💚 Donate via EFT (SA)</button>
+        <button class="btn-intl" onclick="openIntlModal()">🌍 International / Card Payment</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ VISION SHOWCASE ══ -->
+<section class="vision-section" id="vision">
+  <img class="vision-hero-img" src="https://raw.githubusercontent.com/DanielvdmGitH/linden-youth-hub/main/images/vision-render-2.png" alt="Jesus Youth Hub vision render — coffee shop, courts and community spaces">
+  <div class="vision-split">
+    <div class="vision-img-wrap">
+      <img src="https://raw.githubusercontent.com/DanielvdmGitH/linden-youth-hub/main/images/vision-render-3.png" alt="Jesus Youth Hub — outdoor courts and community hub vision">
+      <div class="vision-img-caption">
+        <h3>The Full Vision</h3>
+        <p>Multi-sport courts · Community spaces · Youth coffee hub · Prayer centre</p>
+      </div>
+    </div>
+    <div class="vision-text-panel">
+      <div class="lbl">The Jesus Youth Hub</div>
+      <h2>This is what your contribution is building</h2>
+      <p>These renders show the complete vision for 42 7th Street, Linden — a world-class youth facility in the heart of our neighbourhood. Pickleball and volleyball courts, a youth coffee hub, multi-purpose indoor spaces, and a prayer centre.</p>
+      <div class="vision-quote">
+        <p>"This is not just a building — it’s a declaration. We believe in the next generation of Linden. Every rand raised, every court laid, every space created here is a gift from this community to its youth. Not tied to any one church or congregation. Built by Linden, for Linden."</p>
+        <cite>— Pastor Hendrik Van Deventer, Founding Pastor, Vida Church Linden</cite>
+      </div>
+      <p>Phase 1 — the pickleball court — is where it all starts. We need R300,000 by June 2026. Every rand contributed is a step closer to this becoming real.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══ STORY + VIDEO ══ -->
+<section class="story-section" id="story">
+  <div class="story-inner">
+    <div class="video-wrap">
+      <div style="position:relative;padding-bottom:177%;height:0;overflow:hidden;border-radius:16px;background:#000;">
+  <iframe src="https://www.youtube.com/embed/_6oxmKzXRHA?rel=0&modestbranding=1&playsinline=1"
+    title="Vida Building Project — Pastor Hendrik Van Deventer"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    allowfullscreen
+    style="position:absolute;top:0;left:0;width:100%;height:100%;border-radius:16px;">
+  </iframe>
+</div>
+<a href="https://www.instagram.com/reel/DJALfEjIWRQ/" target="_blank" rel="noopener"
+   style="display:inline-flex;align-items:center;gap:8px;margin-top:12px;font-size:0.85rem;color:var(--teal);text-decoration:none;font-weight:600;">
+  <span style="font-size:1.1rem;">📸</span> Also on @vidachurchsa Instagram
+</a>
+      <div class="video-badge">📍 Filmed on site · 42 7th Street, Linden</div>
+    </div>
+    <div>
+      <div class="story-lbl">Hear The Vision</div>
+      <h2 class="story-h2">Standing on the ground where it all begins</h2>
+      <p class="story-p"><p class="story-p">In this video, Pastor Hendrik Van Deventer — founding pastor of Vida Church Linden — stands on the actual property at 42 7th Street and shares his heart for the Linden Youth Hub. Hendrik, along with Rudolph Wiggett and other community volunteers, is driving this initiative. The Linden Youth Hub is not a church project — it is a community initiative, open to all. Contributions go directly to the build fund, ring-fenced for the specific phase underway. <strong>Phase 1: the pickleball court.</strong></p>
+      <div class="quote-block">
+        <p>"We saw a property and we saw possibility. Not what it is — but what it could become for an entire generation of young people in Linden."</p>
+        <cite>— Pastor Hendrik Van Deventer, Vida Church Linden</cite>
+      </div>
+      <p class="story-p">The garden behind him in the video is the very space where the pickleball court will be built. Watch the full video to hear the story, the vision, and exactly why this matters for Linden.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══ PHOTO GALLERY ══ -->
+<section class="gallery-section" id="photos">
+  <div class="gallery-inner">
+    <div class="section-label">The Property — As It Is Today</div>
+    <h2 class="section-title">The site. The people. The beginning.</h2>
+    <p class="section-body">These stills were captured from the original vision video — Pastor Hendrik Van Deventer on the actual property at 42 7th Street, Linden. This is the ground we are building on.</p>
+    <div class="photo-grid">
+      <div class="photo-item wide">
+        <img src="https://raw.githubusercontent.com/DanielvdmGitH/linden-youth-hub/main/images/frame-01.jpg" alt="Rudolph sharing the vision on site">
+        <div class="photo-caption"><span>The Vision — On Site</span></div>
+      </div>
+      <div class="photo-item">
+        <img src="https://raw.githubusercontent.com/DanielvdmGitH/linden-youth-hub/main/images/frame-02.jpg" alt="The property garden">
+        <div class="photo-caption"><span>Garden Space</span></div>
+      </div>
+      <div class="photo-item">
+        <img src="https://raw.githubusercontent.com/DanielvdmGitH/linden-youth-hub/main/images/frame-03.jpg" alt="Sharing the heart">
+        <div class="photo-caption"><span>Sharing the Dream</span></div>
+      </div>
+      <div class="photo-item">
+        <img src="https://raw.githubusercontent.com/DanielvdmGitH/linden-youth-hub/main/images/frame-04.jpg" alt="Linden Erf 246">
+        <div class="photo-caption"><span>Linden Erf 246</span></div>
+      </div>
+      <div class="photo-item">
+        <img src="https://raw.githubusercontent.com/DanielvdmGitH/linden-youth-hub/main/images/frame-05.jpg" alt="Future court site">
+        <div class="photo-caption"><span>Future Court Site</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ WHY GIVE ══ -->
+<section class="why-section" id="why">
+  <div class="why-inner">
+    <div class="section-label">Why Your Contribution Matters</div>
+    <h2 class="section-title">Money invested here stays<br>in this neighbourhood</h2>
+    <div class="why-grid">
+      <div class="why-card"><div class="why-icon">🏸</div><h3>Immediate Impact</h3><p>Phase 1 delivers a professional pickleball court — a fast-growing sport accessible to all ages, right in the heart of Linden.</p></div>
+      <div class="why-card"><div class="why-icon">🧒</div><h3>Youth Off the Streets</h3><p>A safe, structured space gives local youth a place to belong and build healthy habits and community bonds.</p></div>
+      <div class="why-card"><div class="why-icon">🏪</div><h3>For Local Businesses</h3><p>Shopkeepers in Linden invest in the community they serve. Your customers' families benefit directly — and remember who helped.</p></div>
+      <div class="why-card"><div class="why-icon">🌍</div><h3>Global Community Welcome</h3><p>Family and friends outside South Africa can contribute too — card payments accepted internationally. Every dollar and pound counts.</p></div>
+      <div class="why-card"><div class="why-icon">📊</div><h3>Full Transparency</h3><p>Track every rand raised. Weekly photo updates once building begins. You always know exactly what your money has built.</p></div>
+      <div class="why-card"><div class="why-icon">🙏</div><h3>Values-Driven, Community-Led</h3><p>The hub is built on values of service, dignity, and inclusion. Inspired by the Vida Church community, but open to all youth — regardless of faith, background, or belief.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ PHASES ══ -->
+<section id="phases">
+  <div class="inner">
+    <div class="section-label">Development Phases</div>
+    <h2 class="section-title">The Build Plan</h2>
+    <p class="section-body">Four phases. One vision. Each phase funded by this community, for this community.</p>
+    <div class="timeline">
+      <div class="t-item">
+        <div class="t-dot on">1</div>
+        <div class="t-body">
+          <span class="t-badge now">🔥 Active — Fundraising Now</span>
+          <h3>Pickleball Court &amp; Site Works</h3>
+          <p>Professional pickleball court, specialist fencing and net, court markings, new paving walkway, and boundary wall works as per approved architectural plans (Project MZ2601).</p>
+          <div class="t-amount">R300,000 <span>· Target by June 2026</span></div>
+        </div>
+      </div>
+      <div class="t-item">
+        <div class="t-dot off">2</div>
+        <div class="t-body">
+          <span class="t-badge next">Coming Next</span>
+          <h3>Multi-Purpose Hall Renovation</h3>
+          <p>Open-plan interior, kitchenette stations, new office space, updated bathrooms — a full community gathering venue inside the existing building.</p>
+          <div class="t-amount" style="color:rgba(255,255,255,0.25)">Phase 2 <span>· TBD</span></div>
+        </div>
+      </div>
+      <div class="t-item">
+        <div class="t-dot off">3</div>
+        <div class="t-body">
+          <span class="t-badge next">Future</span>
+          <h3>Volleyball Court &amp; Outdoor Areas</h3>
+          <p>New volleyball court, outdoor furniture and gathering zones, additional parking, landscaping — a welcoming outdoor campus.</p>
+          <div class="t-amount" style="color:rgba(255,255,255,0.25)">Phase 3 <span>· TBD</span></div>
+        </div>
+      </div>
+      <div class="t-item">
+        <div class="t-dot off">4</div>
+        <div class="t-body">
+          <span class="t-badge next">Vision</span>
+          <h3>Youth Coffee Hub &amp; Prayer Centre</h3>
+          <p>The complete Jesus Youth Hub — dedicated coffee shop for youth, prayer centre, second dwelling, full landscaping of the 667m² site. Exactly as the renders show.</p>
+          <div class="t-amount" style="color:rgba(255,255,255,0.25)">Phase 4 <span>· Long-Term Vision</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ DONATE / PAYMENT ══ -->
+<section id="donate-section">
+  <div class="inner">
+    <div class="section-label">How to Contribute</div>
+    <h2 class="section-title">Give from anywhere in the world</h2>
+    <p class="section-body">South African contributors can do an instant EFT. Friends and family outside SA can pay by card via our secure international payment link.</p>
+    <div class="donate-cards">
+      <div class="donate-card">
+        <div class="donate-card-icon">🏦</div>
+        <h3>South African EFT</h3>
+        <p>Make a direct EFT to the Linden Youth Hub Building Fund. Every contribution goes directly to Phase 1 — the pickleball court. Funds are ring-fenced and will not be used for any church operational costs. Use your name as reference so we can acknowledge your support.</p>
+        <table class="banking-table">
+          <tr><td>Bank</td><td>INVESTEC</td></tr>
+          <tr><td>Account Name</td><td>VIDA BUILDING FUND</td></tr>
+          <tr><td>Account No.</td><td>50022422006</td></tr>
+          <tr><td>Branch Code</td><td>580105</td></tr>
+          <tr><td>Reference</td><td id="eftRef">YOUR NAME + LYHUB</td></tr>
+        </table>
+        <button class="btn-primary" style="margin-top:20px;width:100%" onclick="openModal()">Log My EFT Pledge</button>
+      </div>
+      <div class="donate-card">
+        <div class="donate-card-icon">🌍</div>
+        <h3>International / Card Payment</h3>
+        <p>Outside South Africa, or prefer to pay by card? Use our secure online payment link. All major cards accepted — your contribution converts to rands and goes directly to the build fund.</p>
+        <div class="intl-placeholder">
+          <p>🔐 Secure card payment portal — coming soon</p>
+          <p style="font-size:0.78rem;color:var(--teal);margin-bottom:14px;">The payment link will appear here once activated. Check back soon, or contact us via WhatsApp to arrange your contribution now.</p>
+          <button class="btn-intl-link" onclick="showToast('💳 Payment link coming soon! Contact us on WhatsApp to arrange your contribution.')">💳 Pay by Card (Coming Soon)</button>
+        </div>
+        <p class="ref-note">📌 Once the card link is live, use your name + "LYHUB" as your payment reference so we can acknowledge your gift.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ LOCATION / MAP ══ -->
+<section id="location">
+  <div class="inner">
+    <div class="map-embed">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3580.6!2d27.9947!3d-26.1389!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1e950c3a3b3b3b3b%3A0x0!2s42+7th+Street%2C+Linden%2C+Randburg%2C+Johannesburg%2C+2104!5e0!3m2!1sen!2sza!4v1"
+        allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
+    </div>
+    <div class="address-block">
+      <div class="lbl">Find the Hub</div>
+      <h2>Right in the heart of Linden</h2>
+      <div class="address-detail">
+        <div class="icon">📍</div>
+        <div class="text">
+          <strong>Physical Address</strong>
+          <span>42 7th Street, Linden<br>Randburg, Johannesburg<br>2104, South Africa</span>
+        </div>
+      </div>
+      <div class="address-detail">
+        <div class="icon">🏗️</div>
+        <div class="text">
+          <strong>Project Reference</strong>
+          <span>MZ2601 · Linden Erf 246 Renovation<br>Approved architectural plans: Sheet 1 of 3</span>
+        </div>
+      </div>
+      <div class="address-detail">
+        <div class="icon">🏛️</div>
+        <div class="text">
+          <strong>Fund Manager</strong>
+          <span>Vida Church Building Fund<br>INVESTEC · Branch 580105</span>
+        </div>
+      </div>
+      <a class="map-link" href="https://maps.google.com/?q=42+7th+Street+Linden+Randburg+Johannesburg+2104+South+Africa" target="_blank">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+        Open in Google Maps
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ══ UPDATES ══ -->
+<section id="updates">
+  <div class="inner">
+    <div class="section-label">Project Updates</div>
+    <h2 class="section-title">Follow the Build</h2>
+    <p class="section-body">Weekly photo updates will be posted here once construction begins. You'll always know what your money is building.</p>
+    <div class="updates-grid">
+      <div class="upd-card">
+        <div class="upd-img"><img src="https://raw.githubusercontent.com/DanielvdmGitH/linden-youth-hub/main/images/frame-06.jpg" alt="On site at Linden Erf 246"></div>
+        <div class="upd-body">
+          <div class="upd-date">March 2026 · Update #1</div>
+          <h3>We Have the Property — Now We Build</h3>
+          <p>Linden Erf 246 is ours. Architectural plans for Project MZ2601 are approved. Fundraising is live. Phase 1 begins when we reach R300k.</p>
+        </div>
+      </div>
+      <div class="upd-card">
+        <div class="upd-placeholder"><span>🏗️</span><p>Coming Soon</p></div>
+        <div class="upd-body">
+          <div class="upd-date">Pending · Update #2</div>
+          <h3>Ground Breaking</h3>
+          <p>Hit our target and we break ground. Weekly site photos will appear here so you can watch the court take shape.</p>
+        </div>
+      </div>
+      <div class="upd-card">
+        <div class="upd-placeholder"><span>📸</span><p>Weekly Photos</p></div>
+        <div class="upd-body">
+          <div class="upd-date">Ongoing · Your Front Row Seat</div>
+          <h3>Watch Your Investment Come to Life</h3>
+          <p>From the first shovel to the final line marking — every week of construction will be documented here and on our community channels.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ SHARE ══ -->
+<section id="share">
+  <div class="inner">
+    <div class="section-label">Spread the Word</div>
+    <h2 class="section-title">Tell someone today</h2>
+    <p class="section-body">Our youth are visiting every business on 7th Street and beyond. Help amplify their work by sharing this page with your network — locally and internationally.</p>
+    <div class="share-row">
+      <a class="share-btn s-wa" href="https://wa.me/?text=Help%20build%20the%20Linden%20Youth%20Hub%20at%2042%207th%20Street%2C%20Linden!%20We%27re%20raising%20R300k%20for%20a%20Pickleball%20Court%20by%20June%202026.%20Watch%20the%20vision%20video%20%26%20donate%20here%3A%20%5Blink%5D" target="_blank">📲 Share on WhatsApp</a>
+      <button class="share-btn s-copy" onclick="copyLink()">🔗 Copy Link</button>
+      <a class="share-btn s-email" href="mailto:vidachurchsa@gmail.com">✉️ Email a Friend</a>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- STAY UPDATED SECTION -->
+<section id="stay-updated" style="padding:80px 24px; background:#fff; border-top:1px solid #eee;">
+  <div style="max-width:700px; margin:0 auto; text-align:center;">
+    <p style="font-size:0.78rem;text-transform:uppercase;letter-spacing:0.12em;color:var(--teal);font-weight:600;margin-bottom:10px;">Stay in the Loop</p>
+    <h2 style="font-family:'Playfair Display',serif;font-size:2rem;color:var(--charcoal);margin-bottom:14px;">Get Project Updates</h2>
+    <p style="font-size:0.97rem;color:var(--warm-gray);line-height:1.8;max-width:560px;margin:0 auto 32px;">
+      Leave your details and we'll keep you posted on construction milestones, fundraising progress, and how to get involved. No spam — only updates that matter.
+    </p>
+    <button onclick="openContactModal()" style="background:var(--teal);color:#fff;border:none;padding:16px 40px;border-radius:12px;font-size:1rem;font-weight:700;cursor:pointer;letter-spacing:0.05em;text-transform:uppercase;box-shadow:0 8px 24px rgba(42,138,126,0.3);transition:transform 0.15s;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform=''">
+      📬 Keep Me Updated
+    </button>
+    <p style="font-size:0.75rem;color:#aaa;margin-top:16px;">Protected under POPI Act 4 of 2013 · Unsubscribe at any time</p>
+  </div>
+</section>
+
+<section id="vida-church" style="padding:64px 24px; background:#f0f8f7; border-top:1px solid #c8e6e3;">
+  <div style="max-width:860px; margin:0 auto; text-align:center;">
+    <p style="font-size:0.78rem; text-transform:uppercase; letter-spacing:0.12em; color:var(--teal); font-weight:600; margin-bottom:10px;">About the Initiating Community</p>
+    <h2 style="font-family:'Playfair Display',serif; font-size:1.9rem; color:var(--charcoal); margin-bottom:18px;">Vida Church Linden</h2>
+    <p style="font-size:0.97rem; color:var(--warm-gray); line-height:1.8; max-width:680px; margin:0 auto 28px;">
+      The Linden Youth Hub was born from a vision within the Vida Church community — a Gospel-centred family rooted in Linden, Johannesburg. Vida's heartbeat, drawn from Zechariah 11:16, is to <em>"Care for the lost, Seek the Young, Heal the injured, Feed the Healthy."</em> The Youth Hub is a direct expression of that mission — serving the broader community of Linden, not any single congregation.
+    </p>
+    <p style="font-size:0.9rem; color:var(--warm-gray); line-height:1.8; max-width:680px; margin:0 auto 32px;">
+      Vida was founded in 2022 by Pastor Hendrik Van Deventer and his family, beginning with small gatherings in a living room in Linden. Today it gathers weekly at Pinnacle College, Linden. The name <em>Vida</em> means <em>life</em> in Latin — and life, in all its fullness, is what the Youth Hub is about.
+    </p>
+    <div style="display:flex; flex-wrap:wrap; gap:14px; justify-content:center; margin-bottom:28px;">
+      <a href="https://vidachurch.co.za/" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;background:var(--teal);color:#fff;padding:11px 22px;border-radius:8px;text-decoration:none;font-size:0.88rem;font-weight:600;">
+        🌐 Visit vidachurch.co.za
+      </a>
+      <a href="https://www.facebook.com/p/Vida-Church-SA-61551893243506/" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;background:#1877f2;color:#fff;padding:11px 22px;border-radius:8px;text-decoration:none;font-size:0.88rem;font-weight:600;">
+        📘 Facebook
+      </a>
+      <a href="https://www.instagram.com/vidachurchsa/" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;background:#e1306c;color:#fff;padding:11px 22px;border-radius:8px;text-decoration:none;font-size:0.88rem;font-weight:600;">
+        📸 Instagram @vidachurchsa
+      </a>
+      <a href="https://www.youtube.com/@VidaChurchSA" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;background:#ff0000;color:#fff;padding:11px 22px;border-radius:8px;text-decoration:none;font-size:0.88rem;font-weight:600;">
+        ▶ YouTube @VidaChurchSA
+      </a>
+      <a href="mailto:vidachurchsa@gmail.com" style="display:inline-flex;align-items:center;gap:8px;background:#555;color:#fff;padding:11px 22px;border-radius:8px;text-decoration:none;font-size:0.88rem;font-weight:600;">
+        ✉ <span class="__cf_email__" data-cfemail="650c0b030a25130c0104060d1017060d4b060a4b1f04">[email&#160;protected]</span>
+      </a>
+    </div>
+    <p style="font-size:0.8rem; color:#999; font-style:italic;">Sunday services at Pinnacle College, Linden · 09:30 every Sunday · Corner 4th Ave &amp; 11th St, Linden, Johannesburg</p>
+    <div style="margin-top:28px; padding:18px 24px; background:#fff; border-radius:12px; border:1px solid #d4eeec; max-width:600px; margin-left:auto; margin-right:auto;">
+      <p style="font-size:0.85rem; color:var(--teal-dark); font-weight:600; margin:0 0 6px;">&#x26a0; Important note for donors &amp; businesses</p>
+      <p style="font-size:0.83rem; color:var(--warm-gray); margin:0; line-height:1.7;">The Linden Youth Hub is an independent community initiative. Donations to the Building Fund are used exclusively for the construction phases of the Youth Hub. Funds are not used for church operations, staff salaries, or any Vida Church expenses. Phase 1 contributions build the pickleball court — nothing else.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <strong>Linden Youth Hub — Jesus Youth Hub</strong><br>
+  <a href="https://maps.google.com/?q=42+7th+Street+Linden+Randburg+Johannesburg+2104+South+Africa" target="_blank">42 7th Street, Linden, Randburg, Johannesburg, 2104, South Africa</a><br>
+  Linden Youth Hub Building Fund · Managed by Vida Church community volunteers<br>
+  INVESTEC Account: 50022422006 · Branch Code: 580105<br>
+  <a href="https://vidachurch.co.za/" target="_blank">vidachurch.co.za</a> &nbsp;|&nbsp; <a href="https://www.instagram.com/vidachurchsa/" target="_blank">@vidachurchsa</a> &nbsp;|&nbsp; <a href="https://www.youtube.com/@VidaChurchSA" target="_blank">YouTube @VidaChurchSA</a><br>
+  Project MZ2601 · Linden Erf 246<br><br>
+  <span style="font-size:0.73rem;opacity:0.7">Questions? Contact us via the church WhatsApp group or reach out to the project team directly.</span>
+</footer>
+
+<!-- EFT MODAL -->
+<div class="modal-overlay" id="donateModal" onclick="closeModalOnBg(event)">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <h2>Log Your Pledge</h2>
+    <p class="sub">Select an amount, complete your EFT, then click below to log your pledge.</p>
+    <div class="amt-grid">
+      <button class="amt-btn" onclick="selectAmt(this,500)">R500</button>
+      <button class="amt-btn" onclick="selectAmt(this,1000)">R1,000</button>
+      <button class="amt-btn" onclick="selectAmt(this,2500)">R2,500</button>
+      <button class="amt-btn" onclick="selectAmt(this,5000)">R5,000</button>
+      <button class="amt-btn" onclick="selectAmt(this,10000)">R10,000</button>
+      <button class="amt-btn" onclick="selectAmt(this,'custom')">Custom</button>
+    </div>
+    <div class="inp-row" id="customRow" style="display:none">
+      <label>Custom Amount (R)</label>
+      <input type="number" placeholder="Enter amount" id="customAmt">
+    </div>
+    <div class="inp-row">
+      <label>Your Name / Organisation</label>
+      <input type="text" placeholder="e.g. Smith Family or Linden Pharmacy" id="donorName">
+    </div>
+    <div class="bk-box">
+      <h4>EFT Details</h4>
+      <div class="bk-row"><span>Bank</span><span>INVESTEC</span></div>
+      <div class="bk-row"><span>Account No.</span><span>50022422006</span></div>
+      <div class="bk-row"><span>Branch</span><span>580105</span></div>
+      <div class="bk-row"><span>Reference</span><span id="modalRef">YOUR NAME-LYHUB</span></div>
+    </div>
+    <button class="btn-primary" style="width:100%" onclick="confirmDonation()">✅ I've Completed My EFT</button>
+    <p class="modal-note">Once you've done your EFT, click above and we'll log your pledge and follow up to say thank you!</p>
+  </div>
+</div>
+
+
+<!-- CONTACT / STAY UPDATED MODAL (POPI Compliant) -->
+<div class="modal-overlay" id="contactModal" onclick="if(event.target===this)closeContactModal()">
+  <div class="modal" style="max-width:520px;">
+    <button class="modal-close" onclick="closeContactModal()">✕</button>
+    <div id="contactFormInner">
+      <h2 style="font-family:'Playfair Display',serif;margin-bottom:4px;">Stay Updated</h2>
+      <p class="sub">Get notified on construction milestones and how to get involved.</p>
+      <div class="inp-row">
+        <label>First Name *</label>
+        <input type="text" id="cf_first" placeholder="e.g. Sarah" autocomplete="given-name">
+      </div>
+      <div class="inp-row">
+        <label>Last Name *</label>
+        <input type="text" id="cf_last" placeholder="e.g. Joubert" autocomplete="family-name">
+      </div>
+      <div class="inp-row">
+        <label>Email Address *</label>
+        <input type="email" id="cf_email" placeholder="you@example.com" autocomplete="email">
+      </div>
+      <div style="background:#f7fbfa;border:1px solid #c8e6e3;border-radius:12px;padding:18px;margin:18px 0 14px;">
+        <label style="display:flex;align-items:flex-start;gap:12px;cursor:pointer;margin-bottom:0;">
+          <input type="checkbox" id="cf_optin" style="margin-top:3px;accent-color:var(--teal);width:18px;height:18px;flex-shrink:0;">
+          <span style="font-size:0.86rem;color:var(--charcoal);line-height:1.6;">
+            <strong>Yes, I want to receive project updates</strong><br>
+            I agree to receive occasional email updates about the Linden Youth Hub building project — including construction milestones, fundraising progress, and community events. I understand I can unsubscribe at any time.
+          </span>
+        </label>
+      </div>
+      <div style="background:#fff8e7;border:1px solid #f5c84a;border-radius:12px;padding:16px;margin-bottom:18px;">
+        <label style="display:flex;align-items:flex-start;gap:12px;cursor:pointer;margin-bottom:0;">
+          <input type="checkbox" id="cf_consent" style="margin-top:3px;accent-color:var(--teal);width:18px;height:18px;flex-shrink:0;" required>
+          <span style="font-size:0.83rem;color:#7a6000;line-height:1.6;">
+            <strong>⚠️ Data Consent (Required)</strong><br>
+            I acknowledge that my personal information (name and email) will be stored securely and used only in connection with the Linden Youth Hub project. This is in accordance with the <strong>Protection of Personal Information Act (POPI Act 4 of 2013)</strong>. My information will not be shared with third parties or used for unrelated purposes. I understand that I may request the deletion of my data at any time by emailing <a href="mailto:vidachurchsa@gmail.com" style="color:var(--teal);"><span class="__cf_email__" data-cfemail="137a7d757c53657a7772707b6661707b3d707c3d6972">[email&#160;protected]</span></a>.
+          </span>
+        </label>
+      </div>
+      <button id="contactSubmitBtn" onclick="submitContact()" style="width:100%;background:var(--teal);color:#fff;border:none;padding:15px;border-radius:12px;font-size:1rem;font-weight:700;cursor:pointer;text-transform:uppercase;letter-spacing:0.05em;">
+        Submit →
+      </button>
+      <p style="font-size:0.72rem;color:#aaa;text-align:center;margin-top:12px;line-height:1.6;">
+        Protected under POPI Act 4 of 2013. You may opt out or request data deletion at any time.<br>
+        Data controller: Linden Youth Hub / Vida Church · <a href="mailto:vidachurchsa@gmail.com" class="__cf_email__" data-cfemail="6e070008012e18070a0f0d061b1c0d06400d0140140f">[email&#160;protected]</a>
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- INTL MODAL -->
+<div class="modal-overlay" id="intlModal" onclick="if(event.target===this)closeIntlModal()">
+  <div class="modal">
+    <button class="modal-close" onclick="closeIntlModal()">✕</button>
+    <h2>International Payment</h2>
+    <p class="sub">Giving from outside South Africa, or prefer to pay by card?</p>
+    <div class="intl-placeholder" style="padding:28px;margin-bottom:20px">
+      <p style="font-size:1rem;margin-bottom:10px">🔐 Secure card payment portal</p>
+      <p style="font-size:0.85rem;color:var(--teal-dark);margin-bottom:20px">Our international card payment link will be added here shortly. In the meantime, please reach out via WhatsApp and we will assist you directly.</p>
+      <button class="btn-intl-link" onclick="showToast('💳 Payment link coming soon! Please WhatsApp us to arrange your contribution.')">💳 Card Payment — Coming Soon</button>
+    </div>
+    <div style="background:#f8f8f8;border-radius:12px;padding:20px">
+      <p style="font-size:0.82rem;color:var(--warm-gray);font-weight:700;margin-bottom:8px;">💡 For international bank transfers:</p>
+      <p style="font-size:0.82rem;color:var(--warm-gray);line-height:1.7">Contact us via WhatsApp and we will provide SWIFT/international transfer details for the Vida Building Fund. All contributions in any currency are gratefully received and go directly to the build fund.</p>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  const SHEET_URL = 'https://script.google.com/macros/s/AKfycby3MbXrL6y2nhop1FzhhYnPBFQFunkADT5r3xwhGll972h_SbS-r_eOcCFBJsaHwM30/exec';
+
+  let raised = 42500, donors = 17;
+  const goal = 300000;
+  const deadline = new Date('2026-06-30');
+
+  async function fetchProgress() {
+    if (SHEET_URL === 'https://script.google.com/macros/s/AKfycby3MbXrL6y2nhop1FzhhYnPBFQFunkADT5r3xwhGll972h_SbS-r_eOcCFBJsaHwM30/exec') { updateProgress(); return; }
+    try {
+      const r = await fetch(SHEET_URL + '?action=getStats', {cache:'no-store'});
+      const d = await r.json();
+      if (d.raised) raised = d.raised;
+      if (d.donors) donors = d.donors;
+    } catch(e) {}
+    updateProgress();
+  }
+
+  function fmt(n){
+    if(n>=1000) return (n/1000).toFixed(n%1000===0?0:1)+'k';
+    return n.toLocaleString('en-ZA');
+  }
+
+  function updateProgress(){
+    const pct = Math.min((raised/goal)*100,100);
+    const el = id => document.getElementById(id);
+    if(el('raisedAmt')) el('raisedAmt').textContent = fmt(raised);
+    if(el('pct')) el('pct').textContent = pct.toFixed(1);
+    if(el('progressBar')) el('progressBar').style.width = pct+'%';
+    if(el('donorCount')) el('donorCount').textContent = donors;
+    if(el('daysLeft')){
+      const diff = Math.ceil((deadline - new Date())/86400000);
+      el('daysLeft').textContent = diff>0?diff:0;
+    }
+  }
+  setTimeout(()=>fetchProgress(), 400);
+
+  function openModal(){ document.getElementById('donateModal').classList.add('open'); document.body.style.overflow='hidden'; }
+  function closeModal(){ document.getElementById('donateModal').classList.remove('open'); document.body.style.overflow=''; }
+  function closeModalOnBg(e){ if(e.target===document.getElementById('donateModal')) closeModal(); }
+  function openIntlModal(){ document.getElementById('intlModal').classList.add('open'); document.body.style.overflow='hidden'; }
+  function closeIntlModal(){ document.getElementById('intlModal').classList.remove('open'); document.body.style.overflow=''; }
+  function openContactModal(){ document.getElementById('contactModal').classList.add('open'); document.body.style.overflow='hidden'; }
+  function closeContactModal(){ document.getElementById('contactModal').classList.remove('open'); document.body.style.overflow=''; }
+
+  let selAmt = null;
+  function selectAmt(btn, val){
+    document.querySelectorAll('.amt-btn').forEach(b=>b.classList.remove('sel'));
+    btn.classList.add('sel');
+    document.getElementById('customRow').style.display = val==='custom'?'block':'none';
+    selAmt = val==='custom'?null:val;
+  }
+
+  document.addEventListener('input', e=>{
+    if(e.target.id==='donorName'){
+      const n = e.target.value.trim()||'YOUR NAME';
+      const ref = n.toUpperCase().replace(/\s+/g,'-')+'-LYHUB';
+      const mRef = document.getElementById('modalRef');
+      const eRef = document.getElementById('eftRef');
+      if(mRef) mRef.textContent = ref;
+      if(eRef) eRef.textContent = ref;
+    }
+  });
+
+  async function confirmDonation(){
+    const name = document.getElementById('donorName').value.trim();
+    const customVal = document.getElementById('customAmt') ? document.getElementById('customAmt').value : '';
+    const amount = selAmt || (customVal ? parseInt(customVal) : null);
+    if(!name){ showToast('⚠️ Please enter your name or organisation.'); return; }
+    if(!amount || amount < 1){ showToast('⚠️ Please select or enter a donation amount.'); return; }
+    const ref = name.toUpperCase().replace(/\s+/g,'-')+'-LYHUB';
+    const btn = document.querySelector('#donateModal .btn-primary');
+    if(btn){ btn.disabled=true; btn.textContent='Logging pledge…'; }
+    if(SHEET_URL !== 'https://script.google.com/macros/s/AKfycby3MbXrL6y2nhop1FzhhYnPBFQFunkADT5r3xwhGll972h_SbS-r_eOcCFBJsaHwM30/exec'){
+      try {
+        await fetch(SHEET_URL, {
+          method:'POST', headers:{'Content-Type':'application/json'},
+          body: JSON.stringify({ action:'pledge', name, amount, ref, timestamp: new Date().toISOString(), type:'EFT' })
+        });
+      } catch(e){}
+    }
+    closeModal();
+    showToast('✅ Thank you, '+name+'! Your pledge of R'+amount.toLocaleString('en-ZA')+' has been logged. EFT ref: '+ref);
+    if(btn){ btn.disabled=false; btn.textContent="✅ I've Completed My EFT"; }
+  }
+
+  async function submitContact(){
+    const firstName = document.getElementById('cf_first').value.trim();
+    const lastName  = document.getElementById('cf_last').value.trim();
+    const email     = document.getElementById('cf_email').value.trim();
+    const optin     = document.getElementById('cf_optin').checked;
+    const consent   = document.getElementById('cf_consent').checked;
+    if(!firstName||!lastName){ showToast('⚠️ Please enter your first and last name.'); return; }
+    if(!email||!email.includes('@')){ showToast('⚠️ Please enter a valid email address.'); return; }
+    if(!consent){ showToast('⚠️ Please acknowledge the data consent to proceed.'); return; }
+    const btn = document.getElementById('contactSubmitBtn');
+    if(btn){ btn.disabled=true; btn.textContent='Submitting…'; }
+    if(SHEET_URL !== 'https://script.google.com/macros/s/AKfycby3MbXrL6y2nhop1FzhhYnPBFQFunkADT5r3xwhGll972h_SbS-r_eOcCFBJsaHwM30/exec'){
+      try {
+        await fetch(SHEET_URL, {
+          method:'POST', headers:{'Content-Type':'application/json'},
+          body: JSON.stringify({ action:'contact', firstName, lastName, email, optIn: optin, consentGiven: consent, timestamp: new Date().toISOString() })
+        });
+      } catch(e){}
+    }
+    const inner = document.getElementById('contactFormInner');
+    if(inner) inner.innerHTML = '<div style="text-align:center;padding:28px 0;"><div style="font-size:3rem;margin-bottom:16px;">✅</div><h3 style="font-family:\'Playfair Display\',serif;margin-bottom:10px;">You\'re on the list!</h3><p style="color:var(--warm-gray);font-size:0.9rem;line-height:1.7;">Thank you, '+firstName+'. We\'ve recorded your details.<br>'+(optin?'You\'ll receive project updates — you can unsubscribe at any time.':'You opted out of updates, but we\'ll be in touch.')+'</p><button onclick="closeContactModal()" style="margin-top:20px;background:var(--teal);color:#fff;border:none;padding:12px 28px;border-radius:10px;font-weight:700;cursor:pointer;">Close</button></div>';
+  }
+
+  function showToast(msg){
+    const t = document.getElementById('toast');
+    if(!t) return;
+    t.textContent = msg;
+    t.style.opacity='1'; t.style.transform='translateY(0)';
+    setTimeout(()=>{ t.style.opacity='0'; t.style.transform='translateY(16px)'; }, 5000);
+  }
+
+  function copyLink(){
+    navigator.clipboard.writeText('https://danielvdmgith.github.io/linden-youth-hub/')
+      .then(()=>showToast('🔗 Link copied to clipboard!'))
+      .catch(()=>showToast('🔗 Copy this link: '+window.location.href));
+  }
+</script>
+</body>
+</html>
