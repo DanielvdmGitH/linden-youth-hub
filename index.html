@@ -958,32 +958,27 @@
     const optIn     = document.getElementById('contactOptIn')?.checked || false;
     const consent   = document.getElementById('contactConsent')?.checked || false;
     const btn       = document.getElementById('contactSubmitBtn');
-
     if (!firstName || !email) { showToast('Please enter your name and email.'); return; }
     if (!consent) { showToast('Please accept the privacy terms to continue.'); return; }
-
     if (btn) { btn.disabled = true; btn.textContent = 'Sending...'; }
-
     try {
-      const params = new URLSearchParams({
-        action: 'contact',
-        firstName: firstName,
-        lastName:  lastName,
-        email:     email,
-        optIn:     optIn ? 'true' : 'false',
-        consentGiven: 'true'
-      });
-      const resp = await fetch(SHEET_URL + '?' + params.toString(), {cache: 'no-store'});
+      const p = new URLSearchParams();
+      p.append('action', 'contact');
+      p.append('firstName', firstName);
+      p.append('lastName', lastName);
+      p.append('email', email);
+      p.append('optIn', optIn ? 'true' : 'false');
+      p.append('consentGiven', 'true');
+      const resp = await fetch(SHEET_URL + '?' + p.toString(), {cache: 'no-store'});
       const data = await resp.json();
       if (data.success) {
         const inner = document.getElementById('contactFormInner');
-        if (inner) inner.innerHTML = '<div style="text-align:center;padding:32px 0"><div style="font-size:2.5rem">✅</div><h3 style="color:var(--teal);margin:12px 0">You\'re on the list!</h3><p>Thank you ' + firstName + ', we\'ll keep you updated.</p></div>';
+        if (inner) inner.innerHTML = '<div style="text-align:center;padding:32px 0"><div style="font-size:2.5rem">&#10004;</div><h3 style="color:#2a8a7e;margin:12px 0">You are on the list!</h3><p>Thank you ' + firstName + ', we will keep you updated on the Linden Youth Hub.</p></div>';
       } else {
         showToast('Something went wrong. Please try again.');
         if (btn) { btn.disabled = false; btn.textContent = 'Stay Updated'; }
       }
-    } catch(e) {
-      console.warn('Contact submit error:', e);
+    } catch(err) {
       showToast('Could not connect. Please try again.');
       if (btn) { btn.disabled = false; btn.textContent = 'Stay Updated'; }
     }
