@@ -951,32 +951,47 @@
     setTimeout(fetchProgress, 1500);
   }
 
-  async function submitContact(){
-    const firstName = document.getElementById('contactFirst').value.trim();
-    const lastName  = document.getElementById('contactLast').value.trim();
-    const email     = document.getElementById('contactEmail').value.trim();
-    const optIn     = document.getElementById('contactOptIn').checked;
-    const consent   = document.getElementById('contactConsent').checked;
-    if(!firstName||!email){ showToast(' Please fill in your name and email.'); return; }
-    if(!consent){ showToast(' Please accept the privacy terms to continue.'); return; }
-    const btn = document.querySelector('#contactModal .btn-primary');
-    if(btn){ btn.disabled=true; btn.textContent='Saving…'; }
+  async function submitContact() {
+    const firstName = document.getElementById('contactFirstName')?.value?.trim() || '';
+    const lastName  = document.getElementById('contactLastName')?.value?.trim() || '';
+    const email     = document.getElementById('contactEmail')?.value?.trim() || '';
+    const optIn     = document.getElementById('contactOptIn')?.checked || false;
+    const consent   = document.getElementById('contactConsent')?.checked || false;
+    const btn       = document.getElementById('contactSubmitBtn');
+
+    if (!firstName || !email) { showToast('Please enter your name and email.'); return; }
+    if (!consent) { showToast('Please accept the privacy terms to continue.'); return; }
+
+    if (btn) { btn.disabled = true; btn.textContent = 'Sending...'; }
+
     try {
-      const p = new URLSearchParams({ action:'contact', firstName, lastName, email, optIn:optIn?'true':'false', consentGiven:'true' });
-      const r = await fetch('https://script.google.com/macros/s/AKfycby3MbXrL6y2nhop1FzhhYnPBFQFunkADT5r3xwhGll972h_SbS-r_eOcCFBJsaHwM30/exec' + '?' + p.toString());
-      const d = await r.json();
-      if(d.success){
+      const params = new URLSearchParams({
+        action: 'contact',
+        firstName: firstName,
+        lastName:  lastName,
+        email:     email,
+        optIn:     optIn ? 'true' : 'false',
+        consentGiven: 'true'
+      });
+      const resp = await fetch(SHEET_URL + '?' + params.toString(), {cache: 'no-store'});
+      const data = await resp.json();
+      if (data.success) {
         const inner = document.getElementById('contactFormInner');
-        if(inner) inner.innerHTML = '<div style="text-align:center;padding:28px 0"><div style="font-size:3rem;margin-bottom:16px">✅</div><h3 style="color:var(--teal)">You\'re on the list!</h3><p>We\'ll keep you updated on progress.</p></div>';
-      } else { showToast(' Something went wrong. Please try again.'); }
-    } catch(e){ showToast(' Could not connect. Please try again.'); }
-    if(btn){ btn.disabled=false; btn.textContent='Stay Updated'; }
+        if (inner) inner.innerHTML = '<div style="text-align:center;padding:32px 0"><div style="font-size:2.5rem">✅</div><h3 style="color:var(--teal);margin:12px 0">You\'re on the list!</h3><p>Thank you ' + firstName + ', we\'ll keep you updated.</p></div>';
+      } else {
+        showToast('Something went wrong. Please try again.');
+        if (btn) { btn.disabled = false; btn.textContent = 'Stay Updated'; }
+      }
+    } catch(e) {
+      console.warn('Contact submit error:', e);
+      showToast('Could not connect. Please try again.');
+      if (btn) { btn.disabled = false; btn.textContent = 'Stay Updated'; }
+    }
   }
 
   function showToast(msg){
     const t = document.getElementById('toast');
-    if(!t) return;
-    t.textContent = msg;
+Fix: rewrite submitContact to correctly post to Google Sheet Contacts tab    t.textContent = msg;
     t.style.opacity='1'; t.style.transform='translateY(0)';
     setTimeout(()=>{ t.style.opacity='0'; t.style.transform='translateY(16px)'; }, 5000);
   }
