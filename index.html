@@ -938,15 +938,18 @@
   }
 
   async function submitContact(){
-    const firstName = document.getElementById('contactFirstName')?.value?.trim() || '';
-    const lastName  = document.getElementById('contactLastName')?.value?.trim()  || '';
-    const email     = document.getElementById('contactEmail')?.value?.trim()     || '';
-    const optIn     = document.getElementById('contactOptIn')?.checked           || false;
-    const consent   = document.getElementById('contactConsent')?.checked         || false;
+    const firstName = document.getElementById('cf_first')?.value?.trim() || '';
+    const lastName  = document.getElementById('cf_last')?.value?.trim()  || '';
+    const email     = document.getElementById('cf_email')?.value?.trim() || '';
+    const optIn     = document.getElementById('cf_optin')?.checked       || false;
+    const consent   = document.getElementById('cf_consent')?.checked     || false;
     const btn       = document.getElementById('contactSubmitBtn');
-    if(!firstName || !email){ showToast('Please enter your name and email.'); return; }
+
+    if(!firstName){ showToast('Please enter your first name.'); return; }
+    if(!email){ showToast('Please enter your email address.'); return; }
     if(!consent){ showToast('Please accept the privacy terms to continue.'); return; }
     if(btn){ btn.disabled=true; btn.textContent='Sending...'; }
+
     try {
       const p = new URLSearchParams();
       p.append('action','contact');
@@ -959,7 +962,7 @@
       const data = await resp.json();
       if(data.success){
         const inner = document.getElementById('contactFormInner');
-        if(inner) inner.innerHTML = '<div style="text-align:center;padding:32px 0"><div style="font-size:2.5rem">&#10004;</div><h3 style="color:#2a8a7e;margin:12px 0">You are on the list!</h3><p>Thank you ' + firstName + ', we will keep you updated.</p></div>';
+        if(inner) inner.innerHTML = '<div style="text-align:center;padding:32px 0"><div style="font-size:2.5rem">&#10004;</div><h3 style="color:#2a8a7e;margin:12px 0">You are on the list!</h3><p>Thank you ' + firstName + ', we will keep you updated on the Linden Youth Hub.</p></div>';
       } else {
         showToast('Something went wrong. Please try again.');
         if(btn){ btn.disabled=false; btn.textContent='Stay Updated'; }
