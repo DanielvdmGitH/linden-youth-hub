@@ -854,69 +854,48 @@
   const GOAL = 300000;
   let raised = 0, donors = 0;
 
-  function formatRand(n) {
-    if (n >= 1000000) return 'R' + (n/1000000).toFixed(1) + 'M';
-    if (n >= 1000) return 'R' + (n/1000).toFixed(1) + 'K';
-    return 'R' + n.toLocaleString();
+  async function fetchProgress() {
+    try {
+      const r = await fetch(SHEET_URL + '?action=getStats', {cache:'no-store'});
+      const d = await r.json();
+      if (typeof d.raised === 'number') raised = d.raised;
+      if (typeof d.donors === 'number') donors = d.donors;
+    } catch(e) { console.warn('Stats fetch failed:', e); }
+    updateDisplay();
   }
 
   function updateDisplay() {
     const pct = Math.min(100, (raised / GOAL) * 100);
-    const raisedEl = document.querySelector('.raised-display, [id*="raised"], [class*="raised-amount"]');
-    const donorsEl = document.querySelector('.donors-display, [id*="donors"], [class*="donor-count"]');
-    const barEl = document.querySelector('.progress-bar-fill, [class*="progress-fill"], [class*="progress-bar"] > *');
-    const pctEl = document.querySelector('[class*="funded"], [class*="percent"]');
+    const raisedEl = document.querySelector('.raised-display');
+    const donorsEl = document.querySelector('.donors-display');
+    const barEl    = document.querySelector('.progress-fill');
+    const pctEl    = document.querySelector('.funded-label');
     if (raisedEl) raisedEl.textContent = formatRand(raised);
-    if (donorsEl) donorsEl.textContent = donors;
-    if (barEl) barEl.style.width = pct.toFixed(1) + '%';
-    if (pctEl) pctEl.textContent = pct.toFixed(1) + '% funded · Phase 1';
+    if (donorsEl) donorsEl.textContent = donors + ' contributors';
+    if (barEl)    barEl.style.width = pct.toFixed(1) + '%';
+    if (pctEl)    pctEl.textContent = pct.toFixed(1) + '% funded - Phase 1';
   }
 
-  async function fetchProgress() {
-    try {
-      const r = await fetch(SHEET_URL + '?action=getStats', {cache: 'no-store'});
-      const d = await r.json();
-      if (typeof d.raised === 'number') raised = d.raised;
-      if (typeof d.donors === 'number') donors = d.donors;
-    } catch(e) {
-      console.warn('Stats fetch failed:', e);
-    }
-    updateDisplay();
+  function formatRand(n) {
+    if (n >= 1000000) return 'R' + (n/1000000).toFixed(2) + 'M';
+    if (n >= 1000)    return 'R' + (n/1000).toFixed(1) + 'K';
+    return 'R' + n.toLocaleString('en-ZA');
   }
 
-  function fmt(n){
-    if(n>=1000) return (n/1000).toFixed(n%1000===0?0:1)+'k';
-    return n.toLocaleString('en-ZA');
-  }
-
-  function updateProgress(){
-    const pct = Math.min((raised/goal)*100,100);
-    const el = id => document.getElementById(id);
-    if(el('raisedAmt')) el('raisedAmt').textContent = fmt(raised);
-    if(el('pct')) el('pct').textContent = pct.toFixed(1);
-    if(el('progressBar')) el('progressBar').style.width = pct+'%';
-    if(el('donorCount')) el('donorCount').textContent = donors;
-    if(el('daysLeft')){
-      const diff = Math.ceil((deadline - new Date())/86400000);
-      el('daysLeft').textContent = diff>0?diff:0;
-    }
-  }
-  setTimeout(()=>fetchProgress(), 400);
-
-  function openModal(){ document.getElementById('donateModal').classList.add('open'); document.body.style.overflow='hidden'; }
-  function closeModal(){ document.getElementById('donateModal').classList.remove('open'); document.body.style.overflow=''; }
+  function openModal()  { document.getElementById('donateModal').classList.add('open'); document.body.style.overflow='hidden'; }
+  function closeModal() { document.getElementById('donateModal').classList.remove('open'); document.body.style.overflow=''; }
   function closeModalOnBg(e){ if(e.target===document.getElementById('donateModal')) closeModal(); }
-  function openIntlModal(){ document.getElementById('intlModal').classList.add('open'); document.body.style.overflow='hidden'; }
-  function closeIntlModal(){ document.getElementById('intlModal').classList.remove('open'); document.body.style.overflow=''; }
-  function openContactModal(){ document.getElementById('contactModal').classList.add('open'); document.body.style.overflow='hidden'; }
-  function closeContactModal(){ document.getElementById('contactModal').classList.remove('open'); document.body.style.overflow=''; }
+  function openIntlModal()  { document.getElementById('intlModal').classList.add('open'); document.body.style.overflow='hidden'; }
+  function closeIntlModal() { document.getElementById('intlModal').classList.remove('open'); document.body.style.overflow=''; }
+  function openContactModal()  { document.getElementById('contactModal').classList.add('open'); document.body.style.overflow='hidden'; }
+  function closeContactModal() { document.getElementById('contactModal').classList.remove('open'); document.body.style.overflow=''; }
 
   let selAmt = null;
   function selectAmt(btn, val){
     document.querySelectorAll('.amt-btn').forEach(b=>b.classList.remove('sel'));
     btn.classList.add('sel');
     document.getElementById('customRow').style.display = val==='custom'?'block':'none';
-    selAmt = val==='custom'?null:val;
+    selAmt = val==='custom' ? null : val;
   }
 
   document.addEventListener('input', e=>{
@@ -937,70 +916,77 @@
     const optIn     = document.getElementById('donorOptIn') ? document.getElementById('donorOptIn').checked : false;
     const customVal = document.getElementById('customAmt') ? document.getElementById('customAmt').value : '';
     const amount    = selAmt || (customVal ? parseInt(customVal) : null);
-    if(!amount || amount < 1){ showToast(' ⚠️ Please select or enter a donation amount.'); return; }
-    if(!firstName){ showToast(' Please enter your first name.'); return; }
+    if(!amount || amount < 1){ showToast('Please select or enter a donation amount.'); return; }
+    if(!firstName){ showToast('Please enter your first name.'); return; }
     const btn = document.querySelector('#donateModal .btn-primary');
-    if(btn){ btn.disabled=true; btn.textContent='Saving…'; }
+    if(btn){ btn.disabled=true; btn.textContent='Saving...'; }
     try {
-      const p = new URLSearchParams({ action:'pledge', firstName, lastName, email, amount, optIn:optIn?'true':'false', consentGiven:'true' });
-      await fetch('https://script.google.com/macros/s/AKfycby3MbXrL6y2nhop1FzhhYnPBFQFunkADT5r3xwhGll972h_SbS-r_eOcCFBJsaHwM30/exec' + '?' + p.toString());
-    } catch(e){}
+      const p = new URLSearchParams();
+      p.append('action','pledge');
+      p.append('firstName', firstName.trim());
+      p.append('lastName',  lastName.trim());
+      p.append('email',     email.trim());
+      p.append('amount',    amount);
+      p.append('optIn',     optIn ? 'true' : 'false');
+      p.append('consentGiven', 'true');
+      await fetch(SHEET_URL + '?' + p.toString(), {cache:'no-store'});
+    } catch(e){ console.warn('Pledge error:', e); }
     if(btn){ btn.disabled=false; btn.textContent='Confirm Pledge'; }
     closeModal();
-    showToast('✅ Thank you! Your pledge has been recorded.');
+    showToast('Thank you! Your pledge has been recorded.');
     setTimeout(fetchProgress, 1500);
   }
 
-  async function submitContact() {
+  async function submitContact(){
     const firstName = document.getElementById('contactFirstName')?.value?.trim() || '';
-    const lastName  = document.getElementById('contactLastName')?.value?.trim() || '';
-    const email     = document.getElementById('contactEmail')?.value?.trim() || '';
-    const optIn     = document.getElementById('contactOptIn')?.checked || false;
-    const consent   = document.getElementById('contactConsent')?.checked || false;
+    const lastName  = document.getElementById('contactLastName')?.value?.trim()  || '';
+    const email     = document.getElementById('contactEmail')?.value?.trim()     || '';
+    const optIn     = document.getElementById('contactOptIn')?.checked           || false;
+    const consent   = document.getElementById('contactConsent')?.checked         || false;
     const btn       = document.getElementById('contactSubmitBtn');
-    if (!firstName || !email) { showToast('Please enter your name and email.'); return; }
-    if (!consent) { showToast('Please accept the privacy terms to continue.'); return; }
-    if (btn) { btn.disabled = true; btn.textContent = 'Sending...'; }
+    if(!firstName || !email){ showToast('Please enter your name and email.'); return; }
+    if(!consent){ showToast('Please accept the privacy terms to continue.'); return; }
+    if(btn){ btn.disabled=true; btn.textContent='Sending...'; }
     try {
       const p = new URLSearchParams();
-      p.append('action', 'contact');
+      p.append('action','contact');
       p.append('firstName', firstName);
-      p.append('lastName', lastName);
-      p.append('email', email);
-      p.append('optIn', optIn ? 'true' : 'false');
+      p.append('lastName',  lastName);
+      p.append('email',     email);
+      p.append('optIn',     optIn ? 'true' : 'false');
       p.append('consentGiven', 'true');
-      const resp = await fetch(SHEET_URL + '?' + p.toString(), {cache: 'no-store'});
+      const resp = await fetch(SHEET_URL + '?' + p.toString(), {cache:'no-store'});
       const data = await resp.json();
-      if (data.success) {
+      if(data.success){
         const inner = document.getElementById('contactFormInner');
-        if (inner) inner.innerHTML = '<div style="text-align:center;padding:32px 0"><div style="font-size:2.5rem">&#10004;</div><h3 style="color:#2a8a7e;margin:12px 0">You are on the list!</h3><p>Thank you ' + firstName + ', we will keep you updated on the Linden Youth Hub.</p></div>';
+        if(inner) inner.innerHTML = '<div style="text-align:center;padding:32px 0"><div style="font-size:2.5rem">&#10004;</div><h3 style="color:#2a8a7e;margin:12px 0">You are on the list!</h3><p>Thank you ' + firstName + ', we will keep you updated.</p></div>';
       } else {
         showToast('Something went wrong. Please try again.');
-        if (btn) { btn.disabled = false; btn.textContent = 'Stay Updated'; }
+        if(btn){ btn.disabled=false; btn.textContent='Stay Updated'; }
       }
-    } catch(err) {
+    } catch(err){
       showToast('Could not connect. Please try again.');
-      if (btn) { btn.disabled = false; btn.textContent = 'Stay Updated'; }
+      if(btn){ btn.disabled=false; btn.textContent='Stay Updated'; }
     }
   }
 
   function showToast(msg){
     const t = document.getElementById('toast');
-Fix: rewrite submitContact to correctly post to Google Sheet Contacts tab    t.textContent = msg;
+    if(!t) return;
+    t.textContent = msg;
     t.style.opacity='1'; t.style.transform='translateY(0)';
     setTimeout(()=>{ t.style.opacity='0'; t.style.transform='translateY(16px)'; }, 5000);
   }
 
   function copyLink(){
     navigator.clipboard.writeText('https://danielvdmgith.github.io/linden-youth-hub/')
-      .then(()=>showToast('🔗 Link copied to clipboard!'))
-      .catch(()=>showToast('🔗 Copy this link: '+window.location.href));
+      .then(()=>showToast('Link copied to clipboard!'))
+      .catch(()=>showToast('Copy this link: ' + window.location.href));
   }
 
-// Auto-fetch live stats when page loads
-document.addEventListener('DOMContentLoaded', function() {
-  fetchProgress();
-});
+  document.addEventListener('DOMContentLoaded', function() {
+    fetchProgress();
+  });
 </script>
 </body>
 </html>
