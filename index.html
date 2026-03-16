@@ -991,6 +991,10 @@
 
   document.addEventListener('DOMContentLoaded', function() {
     fetchProgress();
+    const deadline = new Date('2026-06-30T23:59:59');
+    const diff = Math.ceil((deadline - new Date()) / (1000 * 60 * 60 * 24));
+    const el = document.getElementById('daysLeft');
+    if (el) el.textContent = Math.max(0, diff);
   });
 </script>
 </body>
