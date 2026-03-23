@@ -379,6 +379,86 @@
   .payment-coming { background:#fff8ee; border:1px solid var(--gold); border-radius:12px; padding:14px 18px; margin-top:12px; font-size:0.82rem; color:#8a5a00; }
   .payment-coming strong { color:var(--gold); }
 
+  
+  /* ── MOBILE NAV ── */
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    padding: 8px;
+    background: none;
+    border: none;
+    z-index: 1001;
+  }
+  .hamburger span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--teal-dark);
+    border-radius: 2px;
+    transition: all 0.3s ease;
+  }
+  .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .hamburger.open span:nth-child(2) { opacity: 0; }
+  .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+  @media(max-width:700px){
+    .hamburger { display: flex; }
+    .nav-links { display: none; }
+  }
+  .mobile-menu {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.5);
+    z-index: 999;
+  }
+  .mobile-menu.open { display: block; }
+  .mobile-menu-drawer {
+    position: absolute;
+    top: 0; right: 0;
+    width: 280px;
+    height: 100%;
+    background: #fff;
+    padding: 80px 24px 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    box-shadow: -8px 0 40px rgba(0,0,0,0.15);
+    overflow-y: auto;
+  }
+  .mobile-menu-drawer a {
+    display: block;
+    padding: 13px 16px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--charcoal);
+    text-decoration: none;
+    border-radius: 10px;
+    transition: background 0.15s, color 0.15s;
+  }
+  .mobile-menu-drawer a:hover { background: var(--teal-pale); color: var(--teal); }
+  .mobile-menu-drawer .mob-cta {
+    background: var(--teal);
+    color: #fff !important;
+    text-align: center;
+    margin-top: 12px;
+    padding: 15px 16px;
+  }
+  .mobile-menu-drawer .mob-cta:hover { background: var(--teal-dark) !important; }
+  .mobile-menu-close {
+    position: absolute;
+    top: 20px; right: 20px;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--warm-gray);
+    padding: 8px;
+  }
+
   </style>
 </head>
 <body>
@@ -412,8 +492,27 @@
       <li><a href="#share">Share</a></li>
       <li><a href="#" class="nav-cta" onclick="openModal();return false;">Give Now</a></li>
     </ul>
+    <button class="hamburger" id="hamburger" onclick="toggleMobileMenu()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </nav>
+
+<!-- MOBILE MENU DRAWER -->
+<div class="mobile-menu" id="mobileMenu" onclick="closeMobileMenuOnBg(event)">
+  <div class="mobile-menu-drawer">
+    <button class="mobile-menu-close" onclick="closeMobileMenu()">✕</button>
+    <a href="#story" onclick="closeMobileMenu()">Our Story</a>
+    <a href="#vision" onclick="closeMobileMenu()">The Vision</a>
+    <a href="#phases" onclick="closeMobileMenu()">Phases</a>
+    <a href="#donate-section" onclick="closeMobileMenu()">Donate</a>
+    <a href="#stay-updated" onclick="closeMobileMenu()">Updates</a>
+    <a href="#location" onclick="closeMobileMenu()">Find Us</a>
+    <a href="#shop" onclick="closeMobileMenu()">Shop</a>
+    <a href="#share" onclick="closeMobileMenu()">Share</a>
+    <a href="#" class="mob-cta" onclick="closeMobileMenu();openModal();return false;">💚 Give Now</a>
+  </div>
+</div>
 
 <!-- ══ HERO ══ -->
 <div class="hero">
@@ -1203,6 +1302,30 @@
     showToast('✅ Interest registered! We\'ll notify you when the shop goes live.');
     btn.textContent = '✅ Register My Interest';
     btn.disabled = false;
+  }
+
+
+  function toggleMobileMenu() {
+    const menu = document.getElementById('mobileMenu');
+    const btn = document.getElementById('hamburger');
+    const isOpen = menu.classList.contains('open');
+    if (isOpen) {
+      menu.classList.remove('open');
+      btn.classList.remove('open');
+      document.body.style.overflow = '';
+    } else {
+      menu.classList.add('open');
+      btn.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+  }
+  function closeMobileMenu() {
+    document.getElementById('mobileMenu').classList.remove('open');
+    document.getElementById('hamburger').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  function closeMobileMenuOnBg(e) {
+    if (!e.target.closest('.mobile-menu-drawer')) closeMobileMenu();
   }
 
   document.addEventListener('DOMContentLoaded', function() {
