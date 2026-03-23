@@ -329,7 +329,57 @@
 
   @keyframes fadeUp { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
   @keyframes modalIn { from{opacity:0;transform:scale(0.94) translateY(14px)} to{opacity:1;transform:scale(1) translateY(0)} }
-</style>
+
+  /* ══ SHOP SECTION ══ */
+  .shop-section { padding:80px 24px; background:var(--cream); border-top:1px solid #e8e0d8; }
+  .shop-inner { max-width:1100px; margin:0 auto; }
+  .shop-header { text-align:center; margin-bottom:56px; }
+  .shop-header .lbl { font-size:0.72rem; font-weight:700; letter-spacing:0.22em; text-transform:uppercase; color:var(--teal); margin-bottom:10px; }
+  .shop-header h2 { font-family:'Playfair Display',serif; font-size:clamp(2rem,4vw,2.8rem); color:var(--charcoal); margin-bottom:12px; }
+  .shop-header p { font-size:0.97rem; color:var(--warm-gray); max-width:560px; margin:0 auto; line-height:1.7; }
+  .shop-coming-soon { background:#fff; border-radius:24px; border:1px solid rgba(42,138,126,0.12); overflow:hidden; box-shadow:0 8px 40px rgba(0,0,0,0.06); display:grid; grid-template-columns:1fr 1fr; gap:0; }
+  @media(max-width:768px){ .shop-coming-soon { grid-template-columns:1fr; } }
+  .shop-product-img { background:linear-gradient(135deg,#e8f5f3 0%,#d0ece8 100%); display:flex; align-items:center; justify-content:center; padding:48px; min-height:400px; position:relative; }
+  .shop-product-img .img-placeholder { text-align:center; }
+  .shop-product-img .img-placeholder span { font-size:5rem; display:block; margin-bottom:16px; }
+  .shop-product-img .img-placeholder p { font-size:0.8rem; color:var(--teal); font-weight:700; text-transform:uppercase; letter-spacing:0.1em; }
+  .shop-badge { position:absolute; top:20px; left:20px; background:var(--gold); color:#1a1a1a; font-size:0.68rem; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; padding:6px 14px; border-radius:100px; }
+  .shop-details { padding:48px; display:flex; flex-direction:column; justify-content:center; gap:20px; }
+  .shop-details h3 { font-family:'Bebas Neue',sans-serif; font-size:2rem; color:var(--charcoal); letter-spacing:0.03em; line-height:1.1; }
+  .shop-details .shop-desc { font-size:0.93rem; color:var(--warm-gray); line-height:1.7; }
+  .shop-price-row { display:flex; align-items:center; gap:16px; flex-wrap:wrap; }
+  .shop-price { font-family:'Bebas Neue',sans-serif; font-size:2.2rem; color:var(--teal); }
+  .shop-price-note { font-size:0.78rem; color:var(--warm-gray); }
+  .shop-options { display:flex; flex-direction:column; gap:14px; }
+  .shop-option-label { font-size:0.75rem; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; color:var(--charcoal); margin-bottom:6px; }
+  .size-grid { display:flex; gap:8px; flex-wrap:wrap; }
+  .size-btn { width:44px; height:44px; border:2px solid #ddd; background:#fff; border-radius:8px; font-size:0.82rem; font-weight:700; cursor:pointer; transition:all 0.15s; color:var(--charcoal); }
+  .size-btn:hover { border-color:var(--teal); color:var(--teal); }
+  .size-btn.selected { border-color:var(--teal); background:var(--teal); color:#fff; }
+  .delivery-toggle { display:flex; gap:8px; }
+  .delivery-btn { flex:1; padding:10px; border:2px solid #ddd; background:#fff; border-radius:10px; font-size:0.82rem; font-weight:700; cursor:pointer; transition:all 0.15s; color:var(--warm-gray); text-align:center; }
+  .delivery-btn:hover { border-color:var(--teal); color:var(--teal); }
+  .delivery-btn.selected { border-color:var(--teal); background:var(--teal-pale); color:var(--teal); }
+  .delivery-note { font-size:0.75rem; color:var(--warm-gray); margin-top:4px; }
+  .shop-order-btn { background:linear-gradient(135deg,var(--teal),var(--teal-dark)); color:#fff; border:none; border-radius:12px; padding:16px 32px; font-size:1rem; font-weight:700; text-transform:uppercase; letter-spacing:0.05em; cursor:pointer; transition:transform 0.15s,box-shadow 0.15s; box-shadow:0 8px 24px rgba(42,138,126,0.35); width:100%; margin-top:4px; }
+  .shop-order-btn:hover { transform:translateY(-2px); box-shadow:0 12px 32px rgba(42,138,126,0.45); }
+  .shop-order-btn:disabled { background:#ccc; box-shadow:none; cursor:not-allowed; transform:none; }
+  .shop-perks { background:var(--teal-pale); border-radius:16px; padding:20px 24px; margin-top:8px; }
+  .shop-perks p { font-size:0.82rem; color:var(--teal-dark); font-weight:600; margin:0; }
+  .shop-perks span { font-weight:400; color:var(--warm-gray); }
+  /* Order modal */
+  .shop-modal { background:#fff; border-radius:20px; padding:36px; max-width:480px; width:90%; max-height:90vh; overflow-y:auto; position:relative; }
+  .shop-modal h3 { font-family:'Bebas Neue',sans-serif; font-size:1.6rem; margin-bottom:4px; }
+  .shop-modal .order-summary { background:var(--teal-pale); border-radius:12px; padding:16px; margin:16px 0; font-size:0.88rem; }
+  .shop-modal .order-summary div { display:flex; justify-content:space-between; padding:4px 0; }
+  .shop-modal .order-summary .total { font-weight:700; color:var(--teal-dark); border-top:1px solid rgba(42,138,126,0.2); margin-top:8px; padding-top:8px; }
+  .shop-inp { width:100%; padding:11px 14px; border:1px solid #ddd; border-radius:10px; font-size:0.95rem; margin-bottom:10px; box-sizing:border-box; font-family:'DM Sans',sans-serif; }
+  .shop-inp:focus { outline:none; border-color:var(--teal); }
+  .shop-submit-btn { width:100%; background:linear-gradient(135deg,var(--teal),var(--teal-dark)); color:#fff; border:none; border-radius:12px; padding:15px; font-size:1rem; font-weight:700; cursor:pointer; text-transform:uppercase; letter-spacing:0.05em; margin-top:8px; }
+  .payment-coming { background:#fff8ee; border:1px solid var(--gold); border-radius:12px; padding:14px 18px; margin-top:12px; font-size:0.82rem; color:#8a5a00; }
+  .payment-coming strong { color:var(--gold); }
+
+  </style>
 </head>
 <body>
 
@@ -358,6 +408,7 @@
       <li><a href="#donate-section">Donate</a></li>
       <li><a href="#stay-updated">Updates</a></li>
       <li><a href="#location">Find Us</a></li>
+      <li><a href="#shop">Shop</a></li>
       <li><a href="#share">Share</a></li>
       <li><a href="#" class="nav-cta" onclick="openModal();return false;">Give Now</a></li>
     </ul>
@@ -591,6 +642,107 @@
     </div>
   </div>
 </section>
+
+<!-- ══ SHOP ══ -->
+<section class="shop-section" id="shop">
+  <div class="shop-inner">
+    <div class="shop-header">
+      <p class="lbl">🏸 Linden Youth Hub · Official Merchandise</p>
+      <h2>Wear the Vision</h2>
+      <p>Support the build and carry the message. Every shirt purchased goes directly toward the Linden Youth Hub. Contributors donating R1,000 or more receive a complimentary shirt.</p>
+    </div>
+
+    <div class="shop-coming-soon">
+      <!-- Product image -->
+      <div class="shop-product-img">
+        <div class="shop-badge">⚡ Coming Soon</div>
+        <div class="img-placeholder">
+          <span>👕</span>
+          <p>Official Design<br>Dropping Soon</p>
+        </div>
+      </div>
+
+      <!-- Product details -->
+      <div class="shop-details">
+        <div>
+          <p style="font-size:0.72rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--teal);margin-bottom:6px;">Linden Youth Hub · Sports Tee</p>
+          <h3>Linden Youth Hub<br>Official Sports T-Shirt</h3>
+        </div>
+        <p class="shop-desc">Dry-fit sports fabric in teal — featuring the Linden Youth Hub logo, a cross on the shoulder, and the campaign message on the back with QR code on the sleeve. Built for Linden, worn with purpose.</p>
+
+        <div class="shop-price-row">
+          <div class="shop-price">R<span id="shopPrice">TBC</span></div>
+          <div class="shop-price-note">Free delivery on orders over R500<br>or collect from 42 7th Street, Linden</div>
+        </div>
+
+        <div class="shop-options">
+          <!-- Size selector -->
+          <div>
+            <div class="shop-option-label">Select Size</div>
+            <div class="size-grid">
+              <button class="size-btn" onclick="selectSize(this,'S')">S</button>
+              <button class="size-btn" onclick="selectSize(this,'M')">M</button>
+              <button class="size-btn" onclick="selectSize(this,'L')">L</button>
+              <button class="size-btn" onclick="selectSize(this,'XL')">XL</button>
+              <button class="size-btn" onclick="selectSize(this,'XXL')">XXL</button>
+            </div>
+          </div>
+
+          <!-- Delivery toggle -->
+          <div>
+            <div class="shop-option-label">Collection / Delivery</div>
+            <div class="delivery-toggle">
+              <button class="delivery-btn selected" onclick="selectDelivery(this,'collect',0)">📍 Collect in Linden<br><small>Free</small></button>
+              <button class="delivery-btn" onclick="selectDelivery(this,'deliver',100)">🚚 Deliver to Me<br><small>+R100</small></button>
+            </div>
+            <p class="delivery-note" id="deliveryNote">Collect from 42 7th Street, Linden — we'll contact you when ready</p>
+          </div>
+        </div>
+
+        <div class="shop-perks">
+          <p>🎁 Donate R1,000 or more? <span>You receive a complimentary shirt — just let us know your size when donating.</span></p>
+        </div>
+
+        <button class="shop-order-btn" onclick="openShopOrder()" id="shopOrderBtn">
+          🛒 Pre-Register Interest
+        </button>
+
+        <div class="payment-coming">
+          <strong>⚡ Online payment coming soon</strong> — SnapScan / card payment is being set up. Pre-register your interest now and we'll notify you the moment the shop goes live.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ SHOP ORDER MODAL ══ -->
+<div class="modal-overlay" id="shopModal" onclick="if(event.target===this)closeShopModal()" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.6);z-index:1000;display:none;align-items:center;justify-content:center;padding:20px;">
+  <div class="shop-modal">
+    <button onclick="closeShopModal()" style="position:absolute;top:16px;right:16px;background:none;border:none;font-size:1.4rem;cursor:pointer;color:#999;">✕</button>
+    <p style="font-size:0.7rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--teal);margin-bottom:4px;">Linden Youth Hub Shop</p>
+    <h3>Pre-Register Your Interest</h3>
+    <p style="font-size:0.85rem;color:var(--warm-gray);margin-bottom:4px;">We'll notify you as soon as online payment is live so you can secure your shirt.</p>
+
+    <div class="order-summary">
+      <div><span>Item</span><span>LYH Sports T-Shirt</span></div>
+      <div><span>Size</span><span id="modalSize">—</span></div>
+      <div><span>Delivery</span><span id="modalDelivery">Collect in Linden</span></div>
+      <div class="total"><span>Est. Total</span><span id="modalTotal">TBC</span></div>
+    </div>
+
+    <input class="shop-inp" type="text" id="shopName" placeholder="Full name *">
+    <input class="shop-inp" type="email" id="shopEmail" placeholder="Email address *">
+    <input class="shop-inp" type="tel" id="shopPhone" placeholder="WhatsApp number *">
+    <input class="shop-inp" id="shopAddress" placeholder="Delivery address (if delivering)" style="display:none;">
+
+    <label style="display:flex;align-items:flex-start;gap:8px;font-size:0.82rem;color:#555;margin-bottom:12px;">
+      <input type="checkbox" id="shopOptIn" style="margin-top:3px;accent-color:var(--teal);">
+      Keep me updated on the shop launch and campaign news
+    </label>
+
+    <button class="shop-submit-btn" onclick="submitShopInterest()">✅ Register My Interest</button>
+  </div>
+</div>
 
 <!-- ══ LOCATION / MAP ══ -->
 <section id="location">
@@ -987,6 +1139,70 @@
     navigator.clipboard.writeText('https://www.lindenyouthhub.co.za')
       .then(()=>showToast('Link copied to clipboard!'))
       .catch(()=>showToast('Copy this link: ' + window.location.href));
+  }
+
+
+  // ── SHOP ──────────────────────────────────────────────────────────────────
+  let shopSize = null, shopDelivery = 'collect', shopDeliveryFee = 0;
+
+  function selectSize(btn, size) {
+    document.querySelectorAll('.size-btn').forEach(b => b.classList.remove('selected'));
+    btn.classList.add('selected');
+    shopSize = size;
+  }
+
+  function selectDelivery(btn, type, fee) {
+    document.querySelectorAll('.delivery-btn').forEach(b => b.classList.remove('selected'));
+    btn.classList.add('selected');
+    shopDelivery = type;
+    shopDeliveryFee = fee;
+    const note = document.getElementById('deliveryNote');
+    const addr = document.getElementById('shopAddress');
+    if (type === 'deliver') {
+      note.textContent = 'We deliver via courier — R100 delivery fee added at checkout';
+      if (addr) addr.style.display = 'block';
+    } else {
+      note.textContent = 'Collect from 42 7th Street, Linden — we\'ll contact you when ready';
+      if (addr) addr.style.display = 'none';
+    }
+  }
+
+  function openShopOrder() {
+    const modal = document.getElementById('shopModal');
+    document.getElementById('modalSize').textContent = shopSize || 'Please select a size';
+    document.getElementById('modalDelivery').textContent = shopDelivery === 'deliver' ? 'Deliver (+R100)' : 'Collect in Linden (Free)';
+    document.getElementById('modalTotal').textContent = 'TBC — payment coming soon';
+    modal.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeShopModal() {
+    document.getElementById('shopModal').style.display = 'none';
+    document.body.style.overflow = '';
+  }
+
+  async function submitShopInterest() {
+    const name = document.getElementById('shopName').value.trim();
+    const email = document.getElementById('shopEmail').value.trim();
+    const phone = document.getElementById('shopPhone').value.trim();
+    if (!name || !email || !phone) { alert('Please fill in name, email and WhatsApp number'); return; }
+    const btn = document.querySelector('.shop-submit-btn');
+    btn.textContent = 'Submitting...';
+    btn.disabled = true;
+    try {
+      const p = new URLSearchParams({
+        action: 'shopInterest',
+        name, email, phone,
+        size: shopSize || 'TBC',
+        delivery: shopDelivery,
+        optIn: document.getElementById('shopOptIn').checked
+      });
+      await fetch(SHEET_URL + '?' + p.toString(), { cache: 'no-store' });
+    } catch(e) { console.warn('Shop submit error:', e); }
+    closeShopModal();
+    showToast('✅ Interest registered! We\'ll notify you when the shop goes live.');
+    btn.textContent = '✅ Register My Interest';
+    btn.disabled = false;
   }
 
   document.addEventListener('DOMContentLoaded', function() {
