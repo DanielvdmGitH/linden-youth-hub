@@ -551,7 +551,7 @@
       <div class="deadline-pill">⏰ Deadline: 30 June 2026 · Pickleball Court</div>
       <div class="donate-row">
         <button class="btn-primary" onclick="openModal()">💚 Donate via EFT (SA)</button>
-        <button class="btn-intl" onclick="openIntlModal()">🌍 International / Card Payment</button>
+        <a class="btn-intl" href="https://pos.snapscan.io/qr/bbn5zRjJ" target="_blank" rel="noopener" style="display:flex;align-items:center;justify-content:center;text-decoration:none;">🌍 International / Card Payment</a>
       </div>
     </div>
   </div>
@@ -734,7 +734,7 @@
         <div class="intl-placeholder">
           <p>🔐 Secure card payment portal — coming soon</p>
           <p style="font-size:0.78rem;color:var(--teal);margin-bottom:14px;">The payment link will appear here once activated. Check back soon, or contact us via WhatsApp to arrange your contribution now.</p>
-          <button class="btn-intl-link" onclick="showToast('💳 Payment link coming soon! Contact us on WhatsApp to arrange your contribution.')">💳 Pay by Card (Coming Soon)</button>
+          <a class="btn-intl-link" href="https://pos.snapscan.io/qr/bbn5zRjJ" target="_blank" rel="noopener" style="display:block;text-align:center;text-decoration:none;">💳 Pay by Card or SnapScan</a>
         </div>
         <p class="ref-note">📌 Once the card link is live, use your name + "LYHUB" as your payment reference so we can acknowledge your gift.</p>
       </div>
@@ -927,9 +927,9 @@
     <h2 class="section-title">Tell someone today</h2>
     <p class="section-body">Our youth are visiting every business on 7th Street and beyond. Help amplify their work by sharing this page with your network — locally and internationally.</p>
     <div class="share-row">
-      <a class="share-btn s-wa" href="https://wa.me/?text=Help%20build%20the%20Linden%20Youth%20Hub%20at%2042%207th%20Street%2C%20Linden!%20We%27re%20raising%20R300k%20for%20a%20Pickleball%20Court%20by%20June%202026.%20Watch%20the%20vision%20video%20%26%20donate%20here%3A%20https%3A%2F%2Fwww.lindenyouthhub.co.za" target="_blank">📲 Share on WhatsApp</a>
+      <a class="share-btn s-wa" href="https://wa.me/?text=Help%20build%20the%20Linden%20Youth%20Hub%20at%2042%207th%20Street%2C%20Linden!%20We%27re%20raising%20R300k%20for%20a%20Pickleball%20Court%20by%20June%202026.%20Watch%20the%20vision%20video%20%26%20donate%20here%3A%20https%3A%2F%2Fwww.lindenyouthhub.co.za%20%7C%20Card%2FSnapScan%3A%20https%3A%2F%2Fpos.snapscan.io%2Fqr%2Fbbn5zRjJ" target="_blank">📲 Share on WhatsApp</a>
       <button class="share-btn s-copy" onclick="copyLink()">🔗 Copy Link</button>
-      <a class="share-btn s-email" href="mailto:?subject=Help%20build%20the%20Linden%20Youth%20Hub&body=Help%20build%20the%20Linden%20Youth%20Hub%20at%2042%207th%20Street%2C%20Linden!%20We%27re%20raising%20R300k%20for%20a%20Pickleball%20Court%20by%20June%202026.%20Watch%20the%20vision%20video%20%26%20donate%20here%3A%20https%3A%2F%2Fwww.lindenyouthhub.co.za%0A%0ABanking%20Details%3A%0ABank%3A%20Investec%0AAccount%3A%2050022422006%0ABranch%3A%20580105%0AReference%3A%20LYHPickleBall%0A%0AIf%20you%20would%20like%20to%20be%20posted%20on%20construction%20milestones%2C%20fundraising%20progress%2C%20or%20how%20to%20get%20involved%20-%20no%20spam%2C%20only%20updates%20that%20matter%20-%20send%20your%20details%20to%20vidachurchsa%40gmail.com">✉️ Email a Friend</a>
+      <a class="share-btn s-email" href="mailto:?subject=Help%20build%20the%20Linden%20Youth%20Hub&body=Help%20build%20the%20Linden%20Youth%20Hub%20at%2042%207th%20Street%2C%20Linden!%20We%27re%20raising%20R300k%20for%20a%20Pickleball%20Court%20by%20June%202026.%20Watch%20the%20vision%20video%20%26%20donate%20here%3A%20https%3A%2F%2Fwww.lindenyouthhub.co.za%20%7C%20Card%2FSnapScan%3A%20https%3A%2F%2Fpos.snapscan.io%2Fqr%2Fbbn5zRjJ%0A%0ABanking%20Details%3A%0ABank%3A%20Investec%0AAccount%3A%2050022422006%0ABranch%3A%20580105%0AReference%3A%20LYHPickleBall%0A%0AIf%20you%20would%20like%20to%20be%20posted%20on%20construction%20milestones%2C%20fundraising%20progress%2C%20or%20how%20to%20get%20involved%20-%20no%20spam%2C%20only%20updates%20that%20matter%20-%20send%20your%20details%20to%20vidachurchsa%40gmail.com">✉️ Email a Friend</a>
     </div>
   </div>
 </section>
@@ -1086,12 +1086,12 @@
 <div class="modal-overlay" id="intlModal" onclick="if(event.target===this)closeIntlModal()">
   <div class="modal">
     <button class="modal-close" onclick="closeIntlModal()">✕</button>
-    <h2>International Payment</h2>
+    <h2>Card / SnapScan Payment</h2>
     <p class="sub">Giving from outside South Africa, or prefer to pay by card?</p>
     <div class="intl-placeholder" style="padding:28px;margin-bottom:20px">
       <p style="font-size:1rem;margin-bottom:10px">🔐 Secure card payment portal</p>
       <p style="font-size:0.85rem;color:var(--teal-dark);margin-bottom:20px">Our international card payment link will be added here shortly. In the meantime, please reach out via WhatsApp and we will assist you directly.</p>
-      <button class="btn-intl-link" onclick="showToast('💳 Payment link coming soon! Please WhatsApp us to arrange your contribution.')">💳 Card Payment — Coming Soon</button>
+      <a class="btn-intl-link" href="https://pos.snapscan.io/qr/bbn5zRjJ" target="_blank" rel="noopener" style="display:block;text-align:center;text-decoration:none;">💳 Pay by Card or SnapScan</a>
     </div>
     <div style="background:#f8f8f8;border-radius:12px;padding:20px">
       <p style="font-size:0.82rem;color:var(--warm-gray);font-weight:700;margin-bottom:8px;">💡 For international bank transfers:</p>
