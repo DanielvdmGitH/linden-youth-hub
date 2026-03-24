@@ -470,7 +470,7 @@
     <span>📍 42 7th Street, Linden, Johannesburg · Building for the next generation</span>
     <span>💚 Every rand invested here stays in this community</span>
     <span>🌍 International contributors welcome · Card payments available</span>
-    <span>🏸 Phase 1: Pickleball Court · Target R300,000 · Deadline June 2026</span>
+    <span>🏸 Phase 1: Pickleball Court · Target R180,000 · Deadline June 2026</span>
     <span>📍 42 7th Street, Linden, Johannesburg · Building for the next generation</span>
     <span>💚 Every rand invested here stays in this community</span>
     <span>🌍 International contributors welcome · Card payments available</span>
@@ -543,9 +543,8 @@
       <div class="pbar-wrap"><div class="pbar-fill" id="progressBar"></div></div>
       <div class="pbar-pct"><span id="pct">0</span>% funded · Phase 1</div>
       <div class="progress-stats">
-        <div class="pstat"><div class="pstat-val" id="donorCount">0</div><div class="pstat-lbl">Contributors</div></div>
         <div class="pstat"><div class="pstat-val" id="daysLeft">—</div><div class="pstat-lbl">Days Left</div></div>
-        <div class="pstat"><div class="pstat-val">R300k</div><div class="pstat-lbl">Target</div></div>
+        <div class="pstat"><div class="pstat-val">R180k</div><div class="pstat-lbl">Target</div></div>
         <div class="pstat"><div class="pstat-val">30 Jun 2026</div><div class="pstat-lbl">Deadline</div></div>
       </div>
       <div class="deadline-pill">⏰ Deadline: 30 June 2026 · Pickleball Court</div>
@@ -576,7 +575,7 @@
         <p>"This is not just a building — it’s a declaration. We believe in the next generation of Linden. Every rand raised, every court laid, every space created here is a gift from this community to its youth. Not tied to any one church or congregation. Built by Linden, for Linden."</p>
         <cite>— Pastor Hendrik Van Deventer, Founding Pastor, Vida Church Linden</cite>
       </div>
-      <p>Phase 1 — the pickleball court — is where it all starts. We need R300,000 by June 2026. Every rand contributed is a step closer to this becoming real.</p>
+      <p>Phase 1 — the pickleball court — is where it all starts. We need R180,000 by June 2026. Every rand contributed is a step closer to this becoming real.</p>
     </div>
   </div>
 </section>
@@ -1104,7 +1103,7 @@
 
 <script>
   const SHEET_URL = 'https://script.google.com/macros/s/AKfycby3MbXrL6y2nhop1FzhhYnPBFQFunkADT5r3xwhGll972h_SbS-r_eOcCFBJsaHwM30/exec';
-  const GOAL = 300000;
+  const GOAL = 180000;
   let raised = 0, donors = 0;
 
   async function fetchProgress() {
@@ -1119,14 +1118,17 @@
 
   function updateDisplay() {
     const pct = Math.min(100, (raised / GOAL) * 100);
-    const raisedEl = document.querySelector('.raised-display');
-    const donorsEl = document.querySelector('.donors-display');
-    const barEl    = document.querySelector('.progress-fill');
-    const pctEl    = document.querySelector('.funded-label');
-    if (raisedEl) raisedEl.textContent = formatRand(raised);
-    if (donorsEl) donorsEl.textContent = donors + ' contributors';
+    const raisedEl  = document.getElementById('raisedAmt');
+    const barEl     = document.getElementById('progressBar');
+    const pctEl     = document.getElementById('pct');
+    const daysEl    = document.getElementById('daysLeft');
+    if (raisedEl) raisedEl.textContent = raised.toLocaleString('en-ZA');
     if (barEl)    barEl.style.width = pct.toFixed(1) + '%';
-    if (pctEl)    pctEl.textContent = pct.toFixed(1) + '% funded - Phase 1';
+    if (pctEl)    pctEl.textContent = pct.toFixed(1);
+    if (daysEl) {
+      const diff = Math.ceil((new Date('2026-06-30') - new Date()) / 86400000);
+      daysEl.textContent = diff > 0 ? diff : 0;
+    }
   }
 
   function formatRand(n) {
