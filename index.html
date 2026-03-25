@@ -544,7 +544,7 @@
       <div class="pbar-pct"><span id="pct">0</span>% funded · Phase 1</div>
       <div class="progress-stats">
         <div class="pstat"><div class="pstat-val" id="daysLeft">—</div><div class="pstat-lbl">Days Left</div></div>
-        <div class="pstat"><div class="pstat-val">R180k</div><div class="pstat-lbl">Target</div></div>
+        <div class="pstat"><div class="pstat-val" id="stillNeeded">R180,000</div><div class="pstat-lbl">Still Needed</div></div>
         <div class="pstat"><div class="pstat-val">30 Jun 2026</div><div class="pstat-lbl">Deadline</div></div>
       </div>
       <div class="deadline-pill">⏰ Deadline: 30 June 2026 · Pickleball Court</div>
@@ -1113,21 +1113,22 @@
       if (typeof d.raised === 'number') raised = d.raised;
       if (typeof d.donors === 'number') donors = d.donors;
     } catch(e) { console.warn('Stats fetch failed:', e); }
-    updateDisplay();
-  }
-
   function updateDisplay() {
-    const pct = Math.min(100, (raised / GOAL) * 100);
+    const pct       = Math.min(100, (raised / GOAL) * 100);
     const raisedEl  = document.getElementById('raisedAmt');
     const barEl     = document.getElementById('progressBar');
     const pctEl     = document.getElementById('pct');
     const daysEl    = document.getElementById('daysLeft');
+    const needEl    = document.getElementById('stillNeeded');
     if (raisedEl) raisedEl.textContent = raised.toLocaleString('en-ZA');
-    if (barEl)    barEl.style.width = pct.toFixed(1) + '%';
-    if (pctEl)    pctEl.textContent = pct.toFixed(1);
+    if (barEl)    barEl.style.width    = pct.toFixed(1) + '%';
+    if (pctEl)    pctEl.textContent    = pct.toFixed(1);
+    if (needEl)   needEl.textContent   = 'R' + Math.max(0, GOAL - raised).toLocaleString('en-ZA');
     if (daysEl) {
       const diff = Math.ceil((new Date('2026-06-30') - new Date()) / 86400000);
       daysEl.textContent = diff > 0 ? diff : 0;
+    }
+  } > 0 ? diff : 0;
     }
   }
 
