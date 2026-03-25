@@ -1108,18 +1108,21 @@
 
   async function fetchProgress() {
     try {
-      const r = await fetch(SHEET_URL + '?action=getStats', {cache:'no-store'});
+      const r = await fetch(SHEET_URL + '?action=getStats', {cache: 'no-store'});
       const d = await r.json();
-      if (typeof d.raised === 'number') raised = d.raised;
-      if (typeof d.donors === 'number') donors = d.donors;
+      if (typeof d.raised  === 'number') raised  = d.raised;
+      if (typeof d.donors  === 'number') donors  = d.donors;
     } catch(e) { console.warn('Stats fetch failed:', e); }
+    updateDisplay();
+  }
+
   function updateDisplay() {
-    const pct       = Math.min(100, (raised / GOAL) * 100);
-    const raisedEl  = document.getElementById('raisedAmt');
-    const barEl     = document.getElementById('progressBar');
-    const pctEl     = document.getElementById('pct');
-    const daysEl    = document.getElementById('daysLeft');
-    const needEl    = document.getElementById('stillNeeded');
+    const pct      = Math.min(100, (raised / GOAL) * 100);
+    const raisedEl = document.getElementById('raisedAmt');
+    const barEl    = document.getElementById('progressBar');
+    const pctEl    = document.getElementById('pct');
+    const daysEl   = document.getElementById('daysLeft');
+    const needEl   = document.getElementById('stillNeeded');
     if (raisedEl) raisedEl.textContent = raised.toLocaleString('en-ZA');
     if (barEl)    barEl.style.width    = pct.toFixed(1) + '%';
     if (pctEl)    pctEl.textContent    = pct.toFixed(1);
@@ -1127,8 +1130,6 @@
     if (daysEl) {
       const diff = Math.ceil((new Date('2026-06-30') - new Date()) / 86400000);
       daysEl.textContent = diff > 0 ? diff : 0;
-    }
-  } > 0 ? diff : 0;
     }
   }
 
