@@ -466,11 +466,11 @@
 <!-- TICKER -->
 <div class="ticker-bar">
   <div class="ticker-inner">
-    <span>🏸 Phase 1: Pickleball Court · Target R180,000 · Deadline June 2026</span>
+    <span>🏸 Phase 1: Pickleball Court · Target R180,000 · Deadline April 2026</span>
     <span>📍 42 7th Street, Linden, Johannesburg · Building for the next generation</span>
     <span>💚 Every rand invested here stays in this community</span>
     <span>🌍 International contributors welcome · Card payments available</span>
-    <span>🏸 Phase 1: Pickleball Court · Target R180,000 · Deadline June 2026</span>
+    <span>🏸 Phase 1: Pickleball Court · Target R180,000 · Deadline April 2026</span>
     <span>📍 42 7th Street, Linden, Johannesburg · Building for the next generation</span>
     <span>💚 Every rand invested here stays in this community</span>
     <span>🌍 International contributors welcome · Card payments available</span>
@@ -545,9 +545,9 @@
       <div class="progress-stats">
         <div class="pstat"><div class="pstat-val" id="daysLeft">—</div><div class="pstat-lbl">Days Left</div></div>
         <div class="pstat"><div class="pstat-val" id="stillNeeded">R180,000</div><div class="pstat-lbl">Still Needed</div></div>
-        <div class="pstat"><div class="pstat-val">30 Jun 2026</div><div class="pstat-lbl">Deadline</div></div>
+        <div class="pstat"><div class="pstat-val">30 Apr 2026</div><div class="pstat-lbl">Deadline</div></div>
       </div>
-      <div class="deadline-pill">⏰ Deadline: 30 June 2026 · Pickleball Court</div>
+      <div class="deadline-pill">⏰ Deadline: 30 April 2026 · Pickleball Court</div>
       <div class="donate-row">
         <button class="btn-primary" onclick="openModal()">💚 Donate via EFT (SA)</button>
         <a class="btn-intl" href="https://pos.snapscan.io/qr/bbn5zRjJ" target="_blank" rel="noopener" style="display:flex;align-items:center;justify-content:center;text-decoration:none;">🌍 International / Card Payment</a>
@@ -575,7 +575,7 @@
         <p>"This is not just a building — it’s a declaration. We believe in the next generation of Linden. Every rand raised, every court laid, every space created here is a gift from this community to its youth. Not tied to any one church or congregation. Built by Linden, for Linden."</p>
         <cite>— Pastor Hendrik Van Deventer, Founding Pastor, Vida Church Linden</cite>
       </div>
-      <p>Phase 1 — the pickleball court — is where it all starts. We need R180,000 by June 2026. Every rand contributed is a step closer to this becoming real.</p>
+      <p>Phase 1 — the pickleball court — is where it all starts. We need R180,000 by April 2026. Every rand contributed is a step closer to this becoming real.</p>
     </div>
   </div>
 </section>
@@ -672,7 +672,7 @@
           <span class="t-badge now">🔥 Active — Fundraising Now</span>
           <h3>Pickleball Court &amp; Lights</h3>
           <p>Pickleball court with fencing, net, court markings, and lights.</p>
-          <div class="t-amount">R180,000 <span>· Target by June 2026</span></div>
+          <div class="t-amount">R180,000 <span>· Target by April 2026</span></div>
         </div>
       </div>
       <div class="t-item">
@@ -1151,7 +1151,7 @@
     if (pctEl)    pctEl.textContent    = pct.toFixed(1);
     if (needEl)   needEl.textContent   = 'R' + Math.max(0, GOAL - raised).toLocaleString('en-ZA');
     if (daysEl) {
-      const diff = Math.ceil((new Date('2026-06-30') - new Date()) / 86400000);
+      const diff = Math.ceil((new Date('2026-04-30') - new Date()) / 86400000);
       daysEl.textContent = diff > 0 ? diff : 0;
     }
   }
@@ -1357,7 +1357,7 @@
 
   document.addEventListener('DOMContentLoaded', function() {
     fetchProgress();
-    const deadline = new Date('2026-06-30T23:59:59');
+    const deadline = new Date('2026-04-30T23:59:59');
     const diff = Math.ceil((deadline - new Date()) / (1000 * 60 * 60 * 24));
     const el = document.getElementById('daysLeft');
     if (el) el.textContent = Math.max(0, diff);
