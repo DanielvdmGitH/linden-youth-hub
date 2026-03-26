@@ -1123,11 +1123,18 @@
   let raised = 0, donors = 0;
 
   async function fetchProgress() {
+    // Show cached value instantly — no waiting for cold start
+    try {
+      const cached = localStorage.getItem('lyh_raised');
+      if (cached !== null) { raised = parseInt(cached, 10); updateDisplay(); }
+    } catch(e) {}
+    // Fetch fresh value silently in background
     try {
       const r = await fetch(SHEET_URL + '?action=getStats', {cache: 'no-store'});
       const d = await r.json();
-      if (typeof d.raised  === 'number') raised  = d.raised;
-      if (typeof d.donors  === 'number') donors  = d.donors;
+      if (typeof d.raised === 'number') raised = d.raised;
+      if (typeof d.donors === 'number') donors = d.donors;
+      localStorage.setItem('lyh_raised', raised);
     } catch(e) { console.warn('Stats fetch failed:', e); }
     updateDisplay();
   }
