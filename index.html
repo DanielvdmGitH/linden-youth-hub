@@ -487,6 +487,7 @@
       <li><a href="#vision">The Vision</a></li>
       <li><a href="#phases">Phases</a></li>
       <li><a href="#donate-section">Donate</a></li>
+      <li><a href="#stay-updated">Updates</a></li>
       <li><a href="#location">Find Us</a></li>
       <li><a href="#shop">Shop</a></li>
       <li><a href="#share">Share</a></li>
@@ -505,6 +506,7 @@
     <a href="#vision" onclick="closeMobileMenu()">The Vision</a>
     <a href="#phases" onclick="closeMobileMenu()">Phases</a>
     <a href="#donate-section" onclick="closeMobileMenu()">Donate</a>
+    <a href="#stay-updated" onclick="closeMobileMenu()">Updates</a>
     <a href="#location" onclick="closeMobileMenu()">Find Us</a>
     <a href="#shop" onclick="closeMobileMenu()">Shop</a>
     <a href="#share" onclick="closeMobileMenu()">Share</a>
@@ -942,6 +944,7 @@
 
 <!-- STAY UPDATED SECTION -->
 
+
 <section id="vida-church" style="padding:64px 24px; background:#f0f8f7; border-top:1px solid #c8e6e3;">
   <div style="max-width:860px; margin:0 auto; text-align:center;">
     <p style="font-size:0.78rem; text-transform:uppercase; letter-spacing:0.12em; color:var(--teal); font-weight:600; margin-bottom:10px;">About the Initiating Community</p>
@@ -1026,6 +1029,7 @@
 
 
 <!-- CONTACT / STAY UPDATED MODAL (POPI Compliant) -->
+
 
 <!-- INTL MODAL -->
 <div id="intlModal" class="modal-overlay" onclick="if(event.target===this)closeIntlModal()">
@@ -1112,6 +1116,14 @@
   function openIntlModal()  { document.getElementById('intlModal').classList.add('open'); document.body.style.overflow='hidden'; }
   function closeIntlModal() { document.getElementById('intlModal').classList.remove('open'); document.body.style.overflow=''; }
 
+  let selAmt = null;
+  function selectAmt(btn, val){
+    document.querySelectorAll('.amt-btn').forEach(b=>b.classList.remove('sel'));
+    btn.classList.add('sel');
+    document.getElementById('customRow').style.display = val==='custom'?'block':'none';
+    selAmt = val==='custom' ? null : val;
+  }
+
   document.addEventListener('input', e=>{
     if(e.target.id==='donorName'){
       const n = e.target.value.trim()||'YOUR NAME';
@@ -1151,6 +1163,36 @@
     setTimeout(fetchProgress, 1500);
   }
 
+  async function submitContact(){
+    const firstName = document.getElementById('cf_first')?.value?.trim() || '';
+    const lastName  = document.getElementById('cf_last')?.value?.trim()  || '';
+    const email     = document.getElementById('cf_email')?.value?.trim() || '';
+    const optIn     = document.getElementById('cf_optin')?.checked       || false;
+    const consent   = document.getElementById('cf_consent')?.checked     || false;
+    const btn       = document.getElementById('contactSubmitBtn');
+
+    if(!firstName){ showToast('Please enter your first name.'); return; }
+    if(!email){ showToast('Please enter your email address.'); return; }
+    if(!consent){ showToast('Please accept the privacy terms to continue.'); return; }
+    if(btn){ btn.disabled=true; btn.textContent='Sending...'; }
+
+    try {
+      const p = new URLSearchParams();
+      p.append('action','contact');
+      p.append('firstName', firstName);
+      p.append('lastName',  lastName);
+      p.append('email',     email);
+      p.append('optIn',     optIn ? 'true' : 'false');
+      p.append('consentGiven', 'true');
+      const resp = await fetch(SHEET_URL + '?' + p.toString(), {cache:'no-store'});
+      const data = await resp.json();
+      if(data.success){
+        const inner = document.getElementById('contactFormInner');
+        if(inner) inner.innerHTML = '<div style="text-align:center;padding:32px 0"><div style="font-size:2.5rem">&#10004;</div><h3 style="color:#2a8a7e;margin:12px 0">You are on the list!</h3><p>Thank you ' + firstName + ', we will keep you updated on the Linden Youth Hub.</p></div>';
+      } else {
+        showToast('Something went wrong. Please try again.');
+        if(btn){ btn.disabled=false; btn.textContent='Stay Updated'; }
+      }
     } catch(err){
       showToast('Could not connect. Please try again.');
       if(btn){ btn.disabled=false; btn.textContent='Stay Updated'; }
