@@ -491,7 +491,6 @@
       <li><a href="#location">Find Us</a></li>
       <li><a href="#shop">Shop</a></li>
       <li><a href="#share">Share</a></li>
-      <li><a href="#" class="nav-cta" onclick="openModal();return false;">Give Now</a></li>
     </ul>
     <button class="hamburger" id="hamburger" onclick="toggleMobileMenu()" aria-label="Menu">
       <span></span><span></span><span></span>
@@ -511,7 +510,6 @@
     <a href="#location" onclick="closeMobileMenu()">Find Us</a>
     <a href="#shop" onclick="closeMobileMenu()">Shop</a>
     <a href="#share" onclick="closeMobileMenu()">Share</a>
-    <a href="#" class="mob-cta" onclick="closeMobileMenu();openModal();return false;">💚 Give Now</a>
   </div>
 </div>
 
@@ -1091,28 +1089,31 @@
 </div>
 
 <!-- INTL MODAL -->
-<div class="modal-overlay" id="intlModal" onclick="if(event.target===this)closeIntlModal()">
-  <div class="modal">
+<div id="intlModal" class="modal-overlay" onclick="if(event.target===this)closeIntlModal()">
+  <div class="modal-box">
     <button class="modal-close" onclick="closeIntlModal()">✕</button>
-    <h2>Card / SnapScan Payment</h2>
-    <p class="sub">Giving from outside South Africa, or prefer to pay by card?</p>
-    <div style="text-align:center;margin:20px 0 16px;">
-      <a href="https://pos.snapscan.io/qr/bbn5zRjJ" target="_blank" rel="noopener">
-        <img src="https://raw.githubusercontent.com/DanielvdmGitH/linden-youth-hub/main/images/snapscan-qr.jpg"
-             alt="SnapScan QR code — scan to pay"
-             style="width:200px;height:auto;border-radius:12px;box-shadow:0 4px 20px rgba(0,0,0,0.2);">
-      </a>
-      <p style="font-size:0.8rem;color:rgba(255,255,255,0.5);margin-top:8px;">Scan with your banking app or SnapScan</p>
+    <h2>🌍 International Donation</h2>
+    <p style="margin-bottom:1rem;color:var(--text-muted)">You can donate directly via international bank transfer using the details below. All amounts welcome — every rand (or equivalent) counts!</p>
+
+    <div class="bank-detail-block" style="background:var(--card-bg);border-radius:12px;padding:1.2rem;margin-bottom:1rem;">
+      <div style="font-weight:700;font-size:1rem;margin-bottom:0.8rem;color:var(--accent)">🏦 Bank Transfer Details</div>
+      <table style="width:100%;border-collapse:collapse;font-size:0.92rem;">
+        <tr><td style="padding:0.3rem 0;color:var(--text-muted);width:45%">Bank</td><td style="padding:0.3rem 0;font-weight:600">Investec Bank</td></tr>
+        <tr><td style="padding:0.3rem 0;color:var(--text-muted)">Account Name</td><td style="padding:0.3rem 0;font-weight:600">Linden Youth Hub</td></tr>
+        <tr><td style="padding:0.3rem 0;color:var(--text-muted)">Account Number</td><td style="padding:0.3rem 0;font-weight:600">50022422006</td></tr>
+        <tr><td style="padding:0.3rem 0;color:var(--text-muted)">Branch Code</td><td style="padding:0.3rem 0;font-weight:600">580105</td></tr>
+        <tr><td style="padding:0.3rem 0;color:var(--text-muted)">SWIFT / BIC</td><td style="padding:0.3rem 0;font-weight:600;color:var(--accent)">IVESZAJJ</td></tr>
+        <tr><td style="padding:0.3rem 0;color:var(--text-muted)">Reference</td><td style="padding:0.3rem 0;font-weight:600">LYHPickleBall</td></tr>
+      </table>
     </div>
-    <div class="intl-placeholder" style="padding:28px;margin-bottom:20px">
-      <p style="font-size:1rem;margin-bottom:10px">🔐 Secure card payment portal</p>
-      <p style="font-size:0.85rem;color:var(--teal-dark);margin-bottom:20px">Pay instantly by card or SnapScan using the secure link below. All major cards accepted — contributions go directly to the build fund.</p>
-      <a class="btn-intl-link" href="https://pos.snapscan.io/qr/bbn5zRjJ" target="_blank" rel="noopener" style="display:block;text-align:center;text-decoration:none;">💳 Pay by Card or SnapScan</a>
+
+    <div class="bank-detail-block" style="background:var(--card-bg);border-radius:12px;padding:1.2rem;margin-bottom:1rem;">
+      <div style="font-weight:700;font-size:1rem;margin-bottom:0.5rem;color:var(--accent)">💳 Prefer to Pay by Card?</div>
+      <p style="font-size:0.92rem;color:var(--text-muted);margin-bottom:0.8rem">SnapScan also accepts international cards in some regions.</p>
+      <a href="https://pos.snapscan.io/qr/bbn5zRjJ" target="_blank" rel="noopener" style="display:inline-block;background:var(--accent);color:#fff;padding:0.6rem 1.4rem;border-radius:8px;font-weight:600;text-decoration:none;">Open SnapScan →</a>
     </div>
-    <div style="background:#f8f8f8;border-radius:12px;padding:20px">
-      <p style="font-size:0.82rem;color:var(--warm-gray);font-weight:700;margin-bottom:8px;">💡 For international bank transfers:</p>
-      <p style="font-size:0.82rem;color:var(--warm-gray);line-height:1.7">Contact us via WhatsApp and we will provide SWIFT/international transfer details for the Vida Building Fund. All contributions in any currency are gratefully received and go directly to the build fund.</p>
-    </div>
+
+    <p style="font-size:0.82rem;color:var(--text-muted);text-align:center">Please email us at <a href="mailto:daniel@mpmarketing.co.za" style="color:var(--accent)">daniel@mpmarketing.co.za</a> once your transfer is made so we can acknowledge your gift. 🙏</p>
   </div>
 </div>
 
