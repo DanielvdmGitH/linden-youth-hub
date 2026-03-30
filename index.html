@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">     <!-- SEO & Social Sharing -->     <meta name="description" content="Help us build youth facilities in Linden, Johannesburg. Phase 1: a Pickleball court for our kids. R180,000 goal by 30 April 2026. Every rand counts.">     <meta property="og:title" content="Help Us Build a Youth Hub in Linden 🙏">     <meta property="og:description" content="We're raising R180,000 to build a Pickleball court for the youth of Linden, Johannesburg. Phase 1 closes 30 April 2026. Please share and give.">     <meta property="og:url" content="https://www.lindenyouthhub.co.za">     <meta property="og:type" content="website">     <meta property="og:image" content="https://raw.githubusercontent.com/DanielvdmGitH/linden-youth-hub/main/images/vision-render-2.jpg">     <meta name="twitter:card" content="summary_large_image">     <meta name="twitter:title" content="Help Us Build a Youth Hub in Linden 🙏">     <meta name="twitter:description" content="We're raising R180,000 to build a Pickleball court for the youth of Linden, Johannesburg. Phase 1 closes 30 April 2026.">     <meta name="twitter:image" content="https://raw.githubusercontent.com/DanielvdmGitH/linden-youth-hub/main/images/vision-render-2.jpg">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">     <!-- SEO & Social Sharing -->     <meta name="description" content="Help us build youth facilities in Linden, Johannesburg. Phase 1: a Pickleball court for our kids. R180,000 goal by 30 April 2026. Every rand counts.">     <meta property="og:title" content="Help Us Build a Youth Hub in Linden 🙏">     <meta property="og:description" content="We're raising R180,000 to build a Pickleball court for the youth of Linden, Johannesburg. Phase 1 ('+PHASE_NAME+') closes '+DEADLINE_DATE+'. Please share and give.">     <meta property="og:url" content="https://www.lindenyouthhub.co.za">     <meta property="og:type" content="website">     <meta property="og:image" content="https://raw.githubusercontent.com/DanielvdmGitH/linden-youth-hub/main/images/vision-render-2.jpg">     <meta name="twitter:card" content="summary_large_image">     <meta name="twitter:title" content="Help Us Build a Youth Hub in Linden 🙏">     <meta name="twitter:description" content="We're raising R180,000 to build a Pickleball court for the youth of Linden, Johannesburg. Phase 1 closes 30 April 2026.">     <meta name="twitter:image" content="https://raw.githubusercontent.com/DanielvdmGitH/linden-youth-hub/main/images/vision-render-2.jpg">
 <title>Linden Youth Hub – Building Fund</title>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,300&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
 <style>
@@ -547,7 +547,7 @@
         <div class="pstat"><div class="pstat-val" id="stillNeeded">R180,000</div><div class="pstat-lbl">Still Needed</div></div>
         <div class="pstat"><div class="pstat-val">30 Apr 2026</div><div class="pstat-lbl">Deadline</div></div>
       </div>
-      <div class="deadline-pill">⏰ Deadline: 30 April 2026 · Pickleball Court</div>
+      <div class="deadline-pill" id="deadlinePill">⏰ Deadline: <span id="deadlineText"></span></div>
       <div class="donate-row">
         <button class="btn-primary" onclick="openModal()">💚 Donate via EFT (SA)</button>
         <a class="btn-intl" href="https://pos.snapscan.io/qr/bbn5zRjJ" target="_blank" rel="noopener" style="display:flex;align-items:center;justify-content:center;text-decoration:none;">🌍 International / Card Payment</a>
@@ -1119,8 +1119,10 @@
 
 <script>
   const SHEET_URL = 'https://script.google.com/macros/s/AKfycby3MbXrL6y2nhop1FzhhYnPBFQFunkADT5r3xwhGll972h_SbS-r_eOcCFBJsaHwM30/exec';
-  const GOAL        = 180000;
-  const SNAPSCAN_URL = 'https://pos.snapscan.io/qr/bbn5zRjJ';
+  const GOAL         = 180000;
+  const SNAPSCAN_URL  = 'https://pos.snapscan.io/qr/bbn5zRjJ';
+  const DEADLINE_DATE = '30 April 2026';
+  const PHASE_NAME    = 'Pickleball Court';
   let raised = 0, donors = 0;
 
   async function fetchProgress() {
@@ -1363,6 +1365,12 @@
     const el = document.getElementById('daysLeft');
     if (el) el.textContent = Math.max(0, diff);
   });
+
+  // Populate deadline pill from constants
+  (function() {
+    const el = document.getElementById('deadlineText');
+    if (el) el.textContent = DEADLINE_DATE + ' · ' + PHASE_NAME;
+  })();
 </script>
 </body>
 </html>
