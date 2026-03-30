@@ -487,7 +487,6 @@
       <li><a href="#vision">The Vision</a></li>
       <li><a href="#phases">Phases</a></li>
       <li><a href="#donate-section">Donate</a></li>
-      <li><a href="#stay-updated">Updates</a></li>
       <li><a href="#location">Find Us</a></li>
       <li><a href="#shop">Shop</a></li>
       <li><a href="#share">Share</a></li>
@@ -506,7 +505,6 @@
     <a href="#vision" onclick="closeMobileMenu()">The Vision</a>
     <a href="#phases" onclick="closeMobileMenu()">Phases</a>
     <a href="#donate-section" onclick="closeMobileMenu()">Donate</a>
-    <a href="#stay-updated" onclick="closeMobileMenu()">Updates</a>
     <a href="#location" onclick="closeMobileMenu()">Find Us</a>
     <a href="#shop" onclick="closeMobileMenu()">Shop</a>
     <a href="#share" onclick="closeMobileMenu()">Share</a>
@@ -943,19 +941,6 @@
 
 
 <!-- STAY UPDATED SECTION -->
-<section id="stay-updated" style="padding:80px 24px; background:#fff; border-top:1px solid #eee;">
-  <div style="max-width:700px; margin:0 auto; text-align:center;">
-    <p style="font-size:0.78rem;text-transform:uppercase;letter-spacing:0.12em;color:var(--teal);font-weight:600;margin-bottom:10px;">Stay in the Loop</p>
-    <h2 style="font-family:'Playfair Display',serif;font-size:2rem;color:var(--charcoal);margin-bottom:14px;">Get Project Updates</h2>
-    <p style="font-size:0.97rem;color:var(--warm-gray);line-height:1.8;max-width:560px;margin:0 auto 32px;">
-      Leave your details and we'll keep you posted on construction milestones, fundraising progress, and how to get involved. No spam — only updates that matter.
-    </p>
-    <button onclick="openContactModal()" style="background:var(--teal);color:#fff;border:none;padding:16px 40px;border-radius:12px;font-size:1rem;font-weight:700;cursor:pointer;letter-spacing:0.05em;text-transform:uppercase;box-shadow:0 8px 24px rgba(42,138,126,0.3);transition:transform 0.15s;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform=''">
-      📬 Keep Me Updated
-    </button>
-    <p style="font-size:0.75rem;color:#aaa;margin-top:16px;">Protected under POPI Act 4 of 2013 · Unsubscribe at any time</p>
-  </div>
-</section>
 
 <section id="vida-church" style="padding:64px 24px; background:#f0f8f7; border-top:1px solid #c8e6e3;">
   <div style="max-width:860px; margin:0 auto; text-align:center;">
@@ -1041,52 +1026,6 @@
 
 
 <!-- CONTACT / STAY UPDATED MODAL (POPI Compliant) -->
-<div class="modal-overlay" id="contactModal" onclick="if(event.target===this)closeContactModal()">
-  <div class="modal" style="max-width:520px;">
-    <button class="modal-close" onclick="closeContactModal()">✕</button>
-    <div id="contactFormInner">
-      <h2 style="font-family:'Playfair Display',serif;margin-bottom:4px;">Stay Updated</h2>
-      <p class="sub">Get notified on construction milestones and how to get involved.</p>
-      <div class="inp-row">
-        <label>First Name *</label>
-        <input type="text" id="cf_first" placeholder="e.g. Sarah" autocomplete="given-name">
-      </div>
-      <div class="inp-row">
-        <label>Last Name *</label>
-        <input type="text" id="cf_last" placeholder="e.g. Joubert" autocomplete="family-name">
-      </div>
-      <div class="inp-row">
-        <label>Email Address *</label>
-        <input type="email" id="cf_email" placeholder="you@example.com" autocomplete="email">
-      </div>
-      <div style="background:#f7fbfa;border:1px solid #c8e6e3;border-radius:12px;padding:18px;margin:18px 0 14px;">
-        <label style="display:flex;align-items:flex-start;gap:12px;cursor:pointer;margin-bottom:0;">
-          <input type="checkbox" id="cf_optin" style="margin-top:3px;accent-color:var(--teal);width:18px;height:18px;flex-shrink:0;">
-          <span style="font-size:0.86rem;color:var(--charcoal);line-height:1.6;">
-            <strong>Yes, I want to receive project updates</strong><br>
-            I agree to receive occasional email updates about the Linden Youth Hub building project — including construction milestones, fundraising progress, and community events. I understand I can unsubscribe at any time.
-          </span>
-        </label>
-      </div>
-      <div style="background:#fff8e7;border:1px solid #f5c84a;border-radius:12px;padding:16px;margin-bottom:18px;">
-        <label style="display:flex;align-items:flex-start;gap:12px;cursor:pointer;margin-bottom:0;">
-          <input type="checkbox" id="cf_consent" style="margin-top:3px;accent-color:var(--teal);width:18px;height:18px;flex-shrink:0;" required>
-          <span style="font-size:0.83rem;color:#7a6000;line-height:1.6;">
-            <strong>⚠️ Data Consent (Required)</strong><br>
-            I acknowledge that my personal information (name and email) will be stored securely and used only in connection with the Linden Youth Hub project. This is in accordance with the <strong>Protection of Personal Information Act (POPI Act 4 of 2013)</strong>. My information will not be shared with third parties or used for unrelated purposes. I understand that I may request the deletion of my data at any time by emailing <a href="mailto:vidachurchsa@gmail.com" style="color:var(--teal);">vidachurchsa@gmail.com</a>.
-          </span>
-        </label>
-      </div>
-      <button id="contactSubmitBtn" onclick="submitContact()" style="width:100%;background:var(--teal);color:#fff;border:none;padding:15px;border-radius:12px;font-size:1rem;font-weight:700;cursor:pointer;text-transform:uppercase;letter-spacing:0.05em;">
-        Submit →
-      </button>
-      <p style="font-size:0.72rem;color:#aaa;text-align:center;margin-top:12px;line-height:1.6;">
-        Protected under POPI Act 4 of 2013. You may opt out or request data deletion at any time.<br>
-        Data controller: Linden Youth Hub / Vida Church · <a href="mailto:vidachurchsa@gmail.com" class="__cf_email__" data-cfemail="6e070008012e18070a0f0d061b1c0d06400d0140140f">[email&#160;protected]</a>
-      </p>
-    </div>
-  </div>
-</div>
 
 <!-- INTL MODAL -->
 <div id="intlModal" class="modal-overlay" onclick="if(event.target===this)closeIntlModal()">
@@ -1172,16 +1111,6 @@
   function closeModalOnBg(e){ if(e.target===document.getElementById('donateModal')) closeModal(); }
   function openIntlModal()  { document.getElementById('intlModal').classList.add('open'); document.body.style.overflow='hidden'; }
   function closeIntlModal() { document.getElementById('intlModal').classList.remove('open'); document.body.style.overflow=''; }
-  function openContactModal()  { document.getElementById('contactModal').classList.add('open'); document.body.style.overflow='hidden'; }
-  function closeContactModal() { document.getElementById('contactModal').classList.remove('open'); document.body.style.overflow=''; }
-
-  let selAmt = null;
-  function selectAmt(btn, val){
-    document.querySelectorAll('.amt-btn').forEach(b=>b.classList.remove('sel'));
-    btn.classList.add('sel');
-    document.getElementById('customRow').style.display = val==='custom'?'block':'none';
-    selAmt = val==='custom' ? null : val;
-  }
 
   document.addEventListener('input', e=>{
     if(e.target.id==='donorName'){
@@ -1222,36 +1151,6 @@
     setTimeout(fetchProgress, 1500);
   }
 
-  async function submitContact(){
-    const firstName = document.getElementById('cf_first')?.value?.trim() || '';
-    const lastName  = document.getElementById('cf_last')?.value?.trim()  || '';
-    const email     = document.getElementById('cf_email')?.value?.trim() || '';
-    const optIn     = document.getElementById('cf_optin')?.checked       || false;
-    const consent   = document.getElementById('cf_consent')?.checked     || false;
-    const btn       = document.getElementById('contactSubmitBtn');
-
-    if(!firstName){ showToast('Please enter your first name.'); return; }
-    if(!email){ showToast('Please enter your email address.'); return; }
-    if(!consent){ showToast('Please accept the privacy terms to continue.'); return; }
-    if(btn){ btn.disabled=true; btn.textContent='Sending...'; }
-
-    try {
-      const p = new URLSearchParams();
-      p.append('action','contact');
-      p.append('firstName', firstName);
-      p.append('lastName',  lastName);
-      p.append('email',     email);
-      p.append('optIn',     optIn ? 'true' : 'false');
-      p.append('consentGiven', 'true');
-      const resp = await fetch(SHEET_URL + '?' + p.toString(), {cache:'no-store'});
-      const data = await resp.json();
-      if(data.success){
-        const inner = document.getElementById('contactFormInner');
-        if(inner) inner.innerHTML = '<div style="text-align:center;padding:32px 0"><div style="font-size:2.5rem">&#10004;</div><h3 style="color:#2a8a7e;margin:12px 0">You are on the list!</h3><p>Thank you ' + firstName + ', we will keep you updated on the Linden Youth Hub.</p></div>';
-      } else {
-        showToast('Something went wrong. Please try again.');
-        if(btn){ btn.disabled=false; btn.textContent='Stay Updated'; }
-      }
     } catch(err){
       showToast('Could not connect. Please try again.');
       if(btn){ btn.disabled=false; btn.textContent='Stay Updated'; }
