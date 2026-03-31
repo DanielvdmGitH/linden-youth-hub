@@ -36,8 +36,8 @@
   .nav-links { display:flex; gap:4px; list-style:none; }
   .nav-links a { text-decoration:none; font-size:0.78rem; font-weight:700; color:var(--warm-gray); padding:7px 12px; border-radius:8px; transition:color 0.2s,background 0.2s; letter-spacing:0.05em; text-transform:uppercase; }
   .nav-links a:hover { color:var(--teal); background:var(--teal-pale); }
-  .nav-cta { background:var(--teal)!important; color:#fff!important; border-radius:8px; }
-  .nav-cta:hover { background:var(--teal-dark)!important; }
+  .nav-cta { background:var(--teal)!important; color:#fff!important; border-radius:8px; box-shadow:0 0 12px rgba(42,138,126,0.5); letter-spacing:0.05em; }
+  .nav-cta:hover { background:var(--teal-dark)!important; box-shadow:0 0 20px rgba(42,138,126,0.8); transform:translateY(-1px); }
   @media(max-width:700px){.nav-links{display:none;}}
 
   /* ── HERO – full-bleed vision render ── */
@@ -486,9 +486,8 @@
       <li><a href="#story">Our Story</a></li>
       <li><a href="#vision">The Vision</a></li>
       <li><a href="#phases">Phases</a></li>
-      <li><a href="#donate-section">Donate</a></li>
-      <li><a href="#stay-updated">Updates</a></li>
-      <li><a href="#location">Find Us</a></li>
+      <li><a href="#donate-section" class="nav-cta">Donate</a></li>
+            <li><a href="#location">Find Us</a></li>
       <li><a href="#shop">Shop</a></li>
       <li><a href="#share">Share</a></li>
     </ul>
@@ -505,9 +504,8 @@
     <a href="#story" onclick="closeMobileMenu()">Our Story</a>
     <a href="#vision" onclick="closeMobileMenu()">The Vision</a>
     <a href="#phases" onclick="closeMobileMenu()">Phases</a>
-    <a href="#donate-section" onclick="closeMobileMenu()">Donate</a>
-    <a href="#stay-updated" onclick="closeMobileMenu()">Updates</a>
-    <a href="#location" onclick="closeMobileMenu()">Find Us</a>
+    <a href="#donate-section" onclick="closeMobileMenu()" class="nav-cta" style="border-radius:8px;padding:6px 14px;">Donate</a>
+        <a href="#location" onclick="closeMobileMenu()">Find Us</a>
     <a href="#shop" onclick="closeMobileMenu()">Shop</a>
     <a href="#share" onclick="closeMobileMenu()">Share</a>
   </div>
