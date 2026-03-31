@@ -470,11 +470,11 @@
     <span>🏸 Phase 1: Pickleball Court · Target R180,000 · Deadline April 2026</span>
     <span>📍 42 7th Street, Linden, Johannesburg · Building for the next generation</span>
     <span>💚 Every rand invested here stays in this community</span>
-    <span>🌍 International contributors welcome · Card payments available</span>
+    <span>💳 Credit/Debit Card (SnapScan) contributors welcome · Card payments available</span>
     <span>🏸 Phase 1: Pickleball Court · Target R180,000 · Deadline April 2026</span>
     <span>📍 42 7th Street, Linden, Johannesburg · Building for the next generation</span>
     <span>💚 Every rand invested here stays in this community</span>
-    <span>🌍 International contributors welcome · Card payments available</span>
+    <span>💳 Credit/Debit Card (SnapScan) contributors welcome · Card payments available</span>
   </div>
 </div>
 
@@ -548,9 +548,9 @@
       </div>
       <div class="deadline-pill" id="deadlinePill">⏰ Deadline: <span id="deadlineText"></span></div>
       <div class="donate-row">
-        <button class="btn-primary" onclick="openModal()">💚 Donate via EFT (SA)</button>
-        <a class="btn-intl" href="https://pos.snapscan.io/qr/bbn5zRjJ" target="_blank" rel="noopener" style="display:flex;align-items:center;justify-content:center;text-decoration:none;">🌍 International / Card Payment</a>
-      </div>
+          <button class="btn-primary" onclick="openIntlModal()">💳 Credit/Debit Card (SnapScan)</button>
+          <button class="btn-secondary" onclick="openModal()">🏦 Bank Transfer</button>
+        </div>
     </div>
   </div>
 </div>
@@ -728,7 +728,7 @@
       </div>
       <div class="donate-card">
         <div class="donate-card-icon">🌍</div>
-        <h3>International / Card Payment</h3>
+        <h3>Credit/Debit Card (SnapScan)</h3>
         <p>Outside South Africa, or prefer to pay by card? Use our secure online payment link. All major cards accepted — your contribution converts to rands and goes directly to the build fund.</p>
         <div class="intl-placeholder">
           <p>🔐 Secure card payment · SnapScan &amp; major cards accepted</p>
@@ -1094,7 +1094,7 @@
 <div id="intlModal" class="modal-overlay" onclick="if(event.target===this)closeIntlModal()">
   <div class="modal-box">
     <button class="modal-close" onclick="closeIntlModal()">✕</button>
-    <h2>🌍 International Donation</h2>
+    <h2>💳 Credit/Debit Card (SnapScan) Donation</h2>
     <p style="margin-bottom:1rem;color:var(--text-muted)">You can donate directly via international bank transfer using the details below. All amounts welcome — every rand (or equivalent) counts!</p>
 
     <div class="bank-detail-block" style="background:var(--card-bg);border-radius:12px;padding:1.2rem;margin-bottom:1rem;">
