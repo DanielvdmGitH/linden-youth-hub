@@ -88,6 +88,47 @@
     text-align:center;
   }
   
+  
+  .hero-logo-lockup {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    animation: fadeUp 0.6s 0.1s ease both;
+    margin-bottom: 8px;
+  }
+  .hero-logo-wordmark {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    width: 100%;
+    max-width: 700px;
+  }
+  .hero-logo-line {
+    flex: 1;
+    height: 4px;
+    background: #fff;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.3);
+  }
+  .hero-logo-text {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(3.8rem, 11vw, 8.5rem);
+    color: #fff;
+    line-height: 0.85;
+    letter-spacing: 0.06em;
+    text-shadow: 0 4px 32px rgba(0,0,0,0.4);
+    padding: 0 8px;
+    white-space: nowrap;
+  }
+  .hero-logo-sub {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(2.2rem, 6vw, 4.5rem);
+    color: rgba(255,255,255,0.85);
+    letter-spacing: 0.12em;
+    text-shadow: 0 2px 16px rgba(0,0,0,0.4);
+    line-height: 1;
+  }
+
   .hero-scripture {
     color: rgba(255,255,255,0.75);
     font-size: 0.78rem;
@@ -544,7 +585,14 @@
   <div class="hero-overlay"></div>
   <div class="hero-content">
     <div class="hero-eyebrow">✦ Linden Community Building Fund — Johannesburg, SA</div>
-    <h1>THE <em>Stand</em><br>@ Linden</h1>
+    <div class="hero-logo-lockup">
+      <div class="hero-logo-wordmark">
+        <div class="hero-logo-line"></div>
+        <span class="hero-logo-text">THE STAND</span>
+        <div class="hero-logo-line"></div>
+      </div>
+      <div class="hero-logo-sub">@ Linden</div>
+    </div>
     <p class="hero-scripture">— Matthew 5:15 — "Put it on its stand, and it gives light to everyone in the house."</p>
     <a class="hero-address" href="https://maps.google.com/?q=42+7th+Street+Linden+Randburg+Johannesburg+2104+South+Africa" target="_blank">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
