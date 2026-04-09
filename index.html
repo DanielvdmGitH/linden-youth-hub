@@ -3,13 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="canonical" href="https://www.lindenyouthhub.co.za">     <!-- SEO & Social Sharing -->     <meta name="description" content="Help us build youth facilities in Linden, Johannesburg. Phase 1: a Pickleball court for our kids. R180,000 goal by 30 April 2026. Every rand counts.">     <meta property="og:title" content="Help Us Build a Youth Hub in Linden 🙏">     <meta property="og:description" content="We're raising R180,000 to build a Pickleball court for the youth of Linden, Johannesburg. Phase 1 ('+PHASE_NAME+') closes '+DEADLINE_DATE+'. Please share and give.">     <meta property="og:url" content="https://www.lindenyouthhub.co.za">     <meta property="og:type" content="website">     <meta property="og:image" content="https://raw.githubusercontent.com/DanielvdmGitH/linden-youth-hub/main/images/vision-render-2.jpg">     <meta name="twitter:card" content="summary_large_image">     <meta name="twitter:title" content="Help Us Build a Youth Hub in Linden 🙏">     <meta name="twitter:description" content="We're raising R180,000 to build a Pickleball court for the youth of Linden, Johannesburg. Phase 1 closes 30 April 2026.">     <meta name="twitter:image" content="https://raw.githubusercontent.com/DanielvdmGitH/linden-youth-hub/main/images/vision-render-2.jpg">
-<title>Linden Youth Hub – Building Fund</title>
+    <link rel="canonical" href="https://www.thestandlinden.co.za">     <!-- SEO & Social Sharing -->     <meta name="description" content="Help us build youth facilities in Linden, Johannesburg. Phase 1: a Pickleball court for our kids. R180,000 goal by 30 April 2026. Every rand counts.">     <meta property="og:title" content="The Stand @ Linden">     <meta property="og:description" content="We're raising R180,000 to build a Pickleball court for the youth of Linden, Johannesburg. Phase 1 ('+PHASE_NAME+') closes '+DEADLINE_DATE+'. Please share and give.">     <meta property="og:url" content="https://www.thestandlinden.co.za">     <meta property="og:type" content="website">     <meta property="og:image" content="https://raw.githubusercontent.com/DanielvdmGitH/linden-youth-hub/main/images/vision-render-2.jpg">     <meta name="twitter:card" content="summary_large_image">     <meta name="twitter:title" content="Help Us Build a The Stand in Linden ð">     <meta name="twitter:description" content="We're raising R180,000 to build a Pickleball court for the youth of Linden, Johannesburg. Phase 1 closes 30 April 2026.">     <meta name="twitter:image" content="https://raw.githubusercontent.com/DanielvdmGitH/linden-youth-hub/main/images/vision-render-2.jpg">
+<title>The Stand @ Linden · Building Fund</title>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,300&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
 <style>
   :root {
-    --teal: #0a7a6a;
-    --teal-dark: #4a7a6e;
+    --teal: #1a8a78;
+    --teal-dark: #157a6a;
     --teal-light: #5aaa96;
     --teal-pale: #e4f2ef;
     --cream: #f8faf9;
@@ -31,6 +31,19 @@
   /* NAV */
   nav { position:sticky; top:0; z-index:100; background:rgba(255,255,255,0.96); backdrop-filter:blur(12px); border-bottom:1px solid rgba(42,138,126,0.12); padding:0 24px; }
   .nav-inner { max-width:1200px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; height:62px; }
+  
+  .stand-logo {
+    font-family: 'Bebas Neue', 'Arial Black', sans-serif;
+    font-size: 1.4rem;
+    font-weight: 900;
+    letter-spacing: 0.1em;
+    color: var(--teal);
+    display: inline-block;
+    padding: 0 4px;
+    border-top: 2.5px solid var(--teal);
+    border-bottom: 2.5px solid var(--teal);
+  }
+
   .nav-logo { font-family:'Bebas Neue',sans-serif; font-size:1.5rem; color:var(--teal-dark); letter-spacing:0.04em; }
   .nav-logo span { color:var(--gold); }
   .nav-links { display:flex; gap:4px; list-style:none; }
@@ -40,7 +53,7 @@
   .nav-cta:hover { background:var(--teal-dark)!important; box-shadow:0 0 20px rgba(42,138,126,0.8); transform:translateY(-1px); }
   @media(max-width:700px){.nav-links{display:none;}}
 
-  /* ── HERO – full-bleed vision render ── */
+  /* ââ HERO â full-bleed vision render ââ */
   .hero {
     position:relative;
     min-height:100vh;
@@ -73,6 +86,17 @@
     display:flex; flex-direction:column; align-items:center;
     text-align:center;
   }
+  
+  .hero-scripture {
+    color: rgba(255,255,255,0.75);
+    font-size: 0.78rem;
+    font-style: italic;
+    letter-spacing: 0.04em;
+    margin: 12px 0 20px;
+    max-width: 500px;
+    animation: fadeUp 0.7s ease both;
+  }
+
   .hero-eyebrow {
     display:inline-block;
     background:rgba(255,255,255,0.15);
@@ -331,7 +355,7 @@
   @keyframes fadeUp { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
   @keyframes modalIn { from{opacity:0;transform:scale(0.94) translateY(14px)} to{opacity:1;transform:scale(1) translateY(0)} }
 
-  /* ══ SHOP SECTION ══ */
+  /* ââ SHOP SECTION ââ */
   .shop-section { padding:80px 24px; background:var(--cream); border-top:1px solid #e8e0d8; }
   .shop-inner { max-width:1100px; margin:0 auto; }
   .shop-header { text-align:center; margin-bottom:56px; }
@@ -381,7 +405,7 @@
   .payment-coming strong { color:var(--gold); }
 
   
-  /* ── MOBILE NAV ── */
+  /* ââ MOBILE NAV ââ */
   .hamburger {
     display: none;
     flex-direction: column;
@@ -467,23 +491,21 @@
 <!-- TICKER -->
 <div class="ticker-bar">
   <div class="ticker-inner">
-    <span>🏸 Phase 1: Pickleball Court · Target R180,000 · Deadline April 2026</span>
-    <span>📍 42 7th Street, Linden, Johannesburg · Building for the next generation</span>
-    <span>💚 Every rand invested here stays in this community</span>
-    <span>💳 Credit/Debit Card (SnapScan) contributors welcome · Card payments available</span>
-    <span>🏸 Phase 1: Pickleball Court · Target R180,000 · Deadline April 2026</span>
-    <span>📍 42 7th Street, Linden, Johannesburg · Building for the next generation</span>
-    <span>💚 Every rand invested here stays in this community</span>
-    <span>💳 Credit/Debit Card (SnapScan) contributors welcome · Card payments available</span>
+    <span>ð¸ Phase 1: Pickleball Court Â· Target R180,000 Â· Deadline April 2026</span>
+    <span>ð 42 7th Street, Linden, Johannesburg Â· Building for the next generation</span>
+    <span>ð Every rand invested here stays in this community</span>
+    <span>ð³ Credit/Debit Card (SnapScan) contributors welcome Â· Card payments available</span>
+    <span>ð¸ Phase 1: Pickleball Court Â· Target R180,000 Â· Deadline April 2026</span>
+    <span>ð 42 7th Street, Linden, Johannesburg Â· Building for the next generation</span>
+    <span>ð Every rand invested here stays in this community</span>
+    <span>ð³ Credit/Debit Card (SnapScan) contributors welcome Â· Card payments available</span>
   </div>
 </div>
 
 <!-- NAV -->
 <nav>
   <div class="nav-inner">
-    <div class="nav-logo">Praying <span>For a</span> Name<iv>
-    <ul class="nav-links">
-      <li><a href="#story">Our Story</a></li>
+    <div class="nav-logo"><span style="font-family:'Arial Black',sans-serif;font-weight:900;letter-spacing:0.08em;color:var(--teal);border-top:2.5px solid var(--teal);border-bottom:2.5px solid var(--teal);padding:2px 0;">THE STAND</span></a></li>
       <li><a href="#vision">The Vision</a></li>
       <li><a href="#phases">Phases</a></li>
       <li><a href="#donate-section" class="nav-cta">Donate</a></li>
@@ -500,7 +522,7 @@
 <!-- MOBILE MENU DRAWER -->
 <div class="mobile-menu" id="mobileMenu" onclick="closeMobileMenuOnBg(event)">
   <div class="mobile-menu-drawer">
-    <button class="mobile-menu-close" onclick="closeMobileMenu()">✕</button>
+    <button class="mobile-menu-close" onclick="closeMobileMenu()">â</button>
     <a href="#story" onclick="closeMobileMenu()">Our Story</a>
     <a href="#vision" onclick="closeMobileMenu()">The Vision</a>
     <a href="#phases" onclick="closeMobileMenu()">Phases</a>
@@ -511,13 +533,14 @@
   </div>
 </div>
 
-<!-- ══ HERO ══ -->
+<!-- ââ HERO ââ -->
 <div class="hero">
   <div class="hero-bg"></div>
   <div class="hero-overlay"></div>
   <div class="hero-content">
-    <div class="hero-eyebrow">🌍 Linden Community Building Fund · Johannesburg, SA</div>
-    <h1>BUILD THE<br><em>Future</em><br>Together</h1>
+    <div class="hero-eyebrow">✦ Linden Community Building Fund · Johannesburg, SA</div>
+    <h1>THE<br><em>Stand</em><br>@ Linden</h1>
+    <p class="hero-scripture">— Matthew 5:15 · "Put it on its stand, and it gives light to everyone in the house."</p>
     <a class="hero-address" href="https://maps.google.com/?q=42+7th+Street+Linden+Randburg+Johannesburg+2104+South+Africa" target="_blank">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
       42 7th Street, Linden, Randburg, Johannesburg, 2104
@@ -538,52 +561,52 @@
         </div>
       </div>
       <div class="pbar-wrap"><div class="pbar-fill" id="progressBar"></div></div>
-      <div class="pbar-pct"><span id="pct">0</span>% funded · Phase 1</div>
+      <div class="pbar-pct"><span id="pct">0</span>% funded Â· Phase 1</div>
       <div class="progress-stats">
-        <div class="pstat"><div class="pstat-val" id="daysLeft">—</div><div class="pstat-lbl">Days Left</div></div>
+        <div class="pstat"><div class="pstat-val" id="daysLeft">â</div><div class="pstat-lbl">Days Left</div></div>
         <div class="pstat"><div class="pstat-val" id="stillNeeded">R180,000</div><div class="pstat-lbl">Still Needed</div></div>
         <div class="pstat"><div class="pstat-val">30 Apr 2026</div><div class="pstat-lbl">Deadline</div></div>
       </div>
-      <div class="deadline-pill" id="deadlinePill">⏰ Deadline: <span id="deadlineText"></span></div>
+      <div class="deadline-pill" id="deadlinePill">â° Deadline: <span id="deadlineText"></span></div>
       <div class="donate-row">
-          <a class="btn-primary" href="https://pos.snapscan.io/qr/bbn5zRjJ" target="_blank" rel="noopener" style="display:flex;align-items:center;justify-content:center;text-decoration:none;">💳 Credit/Debit Card (SnapScan)</a>
-          <button class="btn-intl" onclick="openModal()">🏦 Bank Transfer</button>
+          <a class="btn-primary" href="https://pos.snapscan.io/qr/bbn5zRjJ" target="_blank" rel="noopener" style="display:flex;align-items:center;justify-content:center;text-decoration:none;">ð³ Credit/Debit Card (SnapScan)</a>
+          <button class="btn-intl" onclick="openModal()">ð¦ Bank Transfer</button>
         </div>
     </div>
   </div>
 </div>
 
-<!-- ══ VISION SHOWCASE ══ -->
+<!-- ââ VISION SHOWCASE ââ -->
 <section class="vision-section" id="vision">
-  <img class="vision-hero-img" src="https://raw.githubusercontent.com/DanielvdmGitH/linden-youth-hub/main/images/vision-render-2.jpg" alt="Linden Youth Hub vision render — coffee shop, courts and community spaces">
+  <img class="vision-hero-img" src="https://raw.githubusercontent.com/DanielvdmGitH/linden-youth-hub/main/images/vision-render-2.jpg" alt="The Stand vision render â coffee shop, courts and community spaces">
   <div class="vision-split">
     <div class="vision-img-wrap">
-      <img src="https://raw.githubusercontent.com/DanielvdmGitH/linden-youth-hub/main/images/vision-render-3.jpg" alt="Linden Youth Hub — outdoor courts and community hub vision">
+      <img src="https://raw.githubusercontent.com/DanielvdmGitH/linden-youth-hub/main/images/vision-render-3.jpg" alt="The Stand â outdoor courts and community hub vision">
       <div class="vision-img-caption">
         <h3>The Full Vision</h3>
-        <p>Multi-sport courts · Community spaces · Youth coffee hub · Prayer centre</p>
+        <p>Multi-sport courts Â· Community spaces Â· Youth coffee hub Â· Prayer centre</p>
       </div>
     </div>
     <div class="vision-text-panel">
-      <div class="lbl">The Linden Youth Hub</div>
+      <div class="lbl">The The Stand</div>
       <h2>This is what your contribution is building</h2>
-      <p>These renders show the complete vision for 42 7th Street, Linden — a world-class youth facility in the heart of our neighbourhood. Pickleball and volleyball courts, a youth coffee hub, multi-purpose indoor spaces, and a prayer centre.</p>
+      <p>These renders show the complete vision for 42 7th Street, Linden â a world-class youth facility in the heart of our neighbourhood. Pickleball and volleyball courts, a youth coffee hub, multi-purpose indoor spaces, and a prayer centre.</p>
       <div class="vision-quote">
-        <p>"This is not just a building — it’s a declaration. We believe in the next generation of Linden. Every rand raised, every court laid, every space created here is a gift from this community to its youth. Not tied to any one church or congregation. Built by Linden, for Linden."</p>
-        <cite>— Pastor Hendrik Van Deventer, Founding Pastor, Vida Church Linden</cite>
+        <p>"This is not just a building â itâs a declaration. We believe in the next generation of Linden. Every rand raised, every court laid, every space created here is a gift from this community to its youth. Not tied to any one church or congregation. Built by Linden, for Linden."</p>
+        <cite>â Pastor Hendrik Van Deventer, Founding Pastor, Vida Church Linden</cite>
       </div>
-      <p>Phase 1 — the pickleball court — is where it all starts. We need R180,000 by April 2026. Every rand contributed is a step closer to this becoming real.</p>
+      <p>Phase 1 â the pickleball court â is where it all starts. We need R180,000 by April 2026. Every rand contributed is a step closer to this becoming real.</p>
     </div>
   </div>
 </section>
 
-<!-- ══ STORY + VIDEO ══ -->
+<!-- ââ STORY + VIDEO ââ -->
 <section class="story-section" id="story">
   <div class="story-inner">
     <div class="video-wrap">
       <div style="position:relative;padding-bottom:177%;height:0;overflow:hidden;border-radius:16px;background:#000;">
   <iframe src="https://www.youtube.com/embed/_6oxmKzXRHA?rel=0&modestbranding=1&playsinline=1"
-    title="Vida Building Project — Pastor Hendrik Van Deventer"
+    title="Vida Building Project â Pastor Hendrik Van Deventer"
     frameborder="0"
     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
     allowfullscreen
@@ -592,33 +615,33 @@
 </div>
 <a href="https://www.instagram.com/reel/DJALfEjIWRQ/" target="_blank" rel="noopener"
    style="display:inline-flex;align-items:center;gap:8px;margin-top:12px;font-size:0.85rem;color:var(--teal);text-decoration:none;font-weight:600;">
-  <span style="font-size:1.1rem;">📸</span> Also on @vidachurchsa Instagram
+  <span style="font-size:1.1rem;">ð¸</span> Also on @vidachurchsa Instagram
 </a>
-      <div class="video-badge">📍 Filmed on site · 42 7th Street, Linden</div>
+      <div class="video-badge">ð Filmed on site Â· 42 7th Street, Linden</div>
     </div>
     <div>
       <div class="story-lbl">Hear The Vision</div>
       <h2 class="story-h2">Standing on the ground where it all begins</h2>
-      <p class="story-p"><p class="story-p">In this video, Pastor Hendrik Van Deventer — founding pastor of Vida Church Linden — stands on the actual property at 42 7th Street and shares his heart for the Linden Youth Hub. Hendrik, along with Rudolph Wiggett and other community volunteers, is driving this initiative. The Linden Youth Hub is not a church project — it is a community initiative, open to all. Contributions go directly to the build fund, ring-fenced for the specific phase underway. <strong>Phase 1: the pickleball court.</strong></p>
+      <p class="story-p"><p class="story-p">In this video, Pastor Hendrik Van Deventer â founding pastor of Vida Church Linden â stands on the actual property at 42 7th Street and shares his heart for the The Stand. Hendrik, along with Rudolph Wiggett and other community volunteers, is driving this initiative. The The Stand is not a church project â it is a community initiative, open to all. Contributions go directly to the build fund, ring-fenced for the specific phase underway. <strong>Phase 1: the pickleball court.</strong></p>
       <div class="quote-block">
-        <p>"We saw a property and we saw possibility. Not what it is — but what it could become for an entire generation of young people in Linden."</p>
-        <cite>— Pastor Hendrik Van Deventer, Vida Church Linden</cite>
+        <p>"We saw a property and we saw possibility. Not what it is â but what it could become for an entire generation of young people in Linden."</p>
+        <cite>â Pastor Hendrik Van Deventer, Vida Church Linden</cite>
       </div>
       <p class="story-p">The garden behind him in the video is the very space where the pickleball court will be built. Watch the full video to hear the story, the vision, and exactly why this matters for Linden.</p>
     </div>
   </div>
 </section>
 
-<!-- ══ PHOTO GALLERY ══ -->
+<!-- ââ PHOTO GALLERY ââ -->
 <section class="gallery-section" id="photos">
   <div class="gallery-inner">
-    <div class="section-label">The Property — As It Is Today</div>
+    <div class="section-label">The Property â As It Is Today</div>
     <h2 class="section-title">The site. The people. The beginning.</h2>
-    <p class="section-body">These stills were captured from the original vision video — Pastor Hendrik Van Deventer on the actual property at 42 7th Street, Linden. This is the ground we are building on.</p>
+    <p class="section-body">These stills were captured from the original vision video â Pastor Hendrik Van Deventer on the actual property at 42 7th Street, Linden. This is the ground we are building on.</p>
     <div class="photo-grid">
       <div class="photo-item wide">
         <img src="https://raw.githubusercontent.com/DanielvdmGitH/linden-youth-hub/main/images/frame-01.jpg" alt="Rudolph sharing the vision on site">
-        <div class="photo-caption"><span>The Vision — On Site</span></div>
+        <div class="photo-caption"><span>The Vision â On Site</span></div>
       </div>
       <div class="photo-item">
         <img src="https://raw.githubusercontent.com/DanielvdmGitH/linden-youth-hub/main/images/frame-02.jpg" alt="The property garden">
@@ -640,23 +663,23 @@
   </div>
 </section>
 
-<!-- ══ WHY GIVE ══ -->
+<!-- ââ WHY GIVE ââ -->
 <section class="why-section" id="why">
   <div class="why-inner">
     <div class="section-label">Why Your Contribution Matters</div>
     <h2 class="section-title">Money invested here stays<br>in this neighbourhood</h2>
     <div class="why-grid">
-      <div class="why-card"><div class="why-icon">🏸</div><h3>Immediate Impact</h3><p>Phase 1 delivers a pickleball court — a fast-growing sport accessible to all ages, right in the heart of Linden.</p></div>
-      <div class="why-card"><div class="why-icon">🧒</div><h3>Youth Off the Streets</h3><p>A safe, structured space gives local youth a place to belong and build healthy habits and community bonds.</p></div>
-      <div class="why-card"><div class="why-icon">🏪</div><h3>For Local Businesses</h3><p>Shopkeepers in Linden invest in the community they serve. Your customers' families benefit directly — and remember who helped.</p></div>
-      <div class="why-card"><div class="why-icon">🌍</div><h3>Global Community Welcome</h3><p>Family and friends outside South Africa can contribute too — card payments accepted internationally. Every dollar and pound counts.</p></div>
-      <div class="why-card"><div class="why-icon">📊</div><h3>Full Transparency</h3><p>Track every rand raised. Regular photo updates once building begins. You always know exactly what your money has built.</p></div>
-      <div class="why-card"><div class="why-icon">🙏</div><h3>Values-Driven, Community-Led</h3><p>The hub is built on values of service, dignity, and inclusion. Inspired by the Vida Church community, but open to all youth — regardless of faith, background, or belief.</p></div>
+      <div class="why-card"><div class="why-icon">ð¸</div><h3>Immediate Impact</h3><p>Phase 1 delivers a pickleball court â a fast-growing sport accessible to all ages, right in the heart of Linden.</p></div>
+      <div class="why-card"><div class="why-icon">ð§</div><h3>Youth Off the Streets</h3><p>A safe, structured space gives local youth a place to belong and build healthy habits and community bonds.</p></div>
+      <div class="why-card"><div class="why-icon">ðª</div><h3>For Local Businesses</h3><p>Shopkeepers in Linden invest in the community they serve. Your customers' families benefit directly â and remember who helped.</p></div>
+      <div class="why-card"><div class="why-icon">ð</div><h3>Global Community Welcome</h3><p>Family and friends outside South Africa can contribute too â card payments accepted internationally. Every dollar and pound counts.</p></div>
+      <div class="why-card"><div class="why-icon">ð</div><h3>Full Transparency</h3><p>Track every rand raised. Regular photo updates once building begins. You always know exactly what your money has built.</p></div>
+      <div class="why-card"><div class="why-icon">ð</div><h3>Values-Driven, Community-Led</h3><p>The hub is built on values of service, dignity, and inclusion. Inspired by the Vida Church community, but open to all youth â regardless of faith, background, or belief.</p></div>
     </div>
   </div>
 </section>
 
-<!-- ══ PHASES ══ -->
+<!-- ââ PHASES ââ -->
 <section id="phases">
   <div class="inner">
     <div class="section-label">Development Phases</div>
@@ -666,10 +689,10 @@
       <div class="t-item">
         <div class="t-dot on">1</div>
         <div class="t-body">
-          <span class="t-badge now">🔥 Active — Fundraising Now</span>
+          <span class="t-badge now">ð¥ Active â Fundraising Now</span>
           <h3>Pickleball Court &amp; Lights</h3>
           <p>Pickleball court with fencing, net, court markings, and lights.</p>
-          <div class="t-amount">R180,000 <span>· Target by April 2026</span></div>
+          <div class="t-amount">R180,000 <span>Â· Target by April 2026</span></div>
         </div>
       </div>
       <div class="t-item">
@@ -678,7 +701,7 @@
           <span class="t-badge next">Coming Next</span>
           <h3>Boundary Wall, Driveway &amp; Gates</h3>
           <p>Front boundary wall demolition and reconstruction, driveway circle, automated gates, and preparation structure to enable interior renovation work.</p>
-          <div class="t-amount" style="color:rgba(255,255,255,0.25)">~R296,000 <span>· Phase 2</span></div>
+          <div class="t-amount" style="color:rgba(255,255,255,0.25)">~R296,000 <span>Â· Phase 2</span></div>
         </div>
       </div>
       <div class="t-item">
@@ -686,24 +709,24 @@
         <div class="t-body">
           <span class="t-badge next">Future</span>
           <h3>House Renovations &amp; Outdoor Paving</h3>
-          <p>Full interior renovation of the main house — offices, multipurpose spaces, bathrooms, and kitchen. Plus complete outdoor works including retaining wall, paving, and landscaping.</p>
-          <div class="t-amount" style="color:rgba(255,255,255,0.25)">~R1,065,000 <span>· Phase 3</span></div>
+          <p>Full interior renovation of the main house â offices, multipurpose spaces, bathrooms, and kitchen. Plus complete outdoor works including retaining wall, paving, and landscaping.</p>
+          <div class="t-amount" style="color:rgba(255,255,255,0.25)">~R1,065,000 <span>Â· Phase 3</span></div>
         </div>
       </div>
       <div class="t-item">
         <div class="t-dot off">4</div>
         <div class="t-body">
           <span class="t-badge next">Vision</span>
-          <h3>New 2-Storey Building — The Youth Hub</h3>
-          <p>The complete Linden Youth Hub — a brand-new 450sqm two-storey structure with youth coffee hub, prayer centre, community spaces, and second dwelling. Exactly as the renders show.</p>
-          <div class="t-amount" style="color:rgba(255,255,255,0.25)">~R8,150,000 <span>· Phase 4 · 2027+</span></div>
+          <h3>New 2-Storey Building â The The Stand</h3>
+          <p>The complete The Stand â a brand-new 450sqm two-storey structure with youth coffee hub, prayer centre, community spaces, and second dwelling. Exactly as the renders show.</p>
+          <div class="t-amount" style="color:rgba(255,255,255,0.25)">~R8,150,000 <span>Â· Phase 4 Â· 2027+</span></div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ══ DONATE / PAYMENT ══ -->
+<!-- ââ DONATE / PAYMENT ââ -->
 <section id="donate-section">
   <div class="inner">
     <div class="section-label">How to Contribute</div>
@@ -711,9 +734,9 @@
     <p class="section-body">South African contributors can do an instant EFT. Friends and family outside SA can pay by card via our secure international payment link.</p>
     <div class="donate-cards">
       <div class="donate-card">
-        <div class="donate-card-icon">🏦</div>
+        <div class="donate-card-icon">ð¦</div>
         <h3>South African EFT</h3>
-        <p>Make a direct EFT to the Linden Youth Hub Building Fund. Every contribution goes directly to Phase 1 — the pickleball court. Funds are ring-fenced and will not be used for any church operational costs. Use your name as reference so we can acknowledge your support.</p>
+        <p>Make a direct EFT to the The Stand Building Fund. Every contribution goes directly to Phase 1 â the pickleball court. Funds are ring-fenced and will not be used for any church operational costs. Use your name as reference so we can acknowledge your support.</p>
         <table class="banking-table">
           <tr><td>Bank</td><td>INVESTEC</td></tr>
           <tr><td>Account Name</td><td>VIDA BUILDING FUND</td></tr>
@@ -725,43 +748,43 @@
         <button class="btn-primary" style="margin-top:20px;width:100%" onclick="openModal()">Log My EFT Pledge</button>
       </div>
       <div class="donate-card">
-        <div class="donate-card-icon">🌍</div>
+        <div class="donate-card-icon">ð</div>
         <h3>Credit/Debit Card (SnapScan)</h3>
-        <p>Outside South Africa, or prefer to pay by card? Use our secure online payment link. All major cards accepted — your contribution converts to rands and goes directly to the build fund.</p>
+        <p>Outside South Africa, or prefer to pay by card? Use our secure online payment link. All major cards accepted â your contribution converts to rands and goes directly to the build fund.</p>
         <div class="intl-placeholder">
-          <p>🔐 Secure card payment · SnapScan &amp; major cards accepted</p>
+          <p>ð Secure card payment Â· SnapScan &amp; major cards accepted</p>
           <div style="text-align:center;margin:16px 0 12px;">
             <a href="https://pos.snapscan.io/qr/bbn5zRjJ" target="_blank" rel="noopener">
               <img src="https://raw.githubusercontent.com/DanielvdmGitH/linden-youth-hub/main/images/snapscan-qr.jpg"
-                   alt="SnapScan QR code — scan to pay"
+                   alt="SnapScan QR code â scan to pay"
                    style="width:160px;height:auto;border-radius:12px;box-shadow:0 4px 16px rgba(0,0,0,0.15);">
             </a>
             <p style="font-size:0.75rem;color:rgba(255,255,255,0.5);margin-top:6px;">Scan with your banking app or SnapScan</p>
           </div>
-          <p style="font-size:0.78rem;color:var(--teal);margin-bottom:14px;">Scan to pay instantly, or click the button below. All major cards accepted — your contribution goes directly to the build fund.</p>
-          <a class="btn-intl-link" href="https://pos.snapscan.io/qr/bbn5zRjJ" target="_blank" rel="noopener" style="display:block;text-align:center;text-decoration:none;">💳 Pay by Card or SnapScan</a>
+          <p style="font-size:0.78rem;color:var(--teal);margin-bottom:14px;">Scan to pay instantly, or click the button below. All major cards accepted â your contribution goes directly to the build fund.</p>
+          <a class="btn-intl-link" href="https://pos.snapscan.io/qr/bbn5zRjJ" target="_blank" rel="noopener" style="display:block;text-align:center;text-decoration:none;">ð³ Pay by Card or SnapScan</a>
         </div>
-        <p class="ref-note">📌 Use your name + "LYHUB" as your payment reference so we can acknowledge your gift.</p>
+        <p class="ref-note">ð Use your name + "LYHUB" as your payment reference so we can acknowledge your gift.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ══ SHOP ══ -->
+<!-- ââ SHOP ââ -->
 <section class="shop-section" id="shop">
   <div class="shop-inner">
     <div class="shop-header">
-      <p class="lbl">🏸 Linden Youth Hub · Official Merchandise</p>
+      <p class="lbl">ð¸ The Stand Â· Official Merchandise</p>
       <h2>Wear the Vision</h2>
-      <p>Support the build and carry the message. Every shirt purchased goes directly toward the Linden Youth Hub. Contributors donating R1,000 or more receive a complimentary shirt.</p>
+      <p>Support the build and carry the message. Every shirt purchased goes directly toward the The Stand. Contributors donating R1,000 or more receive a complimentary shirt.</p>
     </div>
 
     <div class="shop-coming-soon">
       <!-- Product image -->
       <div class="shop-product-img">
-        <div class="shop-badge">⚡ Coming Soon</div>
+        <div class="shop-badge">â¡ Coming Soon</div>
         <div class="img-placeholder">
-          <span>👕</span>
+          <span>ð</span>
           <p>Official Design<br>Dropping Soon</p>
         </div>
       </div>
@@ -769,10 +792,10 @@
       <!-- Product details -->
       <div class="shop-details">
         <div>
-          <p style="font-size:0.72rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--teal);margin-bottom:6px;">Linden Youth Hub · Sports Tee</p>
-          <h3>Linden Youth Hub<br>Official Sports T-Shirt</h3>
+          <p style="font-size:0.72rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--teal);margin-bottom:6px;">The Stand Â· Sports Tee</p>
+          <h3>The Stand<br>Official Sports T-Shirt</h3>
         </div>
-        <p class="shop-desc">Dry-fit sports fabric in teal — featuring the Linden Youth Hub logo, a cross on the shoulder, and the campaign message on the back with QR code on the sleeve. Built for Linden, worn with purpose.</p>
+        <p class="shop-desc">Dry-fit sports fabric in teal â featuring the The Stand logo, a cross on the shoulder, and the campaign message on the back with QR code on the sleeve. Built for Linden, worn with purpose.</p>
 
         <div class="shop-price-row">
           <div class="shop-price">R<span id="shopPrice">TBC</span></div>
@@ -796,40 +819,40 @@
           <div>
             <div class="shop-option-label">Collection / Delivery</div>
             <div class="delivery-toggle">
-              <button class="delivery-btn selected" onclick="selectDelivery(this,'collect',0)">📍 Collect in Linden<br><small>Free</small></button>
-              <button class="delivery-btn" onclick="selectDelivery(this,'deliver',100)">🚚 Deliver to Me<br><small>+R100</small></button>
+              <button class="delivery-btn selected" onclick="selectDelivery(this,'collect',0)">ð Collect in Linden<br><small>Free</small></button>
+              <button class="delivery-btn" onclick="selectDelivery(this,'deliver',100)">ð Deliver to Me<br><small>+R100</small></button>
             </div>
-            <p class="delivery-note" id="deliveryNote">Collect from 42 7th Street, Linden — we'll contact you when ready</p>
+            <p class="delivery-note" id="deliveryNote">Collect from 42 7th Street, Linden â we'll contact you when ready</p>
           </div>
         </div>
 
         <div class="shop-perks">
-          <p>🎁 Donate R1,000 or more? <span>You receive a complimentary shirt — just let us know your size when donating.</span></p>
+          <p>ð Donate R1,000 or more? <span>You receive a complimentary shirt â just let us know your size when donating.</span></p>
         </div>
 
         <button class="shop-order-btn" onclick="openShopOrder()" id="shopOrderBtn">
-          🛒 Pre-Register Interest
+          ð Pre-Register Interest
         </button>
 
         <div class="payment-coming">
-          <strong>⚡ Online payment coming soon</strong> — SnapScan / card payment is being set up. Pre-register your interest now and we'll notify you the moment the shop goes live.
+          <strong>â¡ Online payment coming soon</strong> â SnapScan / card payment is being set up. Pre-register your interest now and we'll notify you the moment the shop goes live.
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ══ SHOP ORDER MODAL ══ -->
+<!-- ââ SHOP ORDER MODAL ââ -->
 <div class="modal-overlay" id="shopModal" onclick="if(event.target===this)closeShopModal()" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.6);z-index:1000;display:none;align-items:center;justify-content:center;padding:20px;">
   <div class="shop-modal">
-    <button onclick="closeShopModal()" style="position:absolute;top:16px;right:16px;background:none;border:none;font-size:1.4rem;cursor:pointer;color:#999;">✕</button>
-    <p style="font-size:0.7rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--teal);margin-bottom:4px;">Linden Youth Hub Shop</p>
+    <button onclick="closeShopModal()" style="position:absolute;top:16px;right:16px;background:none;border:none;font-size:1.4rem;cursor:pointer;color:#999;">â</button>
+    <p style="font-size:0.7rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--teal);margin-bottom:4px;">The Stand Shop</p>
     <h3>Pre-Register Your Interest</h3>
     <p style="font-size:0.85rem;color:var(--warm-gray);margin-bottom:4px;">We'll notify you as soon as online payment is live so you can secure your shirt.</p>
 
     <div class="order-summary">
       <div><span>Item</span><span>LYH Sports T-Shirt</span></div>
-      <div><span>Size</span><span id="modalSize">—</span></div>
+      <div><span>Size</span><span id="modalSize">â</span></div>
       <div><span>Delivery</span><span id="modalDelivery">Collect in Linden</span></div>
       <div class="total"><span>Est. Total</span><span id="modalTotal">TBC</span></div>
     </div>
@@ -844,11 +867,11 @@
       Keep me updated on the shop launch and campaign news
     </label>
 
-    <button class="shop-submit-btn" onclick="submitShopInterest()">✅ Register My Interest</button>
+    <button class="shop-submit-btn" onclick="submitShopInterest()">â Register My Interest</button>
   </div>
 </div>
 
-<!-- ══ LOCATION / MAP ══ -->
+<!-- ââ LOCATION / MAP ââ -->
 <section id="location">
   <div class="inner">
     <div class="map-embed">
@@ -861,24 +884,24 @@
       <div class="lbl">Find the Hub</div>
       <h2>Right in the heart of Linden</h2>
       <div class="address-detail">
-        <div class="icon">📍</div>
+        <div class="icon">ð</div>
         <div class="text">
           <strong>Physical Address</strong>
           <span>42 7th Street, Linden<br>Randburg, Johannesburg<br>2104, South Africa</span>
         </div>
       </div>
       <div class="address-detail">
-        <div class="icon">🏗️</div>
+        <div class="icon">ðï¸</div>
         <div class="text">
           <strong>Project Reference</strong>
-          <span>MZ2601 · Linden Erf 246 Renovation<br>Approved architectural plans: Sheet 1 of 3</span>
+          <span>MZ2601 Â· Linden Erf 246 Renovation<br>Approved architectural plans: Sheet 1 of 3</span>
         </div>
       </div>
       <div class="address-detail">
-        <div class="icon">🏛️</div>
+        <div class="icon">ðï¸</div>
         <div class="text">
           <strong>Fund Manager</strong>
-          <span>Vida Church Building Fund<br>INVESTEC · Branch 580105</span>
+          <span>Vida Church Building Fund<br>INVESTEC Â· Branch 580105</span>
         </div>
       </div>
       <a class="map-link" href="https://maps.google.com/?q=42+7th+Street+Linden+Randburg+Johannesburg+2104+South+Africa" target="_blank">
@@ -889,7 +912,7 @@
   </div>
 </section>
 
-<!-- ══ UPDATES ══ -->
+<!-- ââ UPDATES ââ -->
 <section id="updates">
   <div class="inner">
     <div class="section-label">Project Updates</div>
@@ -900,7 +923,7 @@
       <div class="upd-card">
         <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:14px 14px 0 0;background:#000;">
           <iframe src="https://www.youtube.com/embed/zkS-Nq-CoX4?rel=0&modestbranding=1&playsinline=1"
-            title="Linden Youth Hub — Building Plans"
+            title="The Stand â Building Plans"
             frameborder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowfullscreen
@@ -908,33 +931,33 @@
           </iframe>
         </div>
         <div class="upd-body">
-          <div class="upd-date">March 2026 · Update #2</div>
+          <div class="upd-date">March 2026 Â· Update #2</div>
           <h3>The Build Plans</h3>
-          <p>Watch the full architectural plans for the Linden Youth Hub — courts, spaces, and the complete site layout.</p>
+          <p>Watch the full architectural plans for the The Stand â courts, spaces, and the complete site layout.</p>
         </div>
       </div>
       <div class="upd-card">
-        <div class="upd-placeholder"><span>📸</span><p>Monthly Updates</p></div>
+        <div class="upd-placeholder"><span>ð¸</span><p>Monthly Updates</p></div>
         <div class="upd-body">
-          <div class="upd-date">Ongoing · Your Front Row Seat</div>
+          <div class="upd-date">Ongoing Â· Your Front Row Seat</div>
           <h3>Watch Your Investment Come to Life</h3>
-          <p>From the first shovel to the final line marking — construction updates will be documented here and on our community channels.</p>
+          <p>From the first shovel to the final line marking â construction updates will be documented here and on our community channels.</p>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ══ SHARE ══ -->
+<!-- ââ SHARE ââ -->
 <section id="share">
   <div class="inner">
     <div class="section-label">Spread the Word</div>
     <h2 class="section-title">Tell someone today</h2>
-    <p class="section-body">Our youth are visiting every business on 7th Street and beyond. Help amplify their work by sharing this page with your network — locally and internationally.</p>
+    <p class="section-body">Our youth are visiting every business on 7th Street and beyond. Help amplify their work by sharing this page with your network â locally and internationally.</p>
     <div class="share-row">
-      <a class="share-btn s-wa" href="#" onclick="(function(){const msg=encodeURIComponent('🙏 Help build a Youth Hub in Linden!\n\nWe need R'+GOAL.toLocaleString('en-ZA')+' for Phase 1 — a Pickleball court for our kids. Phase 1 closes 30 April 2026.\n\n👉 Donate via SnapScan: '+SNAPSCAN_URL+'\n\nEvery rand counts. Please share!\n\n'+window.location.href); window.open('https://wa.me/?text='+msg,'_blank');return false;})();return false;">📱 WhatsApp</a>
-      <button class="share-btn s-copy" onclick="copyLink()">🔗 Copy Link</button>
-      <a class="share-btn s-email" href="#" onclick="(function(){const subj=encodeURIComponent('Help Build a Youth Hub in Linden 🙏');const body=encodeURIComponent('Hi!\n\nI wanted to share something close to my heart.\n\nWe are raising R'+GOAL.toLocaleString('en-ZA')+' to build a Pickleball court for the youth of Linden, Johannesburg. Phase 1 closes 30 April 2026.\n\n👉 Donate via SnapScan: '+SNAPSCAN_URL+'\n\nPlease give what you can and share this with others!\n\n'+window.location.href);window.location.href='mailto:?subject='+subj+'&body='+body;})();return false;">✉️ Email</a>
+      <a class="share-btn s-wa" href="#" onclick="(function(){const msg=encodeURIComponent('ð Help build a The Stand in Linden!\n\nWe need R'+GOAL.toLocaleString('en-ZA')+' for Phase 1 â a Pickleball court for our kids. Phase 1 closes 30 April 2026.\n\nð Donate via SnapScan: '+SNAPSCAN_URL+'\n\nEvery rand counts. Please share!\n\n'+window.location.href); window.open('https://wa.me/?text='+msg,'_blank');return false;})();return false;">ð± WhatsApp</a>
+      <button class="share-btn s-copy" onclick="copyLink()">ð Copy Link</button>
+      <a class="share-btn s-email" href="#" onclick="(function(){const subj=encodeURIComponent('Help Build a The Stand in Linden ð');const body=encodeURIComponent('Hi!\n\nI wanted to share something close to my heart.\n\nWe are raising R'+GOAL.toLocaleString('en-ZA')+' to build a Pickleball court for the youth of Linden, Johannesburg. Phase 1 closes 30 April 2026.\n\nð Donate via SnapScan: '+SNAPSCAN_URL+'\n\nPlease give what you can and share this with others!\n\n'+window.location.href);window.location.href='mailto:?subject='+subj+'&body='+body;})();return false;">âï¸ Email</a>
     </div>
   </div>
 </section>
@@ -947,12 +970,12 @@
     <p style="font-size:0.78rem;text-transform:uppercase;letter-spacing:0.12em;color:var(--teal);font-weight:600;margin-bottom:10px;">Stay in the Loop</p>
     <h2 style="font-family:'Playfair Display',serif;font-size:2rem;color:var(--charcoal);margin-bottom:14px;">Get Project Updates</h2>
     <p style="font-size:0.97rem;color:var(--warm-gray);line-height:1.8;max-width:560px;margin:0 auto 32px;">
-      Leave your details and we'll keep you posted on construction milestones, fundraising progress, and how to get involved. No spam — only updates that matter.
+      Leave your details and we'll keep you posted on construction milestones, fundraising progress, and how to get involved. No spam â only updates that matter.
     </p>
     <button onclick="openContactModal()" style="background:var(--teal);color:#fff;border:none;padding:16px 40px;border-radius:12px;font-size:1rem;font-weight:700;cursor:pointer;letter-spacing:0.05em;text-transform:uppercase;box-shadow:0 8px 24px rgba(42,138,126,0.3);transition:transform 0.15s;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform=''">
-      📬 Keep Me Updated
+      ð¬ Keep Me Updated
     </button>
-    <p style="font-size:0.75rem;color:#aaa;margin-top:16px;">Protected under POPI Act 4 of 2013 · Unsubscribe at any time</p>
+    <p style="font-size:0.75rem;color:#aaa;margin-top:16px;">Protected under POPI Act 4 of 2013 Â· Unsubscribe at any time</p>
   </div>
 </section>
 
@@ -961,50 +984,50 @@
     <p style="font-size:0.78rem; text-transform:uppercase; letter-spacing:0.12em; color:var(--teal); font-weight:600; margin-bottom:10px;">About the Initiating Community</p>
     <h2 style="font-family:'Playfair Display',serif; font-size:1.9rem; color:var(--charcoal); margin-bottom:18px;">Vida Church Linden</h2>
     <p style="font-size:0.97rem; color:var(--warm-gray); line-height:1.8; max-width:680px; margin:0 auto 28px;">
-      The Linden Youth Hub was born from a vision within the Vida Church community — a Gospel-centred family rooted in Linden, Johannesburg. Vida's heartbeat, drawn from Zechariah 11:16, is to <em>"Care for the lost, Seek the Young, Heal the injured, Feed the Healthy."</em> The Youth Hub is a direct expression of that mission — serving the broader community of Linden, not any single congregation.
+      The The Stand was born from a vision within the Vida Church community â a Gospel-centred family rooted in Linden, Johannesburg. Vida's heartbeat, drawn from Zechariah 11:16, is to <em>"Care for the lost, Seek the Young, Heal the injured, Feed the Healthy."</em> The The Stand is a direct expression of that mission â serving the broader community of Linden, not any single congregation.
     </p>
     <p style="font-size:0.9rem; color:var(--warm-gray); line-height:1.8; max-width:680px; margin:0 auto 32px;">
-      Vida was founded in 2022 by Pastor Hendrik Van Deventer and his family, beginning with small gatherings in a living room in Linden. Today it gathers weekly at Pinnacle College, Linden. The name <em>Vida</em> means <em>life</em> in Latin — and life, in all its fullness, is what the Youth Hub is about.
+      Vida was founded in 2022 by Pastor Hendrik Van Deventer and his family, beginning with small gatherings in a living room in Linden. Today it gathers weekly at Pinnacle College, Linden. The name <em>Vida</em> means <em>life</em> in Latin â and life, in all its fullness, is what the The Stand is about.
     </p>
     <div style="display:flex; flex-wrap:wrap; gap:14px; justify-content:center; margin-bottom:28px;">
       <a href="https://vidachurch.co.za/" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;background:var(--teal);color:#fff;padding:11px 22px;border-radius:8px;text-decoration:none;font-size:0.88rem;font-weight:600;">
-        🌐 Visit vidachurch.co.za
+        ð Visit vidachurch.co.za
       </a>
       <a href="https://www.facebook.com/p/Vida-Church-SA-61551893243506/" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;background:#1877f2;color:#fff;padding:11px 22px;border-radius:8px;text-decoration:none;font-size:0.88rem;font-weight:600;">
-        📘 Facebook
+        ð Facebook
       </a>
       <a href="https://www.instagram.com/vidachurchsa/" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;background:#e1306c;color:#fff;padding:11px 22px;border-radius:8px;text-decoration:none;font-size:0.88rem;font-weight:600;">
-        📸 Instagram @vidachurchsa
+        ð¸ Instagram @vidachurchsa
       </a>
       <a href="https://www.youtube.com/@VidaChurchSA" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;background:#ff0000;color:#fff;padding:11px 22px;border-radius:8px;text-decoration:none;font-size:0.88rem;font-weight:600;">
-        ▶ YouTube @VidaChurchSA
+        â¶ YouTube @VidaChurchSA
       </a>
       <a href="mailto:vidachurchsa@gmail.com" style="display:inline-flex;align-items:center;gap:8px;background:#555;color:#fff;padding:11px 22px;border-radius:8px;text-decoration:none;font-size:0.88rem;font-weight:600;">
-        ✉ vidachurchsa@gmail.com
+        â vidachurchsa@gmail.com
       </a>
     </div>
-    <p style="font-size:0.8rem; color:#999; font-style:italic;">Sunday services at Pinnacle College, Linden · 09:30 every Sunday · Corner 4th Ave &amp; 11th St, Linden, Johannesburg</p>
+    <p style="font-size:0.8rem; color:#999; font-style:italic;">Sunday services at Pinnacle College, Linden Â· 09:30 every Sunday Â· Corner 4th Ave &amp; 11th St, Linden, Johannesburg</p>
     <div style="margin-top:28px; padding:18px 24px; background:#fff; border-radius:12px; border:1px solid #d4eeec; max-width:600px; margin-left:auto; margin-right:auto;">
       <p style="font-size:0.85rem; color:var(--teal-dark); font-weight:600; margin:0 0 6px;">&#x26a0; Important note for donors &amp; businesses</p>
-      <p style="font-size:0.83rem; color:var(--warm-gray); margin:0; line-height:1.7;">The Linden Youth Hub is an independent community initiative. Donations to the Building Fund are used exclusively for the construction phases of the Youth Hub. Funds are not used for church operations, staff salaries, or any Vida Church expenses. Phase 1 contributions build the pickleball court — nothing else.</p>
+      <p style="font-size:0.83rem; color:var(--warm-gray); margin:0; line-height:1.7;">The The Stand is an independent community initiative. Donations to the Building Fund are used exclusively for the construction phases of the The Stand. Funds are not used for church operations, staff salaries, or any Vida Church expenses. Phase 1 contributions build the pickleball court â nothing else.</p>
     </div>
   </div>
 </section>
 
 <footer>
-  <strong>Linden Youth Hub — Linden Youth Hub</strong><br>
+  <strong>The Stand â The Stand</strong><br>
   <a href="https://maps.google.com/?q=42+7th+Street+Linden+Randburg+Johannesburg+2104+South+Africa" target="_blank">42 7th Street, Linden, Randburg, Johannesburg, 2104, South Africa</a><br>
-  Linden Youth Hub Building Fund · Managed by Vida Church community volunteers<br>
-  INVESTEC Account: 50022422006 · Branch Code: 580105<br>
+  The Stand Building Fund Â· Managed by Vida Church community volunteers<br>
+  INVESTEC Account: 50022422006 Â· Branch Code: 580105<br>
   <a href="https://vidachurch.co.za/" target="_blank">vidachurch.co.za</a> &nbsp;|&nbsp; <a href="https://www.instagram.com/vidachurchsa/" target="_blank">@vidachurchsa</a> &nbsp;|&nbsp; <a href="https://www.youtube.com/@VidaChurchSA" target="_blank">YouTube @VidaChurchSA</a><br>
-  Project MZ2601 · Linden Erf 246<br><br>
+  Project MZ2601 Â· Linden Erf 246<br><br>
   <span style="font-size:0.73rem;opacity:0.7">Questions? Contact us via the church WhatsApp group or reach out to the project team directly.</span>
 </footer>
 
 <!-- EFT MODAL -->
 <div class="modal-overlay" id="donateModal" onclick="closeModalOnBg(event)">
   <div class="modal">
-    <button class="modal-close" onclick="closeModal()">✕</button>
+    <button class="modal-close" onclick="closeModal()">â</button>
     <h2>Log Your Pledge</h2>
     <p class="sub">Select an amount, complete your EFT, then click below to log your pledge.</p>
     <div class="amt-grid">
@@ -1034,7 +1057,7 @@
       <div class="bk-row"><span>SWIFT&nbsp;/&nbsp;BIC</span><span style="font-weight:700;color:var(--accent)">IVESZAJJ</span></div>
           <div class="bk-row"><span>Reference</span><span id="modalRef">YOUR NAME + LYHUB</span></div>
     </div>
-    <button class="btn-primary" style="width:100%" onclick="confirmDonation()">✅ I've Completed My EFT</button>
+    <button class="btn-primary" style="width:100%" onclick="confirmDonation()">â I've Completed My EFT</button>
     <p class="modal-note">Once you've done your EFT, click above and we'll log your pledge and follow up to say thank you!</p>
   </div>
 </div>
@@ -1043,7 +1066,7 @@
 <!-- CONTACT / STAY UPDATED MODAL (POPI Compliant) -->
 <div class="modal-overlay" id="contactModal" onclick="if(event.target===this)closeContactModal()">
   <div class="modal" style="max-width:520px;">
-    <button class="modal-close" onclick="closeContactModal()">✕</button>
+    <button class="modal-close" onclick="closeContactModal()">â</button>
     <div id="contactFormInner">
       <h2 style="font-family:'Playfair Display',serif;margin-bottom:4px;">Stay Updated</h2>
       <p class="sub">Get notified on construction milestones and how to get involved.</p>
@@ -1064,7 +1087,7 @@
           <input type="checkbox" id="cf_optin" style="margin-top:3px;accent-color:var(--teal);width:18px;height:18px;flex-shrink:0;">
           <span style="font-size:0.86rem;color:var(--charcoal);line-height:1.6;">
             <strong>Yes, I want to receive project updates</strong><br>
-            I agree to receive occasional email updates about the Linden Youth Hub building project — including construction milestones, fundraising progress, and community events. I understand I can unsubscribe at any time.
+            I agree to receive occasional email updates about the The Stand building project â including construction milestones, fundraising progress, and community events. I understand I can unsubscribe at any time.
           </span>
         </label>
       </div>
@@ -1072,17 +1095,17 @@
         <label style="display:flex;align-items:flex-start;gap:12px;cursor:pointer;margin-bottom:0;">
           <input type="checkbox" id="cf_consent" style="margin-top:3px;accent-color:var(--teal);width:18px;height:18px;flex-shrink:0;" required>
           <span style="font-size:0.83rem;color:#7a6000;line-height:1.6;">
-            <strong>⚠️ Data Consent (Required)</strong><br>
-            I acknowledge that my personal information (name and email) will be stored securely and used only in connection with the Linden Youth Hub project. This is in accordance with the <strong>Protection of Personal Information Act (POPI Act 4 of 2013)</strong>. My information will not be shared with third parties or used for unrelated purposes. I understand that I may request the deletion of my data at any time by emailing <a href="mailto:vidachurchsa@gmail.com" style="color:var(--teal);">vidachurchsa@gmail.com</a>.
+            <strong>â ï¸ Data Consent (Required)</strong><br>
+            I acknowledge that my personal information (name and email) will be stored securely and used only in connection with the The Stand project. This is in accordance with the <strong>Protection of Personal Information Act (POPI Act 4 of 2013)</strong>. My information will not be shared with third parties or used for unrelated purposes. I understand that I may request the deletion of my data at any time by emailing <a href="mailto:vidachurchsa@gmail.com" style="color:var(--teal);">vidachurchsa@gmail.com</a>.
           </span>
         </label>
       </div>
       <button id="contactSubmitBtn" onclick="submitContact()" style="width:100%;background:var(--teal);color:#fff;border:none;padding:15px;border-radius:12px;font-size:1rem;font-weight:700;cursor:pointer;text-transform:uppercase;letter-spacing:0.05em;">
-        Submit →
+        Submit â
       </button>
       <p style="font-size:0.72rem;color:#aaa;text-align:center;margin-top:12px;line-height:1.6;">
         Protected under POPI Act 4 of 2013. You may opt out or request data deletion at any time.<br>
-        Data controller: Linden Youth Hub / Vida Church · <a href="mailto:vidachurchsa@gmail.com" class="__cf_email__" data-cfemail="6e070008012e18070a0f0d061b1c0d06400d0140140f">[email&#160;protected]</a>
+        Data controller: The Stand / Vida Church Â· <a href="mailto:vidachurchsa@gmail.com" class="__cf_email__" data-cfemail="6e070008012e18070a0f0d061b1c0d06400d0140140f">[email&#160;protected]</a>
       </p>
     </div>
   </div>
@@ -1091,15 +1114,15 @@
 <!-- INTL MODAL -->
 <div id="intlModal" class="modal-overlay" onclick="if(event.target===this)closeIntlModal()">
   <div class="modal-box">
-    <button class="modal-close" onclick="closeIntlModal()">✕</button>
-    <h2>💳 Credit/Debit Card (SnapScan) Donation</h2>
-    <p style="margin-bottom:1rem;color:var(--text-muted)">You can donate directly via international bank transfer using the details below. All amounts welcome — every rand (or equivalent) counts!</p>
+    <button class="modal-close" onclick="closeIntlModal()">â</button>
+    <h2>ð³ Credit/Debit Card (SnapScan) Donation</h2>
+    <p style="margin-bottom:1rem;color:var(--text-muted)">You can donate directly via international bank transfer using the details below. All amounts welcome â every rand (or equivalent) counts!</p>
 
     <div class="bank-detail-block" style="background:var(--card-bg);border-radius:12px;padding:1.2rem;margin-bottom:1rem;">
-      <div style="font-weight:700;font-size:1rem;margin-bottom:0.8rem;color:var(--accent)">🏦 Bank Transfer Details</div>
+      <div style="font-weight:700;font-size:1rem;margin-bottom:0.8rem;color:var(--accent)">ð¦ Bank Transfer Details</div>
       <table style="width:100%;border-collapse:collapse;font-size:0.92rem;">
         <tr><td style="padding:0.3rem 0;color:var(--text-muted);width:45%">Bank</td><td style="padding:0.3rem 0;font-weight:600">Investec Bank</td></tr>
-        <tr><td style="padding:0.3rem 0;color:var(--text-muted)">Account Name</td><td style="padding:0.3rem 0;font-weight:600">Linden Youth Hub</td></tr>
+        <tr><td style="padding:0.3rem 0;color:var(--text-muted)">Account Name</td><td style="padding:0.3rem 0;font-weight:600">The Stand</td></tr>
         <tr><td style="padding:0.3rem 0;color:var(--text-muted)">Account Number</td><td style="padding:0.3rem 0;font-weight:600">50022422006</td></tr>
         <tr><td style="padding:0.3rem 0;color:var(--text-muted)">Branch Code</td><td style="padding:0.3rem 0;font-weight:600">580105</td></tr>
         <tr><td style="padding:0.3rem 0;color:var(--text-muted)">SWIFT / BIC</td><td style="padding:0.3rem 0;font-weight:600;color:var(--accent)">IVESZAJJ</td></tr>
@@ -1108,12 +1131,12 @@
     </div>
 
     <div class="bank-detail-block" style="background:var(--card-bg);border-radius:12px;padding:1.2rem;margin-bottom:1rem;">
-      <div style="font-weight:700;font-size:1rem;margin-bottom:0.5rem;color:var(--accent)">💳 Prefer to Pay by Card?</div>
+      <div style="font-weight:700;font-size:1rem;margin-bottom:0.5rem;color:var(--accent)">ð³ Prefer to Pay by Card?</div>
       <p style="font-size:0.92rem;color:var(--text-muted);margin-bottom:0.8rem">SnapScan also accepts international cards in some regions.</p>
-      <a href="https://pos.snapscan.io/qr/bbn5zRjJ" target="_blank" rel="noopener" style="display:inline-block;background:var(--accent);color:#fff;padding:0.6rem 1.4rem;border-radius:8px;font-weight:600;text-decoration:none;">Open SnapScan →</a>
+      <a href="https://pos.snapscan.io/qr/bbn5zRjJ" target="_blank" rel="noopener" style="display:inline-block;background:var(--accent);color:#fff;padding:0.6rem 1.4rem;border-radius:8px;font-weight:600;text-decoration:none;">Open SnapScan â</a>
     </div>
 
-    <p style="font-size:0.82rem;color:var(--text-muted);text-align:center">Please email us at <a href="mailto:daniel@mpmarketing.co.za" style="color:var(--accent)">daniel@mpmarketing.co.za</a> once your transfer is made so we can acknowledge your gift. 🙏</p>
+    <p style="font-size:0.82rem;color:var(--text-muted);text-align:center">Please email us at <a href="mailto:daniel@mpmarketing.co.za" style="color:var(--accent)">daniel@mpmarketing.co.za</a> once your transfer is made so we can acknowledge your gift. ð</p>
   </div>
 </div>
 
@@ -1125,10 +1148,10 @@
   const SNAPSCAN_URL  = 'https://pos.snapscan.io/qr/bbn5zRjJ';
   const DEADLINE_DATE = '30 April 2026';
   const PHASE_NAME    = 'Pickleball Court';
-  let raised = 0, donors = 0;
+  let raised = 50000, donors = 0;
 
   async function fetchProgress() {
-    // Show cached value instantly — no waiting for cold start
+    // Show cached value instantly â no waiting for cold start
     try {
       const cached = localStorage.getItem('lyh_raised');
       if (cached !== null) { raised = parseInt(cached, 10); updateDisplay(); }
@@ -1247,7 +1270,7 @@
       const data = await resp.json();
       if(data.success){
         const inner = document.getElementById('contactFormInner');
-        if(inner) inner.innerHTML = '<div style="text-align:center;padding:32px 0"><div style="font-size:2.5rem">&#10004;</div><h3 style="color:#2a8a7e;margin:12px 0">You are on the list!</h3><p>Thank you ' + firstName + ', we will keep you updated on the Linden Youth Hub.</p></div>';
+        if(inner) inner.innerHTML = '<div style="text-align:center;padding:32px 0"><div style="font-size:2.5rem">&#10004;</div><h3 style="color:#2a8a7e;margin:12px 0">You are on the list!</h3><p>Thank you ' + firstName + ', we will keep you updated on the The Stand.</p></div>';
       } else {
         showToast('Something went wrong. Please try again.');
         if(btn){ btn.disabled=false; btn.textContent='Stay Updated'; }
@@ -1267,13 +1290,13 @@
   }
 
   function copyLink(){
-    navigator.clipboard.writeText('https://www.lindenyouthhub.co.za')
+    navigator.clipboard.writeText('https://www.thestandlinden.co.za')
       .then(()=>showToast('Link copied to clipboard!'))
       .catch(()=>showToast('Copy this link: ' + window.location.href));
   }
 
 
-  // ── SHOP ──────────────────────────────────────────────────────────────────
+  // ââ SHOP ââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
   let shopSize = null, shopDelivery = 'collect', shopDeliveryFee = 0;
 
   function selectSize(btn, size) {
@@ -1290,10 +1313,10 @@
     const note = document.getElementById('deliveryNote');
     const addr = document.getElementById('shopAddress');
     if (type === 'deliver') {
-      note.textContent = 'We deliver via courier — R100 delivery fee added at checkout';
+      note.textContent = 'We deliver via courier â R100 delivery fee added at checkout';
       if (addr) addr.style.display = 'block';
     } else {
-      note.textContent = 'Collect from 42 7th Street, Linden — we\'ll contact you when ready';
+      note.textContent = 'Collect from 42 7th Street, Linden â we\'ll contact you when ready';
       if (addr) addr.style.display = 'none';
     }
   }
@@ -1302,7 +1325,7 @@
     const modal = document.getElementById('shopModal');
     document.getElementById('modalSize').textContent = shopSize || 'Please select a size';
     document.getElementById('modalDelivery').textContent = shopDelivery === 'deliver' ? 'Deliver (+R100)' : 'Collect in Linden (Free)';
-    document.getElementById('modalTotal').textContent = 'TBC — payment coming soon';
+    document.getElementById('modalTotal').textContent = 'TBC â payment coming soon';
     modal.style.display = 'flex';
     document.body.style.overflow = 'hidden';
   }
@@ -1331,8 +1354,8 @@
       await fetch(SHEET_URL + '?' + p.toString(), { cache: 'no-store' });
     } catch(e) { console.warn('Shop submit error:', e); }
     closeShopModal();
-    showToast('✅ Interest registered! We\'ll notify you when the shop goes live.');
-    btn.textContent = '✅ Register My Interest';
+    showToast('â Interest registered! We\'ll notify you when the shop goes live.');
+    btn.textContent = 'â Register My Interest';
     btn.disabled = false;
   }
 
@@ -1371,7 +1394,7 @@
   // Populate deadline pill from constants
   (function() {
     const el = document.getElementById('deadlineText');
-    if (el) el.textContent = DEADLINE_DATE + ' · ' + PHASE_NAME;
+    if (el) el.textContent = DEADLINE_DATE + ' Â· ' + PHASE_NAME;
   })();
 </script>
 </body>
