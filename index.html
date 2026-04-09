@@ -89,42 +89,65 @@
   }
   
   
-  .hero-logo-lockup {
+    .hero-logo-lockup {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 8px;
+    gap: 4px;
     animation: fadeUp 0.6s 0.1s ease both;
     margin-bottom: 8px;
+    width: 100%;
   }
   .hero-logo-wordmark {
+    position: relative;
     display: flex;
     align-items: center;
-    gap: 0;
+    justify-content: center;
     width: 100%;
-    max-width: 700px;
   }
-  .hero-logo-line {
-    flex: 1;
-    height: 4px;
+  /* The horizontal line that cuts through the text */
+  .hero-logo-wordmark::before,
+  .hero-logo-wordmark::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    height: 3px;
     background: #fff;
-    box-shadow: 0 2px 12px rgba(0,0,0,0.3);
+    box-shadow: 0 1px 8px rgba(0,0,0,0.4);
+    transform: translateY(-50%);
+    width: 12vw;
+    max-width: 140px;
   }
+  .hero-logo-wordmark::before { right: 100%; margin-right: -8px; }
+  .hero-logo-wordmark::after  { left: 100%;  margin-left: -8px; }
   .hero-logo-text {
     font-family: 'Bebas Neue', sans-serif;
     font-size: clamp(3.8rem, 11vw, 8.5rem);
     color: #fff;
-    line-height: 0.85;
+    line-height: 0.88;
     letter-spacing: 0.06em;
-    text-shadow: 0 4px 32px rgba(0,0,0,0.4);
-    padding: 0 8px;
+    text-shadow: 0 4px 32px rgba(0,0,0,0.5);
     white-space: nowrap;
+    position: relative;
+    z-index: 1;
+  }
+  /* The line going through the text itself */
+  .hero-logo-text::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: -8px;
+    right: -8px;
+    height: 3px;
+    background: rgba(255,255,255,0.9);
+    transform: translateY(-50%);
+    z-index: -1;
   }
   .hero-logo-sub {
     font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(2.2rem, 6vw, 4.5rem);
-    color: rgba(255,255,255,0.85);
-    letter-spacing: 0.12em;
+    font-size: clamp(2rem, 5.5vw, 4rem);
+    color: rgba(255,255,255,0.9);
+    letter-spacing: 0.14em;
     text-shadow: 0 2px 16px rgba(0,0,0,0.4);
     line-height: 1;
   }
@@ -587,9 +610,7 @@
     <div class="hero-eyebrow">✦ Linden Community Building Fund — Johannesburg, SA</div>
     <div class="hero-logo-lockup">
       <div class="hero-logo-wordmark">
-        <div class="hero-logo-line"></div>
         <span class="hero-logo-text">THE STAND</span>
-        <div class="hero-logo-line"></div>
       </div>
       <div class="hero-logo-sub">@ Linden</div>
     </div>
