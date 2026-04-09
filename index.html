@@ -93,61 +93,26 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 4px;
+    gap: 6px;
     animation: fadeUp 0.6s 0.1s ease both;
     margin-bottom: 8px;
     width: 100%;
   }
   .hero-logo-wordmark {
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     width: 100%;
+    max-width: 700px;
+    padding: 0 16px;
   }
-  /* The horizontal line that cuts through the text */
-  .hero-logo-wordmark::before,
-  .hero-logo-wordmark::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    height: 3px;
-    background: #fff;
-    box-shadow: 0 1px 8px rgba(0,0,0,0.4);
-    transform: translateY(-50%);
-    width: 12vw;
-    max-width: 140px;
-  }
-  .hero-logo-wordmark::before { right: 100%; margin-right: -8px; }
-  .hero-logo-wordmark::after  { left: 100%;  margin-left: -8px; }
-  .hero-logo-text {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(3.8rem, 11vw, 8.5rem);
-    color: #fff;
-    line-height: 0.88;
-    letter-spacing: 0.06em;
-    text-shadow: 0 4px 32px rgba(0,0,0,0.5);
-    white-space: nowrap;
-    position: relative;
-    z-index: 1;
-  }
-  /* The line going through the text itself */
-  .hero-logo-text::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: -8px;
-    right: -8px;
-    height: 3px;
-    background: rgba(255,255,255,0.9);
-    transform: translateY(-50%);
-    z-index: -1;
+  .hero-logo-svg {
+    width: 100%;
+    height: auto;
+    filter: drop-shadow(0 3px 18px rgba(0,0,0,0.45));
   }
   .hero-logo-sub {
     font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(2rem, 5.5vw, 4rem);
-    color: rgba(255,255,255,0.9);
-    letter-spacing: 0.14em;
+    font-size: clamp(1.8rem, 5vw, 3.5rem);
+    color: rgba(255,255,255,0.92);
+    letter-spacing: 0.18em;
     text-shadow: 0 2px 16px rgba(0,0,0,0.4);
     line-height: 1;
   }
@@ -610,7 +575,17 @@
     <div class="hero-eyebrow">✦ Linden Community Building Fund — Johannesburg, SA</div>
     <div class="hero-logo-lockup">
       <div class="hero-logo-wordmark">
-        <span class="hero-logo-text">THE STAND</span>
+        <svg class="hero-logo-svg" viewBox="0 0 600 80" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+          <!-- Left line: short uptick then horizontal to text -->
+          <polyline points="0,20 0,68 108,68" stroke="white" stroke-width="3.5" fill="none" stroke-linecap="square"/>
+          <!-- Right line: horizontal from text then short drop -->
+          <polyline points="492,68 600,68 600,20" stroke="white" stroke-width="3.5" fill="none" stroke-linecap="square"/>
+          <!-- THE STAND text -->
+          <text x="300" y="68" text-anchor="middle" dominant-baseline="auto"
+            font-family="'Bebas Neue', 'Arial Black', sans-serif"
+            font-size="72" letter-spacing="4"
+            fill="white">THE STAND</text>
+        </svg>
       </div>
       <div class="hero-logo-sub">@ Linden</div>
     </div>
