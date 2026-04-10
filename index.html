@@ -89,79 +89,12 @@
   }
   
   
-    .hero-logo-lockup {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 6px;
-    animation: fadeUp 0.6s 0.1s ease both;
-    margin-bottom: 8px;
-    width: 100%;
-  }
-  .hero-logo-wordmark {
-    width: 100%;
-    max-width: 700px;
-    padding: 0 16px;
-  }
-  .hero-logo-svg {
-    width: 100%;
-    height: auto;
-    filter: drop-shadow(0 3px 18px rgba(0,0,0,0.45));
-  }
-  .hero-logo-sub {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(1.8rem, 5vw, 3.5rem);
-    color: rgba(255,255,255,0.92);
-    letter-spacing: 0.18em;
-    text-shadow: 0 2px 16px rgba(0,0,0,0.4);
-    line-height: 1;
-  }
-
-  .hero-scripture {
-    color: rgba(255,255,255,0.75);
-    font-size: 0.78rem;
-    font-style: italic;
-    letter-spacing: 0.04em;
-    margin: 12px 0 20px;
-    max-width: 500px;
-    animation: fadeUp 0.7s ease both;
-  }
-
-  .hero-eyebrow {
-    display:inline-block;
-    background:rgba(255,255,255,0.15);
-    border:1px solid rgba(255,255,255,0.3);
-    color:#fff;
-    font-size:0.7rem; font-weight:700; letter-spacing:0.22em; text-transform:uppercase;
-    padding:7px 18px; border-radius:100px;
-    margin-bottom:24px;
-    backdrop-filter:blur(8px);
-    animation:fadeUp 0.5s ease both;
-  }
-  .hero h1 {
-    font-family:'Bebas Neue',sans-serif;
-    font-size:clamp(3.8rem,11vw,8.5rem);
-    color:#fff;
-    line-height:0.9;
-    letter-spacing:0.02em;
-    animation:fadeUp 0.6s 0.1s ease both;
-    text-shadow:0 4px 32px rgba(0,0,0,0.4);
-  }
-  .hero h1 em { color:var(--gold-light); font-style:normal; display:block; }
-  .hero-address {
-    margin-top:16px;
-    display:inline-flex; align-items:center; gap:8px;
-    background:rgba(255,255,255,0.12); border:1px solid rgba(255,255,255,0.25);
-    backdrop-filter:blur(8px);
-    color:rgba(255,255,255,0.9);
-    font-size:0.82rem; font-weight:500; letter-spacing:0.04em;
-    padding:8px 18px; border-radius:100px;
-    text-decoration:none;
-    transition:background 0.2s;
-    animation:fadeUp 0.6s 0.2s ease both;
-  }
-  .hero-address:hover { background:rgba(255,255,255,0.22); }
-  .hero-address svg { width:14px; height:14px; flex-shrink:0; }
+.hero-logo-lockup { display:flex; flex-direction:column; align-items:center; gap:6px; animation:fadeUp 0.6s 0.1s ease both; width:100%; }
+.hero-logo-wordmark { display:flex; align-items:flex-end; width:90%; max-width:800px; }
+.hero-line-left { flex:1; height:3px; background:#fff; margin-bottom:14px; border-top:3px solid #fff; border-left:3px solid #fff; height:20px; width:auto; }
+.hero-line-right { flex:1; height:3px; background:#fff; margin-bottom:0; border-bottom:3px solid #fff; border-right:3px solid #fff; height:20px; width:auto; align-self:flex-start; margin-top:14px; }
+.hero-logo-text { font-family:'Bebas Neue',sans-serif; font-size:clamp(3.5rem,10vw,8rem); color:#fff; line-height:1; letter-spacing:0.06em; text-shadow:0 4px 32px rgba(0,0,0,0.5); white-space:nowrap; padding:0 6px; }
+.hero-logo-sub { font-family:'Bebas Neue',sans-serif; font-size:clamp(1.8rem,5vw,3.5rem); color:rgba(255,255,255,0.92); letter-spacing:0.18em; text-shadow:0 2px 16px rgba(0,0,0,0.4); }
 
   /* PROGRESS BAND */
   .progress-band {
@@ -574,35 +507,13 @@
   <div class="hero-content">
     <div class="hero-eyebrow">✦ Linden Community Building Fund — Johannesburg, SA</div>
     <div class="hero-logo-lockup">
-      <div class="hero-logo-wordmark">
-        <svg class="hero-logo-svg" viewBox="0 0 800 100" 
-  xmlns="http://www.w3.org/2000/svg" 
-  preserveAspectRatio="xMidYMid meet">
-  
-  <!-- Single continuous line: uptick up-left, under text, drop down-right -->
-  <polyline 
-    points="0,0 0,75 800,75 800,100" 
-    stroke="white" stroke-width="4" 
-    fill="none" 
-    stroke-linecap="square" 
-    stroke-linejoin="miter"/>
-  
-  <!-- THE STAND text sitting just above the line -->
-  <text x="400" y="72" text-anchor="middle"
-    font-family="'Barlow Condensed','Arial Narrow',sans-serif"
-    font-weight="700" font-size="70" letter-spacing="10"
-    fill="white">THE STAND</text>
-
-</svg>
-      </div>
-      <div class="hero-logo-sub">@ Linden</div>
-    </div>
-    <p class="hero-scripture">— Matthew 5:15 — "Put it on its stand, and it gives light to everyone in the house."</p>
-    <a class="hero-address" href="https://maps.google.com/?q=42+7th+Street+Linden+Randburg+Johannesburg+2104+South+Africa" target="_blank">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
-      42 7th Street, Linden, Randburg, Johannesburg, 2104
-    </a>
+  <div class="hero-logo-wordmark">
+    <div class="hero-line-left"></div>
+    <span class="hero-logo-text">THE STAND</span>
+    <div class="hero-line-right"></div>
   </div>
+  <div class="hero-logo-sub">@ Linden</div>
+</div>
 
   <!-- PROGRESS BAND -->
   <div class="progress-band">
