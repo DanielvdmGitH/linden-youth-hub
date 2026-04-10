@@ -89,11 +89,34 @@
   }
   
   
-.hero-logo-lockup { display:flex; flex-direction:column; align-items:center; gap:2px; animation:fadeUp 0.6s 0.1s ease both; width:92%; max-width:780px; }
-  .hero-logo-wordmark { display:flex; flex-direction:row; align-items:stretch; width:100%; }
-  .hlw-left { width:55px; flex-shrink:0; border-top:3px solid #fff; border-left:3px solid #fff; height:26px; align-self:flex-start; margin-top:10px; }
-  .hlw-right { width:55px; flex-shrink:0; border-bottom:3px solid #fff; border-right:3px solid #fff; height:26px; align-self:flex-end; margin-bottom:10px; }
-  .hlw-text { flex:1; font-family:'Bebas Neue',sans-serif; font-size:clamp(3.2rem,9.5vw,7.5rem); color:#fff; letter-spacing:0.07em; text-shadow:0 3px 24px rgba(0,0,0,0.5); white-space:nowrap; line-height:1; text-align:center; }
+.hero-logo-lockup { display:flex; flex-direction:column; align-items:center; gap:4px; animation:fadeUp 0.6s 0.1s ease both; }
+  .hero-logo-wordmark {
+    position:relative;
+    font-family:'Bebas Neue',sans-serif;
+    font-size:clamp(3.2rem,9.5vw,7.5rem);
+    color:#fff;
+    letter-spacing:0.07em;
+    text-shadow:0 3px 24px rgba(0,0,0,0.5);
+    white-space:nowrap;
+    line-height:1;
+    padding:0 70px;
+  }
+  .hero-logo-wordmark::before {
+    content:'';
+    position:absolute;
+    left:0; bottom:0;
+    width:58px; height:45%;
+    border-left:3px solid #fff;
+    border-top:3px solid #fff;
+  }
+  .hero-logo-wordmark::after {
+    content:'';
+    position:absolute;
+    right:0; top:0;
+    width:58px; height:45%;
+    border-right:3px solid #fff;
+    border-bottom:3px solid #fff;
+  }
   .hero-logo-sub { font-family:'Bebas Neue',sans-serif; font-size:clamp(1.8rem,5vw,3.5rem); color:rgba(255,255,255,0.92); letter-spacing:0.18em; text-shadow:0 2px 16px rgba(0,0,0,0.4); }
 
   /* PROGRESS BAND */
@@ -507,13 +530,9 @@
   <div class="hero-content">
     <div class="hero-eyebrow">✦ Linden Community Building Fund — Johannesburg, SA</div>
     <div class="hero-logo-lockup">
-  <div class="hero-logo-wordmark">
-    <div class="hlw-left"></div>
-    <div class="hlw-text">THE STAND</div>
-    <div class="hlw-right"></div>
-  </div>
-  <div class="hero-logo-sub">@ Linden</div>
-</div>
+      <div class="hero-logo-wordmark">THE STAND</div>
+      <div class="hero-logo-sub">@ Linden</div>
+    </div>
 
   <!-- PROGRESS BAND -->
   <div class="progress-band">
