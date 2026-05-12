@@ -492,7 +492,11 @@
     padding: 8px;
   }
 
-  </style>
+  
+  #mobileMenu { list-style: none; padding: 0; margin: 0; }
+  #mobileMenu li { list-style: none; }
+  #mobileMenu a { display: block; padding: 10px 0; text-decoration: none; color: inherit; font-weight: 600; }
+</style>
 </head>
 <body>
 
@@ -512,9 +516,7 @@
 
 <!-- NAV -->
 <nav id="mainNav">
-    <a href="/" class="nav-brand">
-      <img src="images/the-stand-logo-white.png.png" alt="The Stand" style="height:32px;vertical-align:middle;" onerror="this.style.display='none';this.nextSibling.style.display='inline'"><span style="display:none;font-family:'Bebas Neue',sans-serif;letter-spacing:2px;">THE STAND</span>
-    </a>
+    <a href="/" class="nav-brand">THE STAND</a>
     <button id="hamburger" onclick="toggleMenu()" aria-label="Menu">&#9776;</button>
     <ul id="mobileMenu">
       <li><a href="#donate-section" class="nav-cta">Donate</a></li>
