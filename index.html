@@ -35,7 +35,7 @@
   .nav-logo { text-decoration:none; display:flex; align-items:center; gap:0; }
   .nav-brand-text {
     font-family: 'Bebas Neue', 'Arial Black', sans-serif;
-    font-size: 1.8rem;
+    font-size: 2.2rem;
     font-weight: 900;
     letter-spacing: 0.15em;
     color: var(--teal);
@@ -43,15 +43,17 @@
     align-items: center;
     gap: 10px;
     line-height: 1;
+    white-space: nowrap;
   }
   .nav-brand-text::before,
   .nav-brand-text::after {
     content: '';
-    display: block;
-    width: 32px;
+    display: inline-block;
+    width: 36px;
     height: 3px;
     background: var(--teal);
     flex-shrink: 0;
+    align-self: center;
   }
   
   #hamburger { display:none; background:none; border:none; font-size:1.6rem; cursor:pointer; color:var(--teal); padding:4px 8px; line-height:1; }
