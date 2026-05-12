@@ -513,10 +513,11 @@
 </div>
 
 <!-- NAV -->
-<nav id="mainNav">
-    <a href="/" class="nav-brand">THE STAND</a>
+<nav>
+  <div class="nav-inner">
+    <a href="/" class="nav-logo">THE STAND</a>
     <button id="hamburger" onclick="toggleMenu()" aria-label="Menu">&#9776;</button>
-    <div id="mobileMenu">
+    <div class="nav-links" id="mobileMenu" style="display:none;">
       <a href="#donate-section" class="nav-cta">Donate</a>
       <a href="#shop">Shop</a>
       <a href="#progress">Progress</a>
@@ -526,7 +527,8 @@
       <a href="#location">Find Us</a>
       <a href="#share">Share</a>
     </div>
-  </nav>
+  </div>
+</nav>
 
 <!-- MOBILE MENU DRAWER -->
 <div class="mobile-menu" id="mobileMenu" onclick="closeMobileMenuOnBg(event)">
@@ -1370,6 +1372,11 @@
   })();
 </script>
 
+
+  function toggleMenu() {
+    var m = document.getElementById('mobileMenu');
+    m.style.display = m.style.display === 'flex' ? 'none' : 'flex';
+  }
 </script>
 </body>
 </html>
