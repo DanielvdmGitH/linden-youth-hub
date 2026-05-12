@@ -30,37 +30,25 @@
   @keyframes ticker { from{transform:translateX(0)} to{transform:translateX(-50%)} }
 
   /* NAV */
-  nav { position:sticky; top:0; z-index:100; background:rgba(255,255,255,0.96); backdrop-filter:blur(12px); border-bottom:1px solid rgba(42,138,126,0.12); padding:0 24px; }
-  .nav-inner { max-width:1200px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; height:62px; }
-  
-  .stand-logo {
-    font-family: 'Bebas Neue', 'Arial Black', sans-serif;
-    font-size: 1.4rem;
-    font-weight: 900;
-    letter-spacing: 0.1em;
-    color: var(--teal);
-    display: inline-block;
-    padding: 0 4px;
-    border-top: 2.5px solid var(--teal);
-    border-bottom: 2.5px solid var(--teal);
-  }
-
+  nav { position:sticky; top:0; z-index:200; background:rgba(255,255,255,0.97); backdrop-filter:blur(12px); border-bottom:1px solid rgba(42,138,126,0.12); padding:0 24px; }
+  .nav-inner { max-width:1200px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; height:62px; position:relative; }
   .nav-logo { text-decoration:none; display:flex; align-items:center; }
   .stand-logo { font-family:'Bebas Neue','Arial Black',sans-serif; font-size:1.6rem; font-weight:900; letter-spacing:0.12em; color:var(--teal); display:inline-block; padding:1px 6px; border-top:3px solid var(--teal); border-bottom:3px solid var(--teal); line-height:1.3; }
-  .nav-logo .stand-logo:hover { color:var(--teal-dark); border-color:var(--teal-dark); }
-  .nav-links { display:flex; gap:4px; list-style:none; }
+  .stand-logo:hover { color:var(--teal-dark); border-color:var(--teal-dark); }
+  #hamburger { display:none; background:none; border:none; font-size:1.6rem; cursor:pointer; color:var(--teal); padding:4px 8px; line-height:1; }
+  .nav-links { display:flex; gap:4px; list-style:none; margin:0; padding:0; }
   .nav-links a { text-decoration:none; font-size:0.78rem; font-weight:700; color:var(--warm-gray); padding:7px 12px; border-radius:8px; transition:color 0.2s,background 0.2s; letter-spacing:0.05em; text-transform:uppercase; }
   .nav-links a:hover { color:var(--teal); background:var(--teal-pale); }
-  .nav-cta { background:var(--teal)!important; color:#fff!important; border-radius:8px; box-shadow:0 0 12px rgba(42,138,126,0.5); letter-spacing:0.05em; }
-  .nav-cta:hover { background:var(--teal-dark)!important; box-shadow:0 0 20px rgba(42,138,126,0.8); transform:translateY(-1px); }
+  .nav-cta { background:var(--teal)!important; color:#fff!important; border-radius:8px!important; box-shadow:0 0 12px rgba(42,138,126,0.5); }
+  .nav-cta:hover { background:var(--teal-dark)!important; }
   @media(max-width:700px){
-  #hamburger { display:block; }
-  .nav-links { display:none; flex-direction:column; position:absolute; top:56px; left:0; right:0; background:#fff; padding:8px 0; box-shadow:0 4px 12px rgba(0,0,0,0.12); z-index:999; }
-  .nav-links.open { display:flex; }
-  .nav-links a { padding:12px 24px; font-size:1rem; color:#1a8a78; border-bottom:1px solid #f0f0f0; }
-  .nav-links a:last-child { border-bottom:none; }
-  .nav-links .nav-cta { background:#1a8a78; color:#fff; margin:8px 16px; border-radius:20px; text-align:center; border-bottom:none; }
-}
+    #hamburger { display:block; }
+    .nav-links { display:none; flex-direction:column; position:absolute; top:62px; left:-24px; right:-24px; background:#fff; padding:8px 0; box-shadow:0 6px 20px rgba(0,0,0,0.12); z-index:999; border-top:2px solid var(--teal); }
+    .nav-links.open { display:flex; }
+    .nav-links a { padding:14px 24px; font-size:0.95rem; color:#333; border-bottom:1px solid #f0f0f0; border-radius:0; letter-spacing:0.03em; }
+    .nav-links a:last-child { border-bottom:none; }
+    .nav-links .nav-cta { background:var(--teal)!important; color:#fff!important; margin:12px 16px 4px; border-radius:20px!important; text-align:center; border-bottom:none; }
+  }
 
     #hamburger { display:none; background:none; border:none; font-size:1.5rem; cursor:pointer; color:#1a8a78; padding:4px 8px; }
 /*  HERO  full-bleed vision render  */
@@ -523,8 +511,8 @@
 <!-- NAV -->
 <nav>
   <div class="nav-inner">
-    <a href="/" class="nav-logo">THE STAND</a>
-    <button id="hamburger" onclick="toggleMenu()" aria-label="Menu">&#9776;</button>
+    <a href="/" class="nav-logo"><span class="stand-logo">THE STAND</span></a>
+    <button id="hamburger" onclick="toggleMenu()" aria-label="Open menu">&#9776;</button>
     <div class="nav-links" id="mobileMenu">
       <a href="#donate-section" class="nav-cta" onclick="closeMenu()">Donate</a>
       <a href="#shop" onclick="closeMenu()">Shop</a>
