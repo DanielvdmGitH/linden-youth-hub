@@ -33,7 +33,26 @@
   nav { position:sticky; top:0; z-index:200; background:rgba(255,255,255,0.97); backdrop-filter:blur(12px); border-bottom:1px solid rgba(42,138,126,0.15); padding:0 32px; }
   .nav-inner { max-width:1200px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; height:80px; position:relative; }
   .nav-logo { text-decoration:none; display:flex; align-items:center; gap:0; }
-  .nav-logo-img { height:62px; width:auto; filter:invert(40%) sepia(60%) saturate(400%) hue-rotate(130deg) brightness(0.8); }
+  .nav-brand-text {
+    font-family: 'Bebas Neue', 'Arial Black', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 900;
+    letter-spacing: 0.15em;
+    color: var(--teal);
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    line-height: 1;
+  }
+  .nav-brand-text::before,
+  .nav-brand-text::after {
+    content: '';
+    display: block;
+    width: 32px;
+    height: 3px;
+    background: var(--teal);
+    flex-shrink: 0;
+  }
   
   #hamburger { display:none; background:none; border:none; font-size:1.6rem; cursor:pointer; color:var(--teal); padding:4px 8px; line-height:1; }
   .nav-links { display:flex; align-items:center; gap:8px; list-style:none; margin:0; padding:0; }
@@ -511,7 +530,7 @@
 <!-- NAV -->
 <nav>
   <div class="nav-inner">
-    <a href="/" class="nav-logo"><img src="images/logo-transparent.png" alt="The Stand" class="nav-logo-img"></a>
+    <a href="/" class="nav-logo"><span class="nav-brand-text">THE STAND</span></a>
     <button id="hamburger" onclick="toggleMenu()" aria-label="Open menu">&#9776;</button>
     <div class="nav-links" id="mobileMenu">
       <a href="#donate-section" class="nav-cta" onclick="closeMenu()">Donate</a>
