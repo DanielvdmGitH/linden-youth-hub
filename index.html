@@ -33,29 +33,7 @@
   nav { position:sticky; top:0; z-index:200; background:rgba(255,255,255,0.97); backdrop-filter:blur(12px); border-bottom:1px solid rgba(42,138,126,0.15); padding:0 32px; }
   .nav-inner { max-width:1200px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; height:80px; position:relative; }
   .nav-logo { text-decoration:none; display:flex; align-items:center; gap:0; }
-  .nav-brand-text {
-    font-family: 'Bebas Neue', 'Arial Black', sans-serif;
-    font-size: 2.2rem;
-    font-weight: 900;
-    letter-spacing: 0.15em;
-    color: var(--teal);
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    line-height: 1;
-    white-space: nowrap;
-  }
-  .nav-brand-text::before,
-  .nav-brand-text::after {
-    content: '';
-    display: inline-block;
-    width: 36px;
-    height: 3px;
-    background: var(--teal);
-    flex-shrink: 0;
-    align-self: center;
-  }
-  
+  .nav-logo-img { width:220px; height:auto; filter:invert(38%) sepia(50%) saturate(450%) hue-rotate(132deg) brightness(0.75); }  
   #hamburger { display:none; background:none; border:none; font-size:1.6rem; cursor:pointer; color:var(--teal); padding:4px 8px; line-height:1; }
   .nav-links { display:flex; align-items:center; gap:8px; list-style:none; margin:0; padding:0; }
   .nav-links a { text-decoration:none; font-size:0.78rem; font-weight:700; color:#555; padding:8px 16px; border-radius:8px; transition:color 0.2s,background 0.2s; letter-spacing:0.06em; text-transform:uppercase; white-space:nowrap; }
@@ -532,7 +510,7 @@
 <!-- NAV -->
 <nav>
   <div class="nav-inner">
-    <a href="/" class="nav-logo"><span class="nav-brand-text">THE STAND</span></a>
+    <a href="/" class="nav-logo"><img src="images/logo-transparent.png" alt="The Stand" class="nav-logo-img"></a>
     <button id="hamburger" onclick="toggleMenu()" aria-label="Open menu">&#9776;</button>
     <div class="nav-links" id="mobileMenu">
       <a href="#donate-section" class="nav-cta" onclick="closeMenu()">Donate</a>
