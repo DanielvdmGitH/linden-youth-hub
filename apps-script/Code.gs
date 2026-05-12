@@ -9,9 +9,9 @@ function doGet(e) {
 
   // GET FUNDRAISING STATS
   if (action === 'getStats') {
-    var statsSheet = ss.getSheetByName('Stats') || ss.getSheets()[0];
-    var raised = statsSheet.getRange('B1').getValue();
-    var donors = statsSheet.getRange('B2').getValue();
+    var statsSheet = ss.getSheetByName('Summary') || ss.getSheetByName('Stats') || ss.getSheets()[0];
+    var raised = statsSheet.getRange('B1').getValue() || 0;
+    var donors = statsSheet.getRange('B2').getValue() || 0;
     return ContentService
       .createTextOutput(JSON.stringify({ raised: raised, donors: donors }))
       .setMimeType(ContentService.MimeType.JSON);
