@@ -53,9 +53,17 @@
   .nav-links a:hover { color:var(--teal); background:var(--teal-pale); }
   .nav-cta { background:var(--teal)!important; color:#fff!important; border-radius:8px; box-shadow:0 0 12px rgba(42,138,126,0.5); letter-spacing:0.05em; }
   .nav-cta:hover { background:var(--teal-dark)!important; box-shadow:0 0 20px rgba(42,138,126,0.8); transform:translateY(-1px); }
-  @media(max-width:700px){.nav-links{display:none;}}
+  @media(max-width:700px){
+  #hamburger { display:block; }
+  .nav-links { display:none; flex-direction:column; position:absolute; top:56px; left:0; right:0; background:#fff; padding:8px 0; box-shadow:0 4px 12px rgba(0,0,0,0.12); z-index:999; }
+  .nav-links.open { display:flex; }
+  .nav-links a { padding:12px 24px; font-size:1rem; color:#1a8a78; border-bottom:1px solid #f0f0f0; }
+  .nav-links a:last-child { border-bottom:none; }
+  .nav-links .nav-cta { background:#1a8a78; color:#fff; margin:8px 16px; border-radius:20px; text-align:center; border-bottom:none; }
+}
 
-  /*  HERO  full-bleed vision render  */
+    #hamburger { display:none; background:none; border:none; font-size:1.5rem; cursor:pointer; color:#1a8a78; padding:4px 8px; }
+/*  HERO  full-bleed vision render  */
   .hero {
     position:relative;
     min-height:100vh;
@@ -517,15 +525,15 @@
   <div class="nav-inner">
     <a href="/" class="nav-logo">THE STAND</a>
     <button id="hamburger" onclick="toggleMenu()" aria-label="Menu">&#9776;</button>
-    <div class="nav-links" id="mobileMenu" style="display:none;">
-      <a href="#donate-section" class="nav-cta">Donate</a>
-      <a href="#shop">Shop</a>
-      <a href="#progress">Progress</a>
-      <a href="#story">Our Story</a>
-      <a href="#vision">The Vision</a>
-      <a href="#phases">Phases</a>
-      <a href="#location">Find Us</a>
-      <a href="#share">Share</a>
+    <div class="nav-links" id="mobileMenu">
+      <a href="#donate-section" class="nav-cta" onclick="closeMenu()">Donate</a>
+      <a href="#shop" onclick="closeMenu()">Shop</a>
+      <a href="#progress" onclick="closeMenu()">Progress</a>
+      <a href="#story" onclick="closeMenu()">Our Story</a>
+      <a href="#vision" onclick="closeMenu()">The Vision</a>
+      <a href="#phases" onclick="closeMenu()">Phases</a>
+      <a href="#location" onclick="closeMenu()">Find Us</a>
+      <a href="#share" onclick="closeMenu()">Share</a>
     </div>
   </div>
 </nav>
@@ -1375,8 +1383,10 @@
 
   function toggleMenu() {
     var m = document.getElementById('mobileMenu');
-    m.style.display = m.style.display === 'flex' ? 'none' : 'flex';
+    m.classList.toggle('open');
   }
+
+  function closeMenu() { document.getElementById('mobileMenu').classList.remove('open'); }
 </script>
 </body>
 </html>
