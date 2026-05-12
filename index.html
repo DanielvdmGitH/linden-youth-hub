@@ -493,8 +493,6 @@
   }
 
   
-  #mobileMenu { list-style: none; padding: 0; margin: 0; }
-  #mobileMenu li { list-style: none; }
   #mobileMenu a { display: block; padding: 10px 0; text-decoration: none; color: inherit; font-weight: 600; }
 </style>
 </head>
@@ -518,16 +516,16 @@
 <nav id="mainNav">
     <a href="/" class="nav-brand">THE STAND</a>
     <button id="hamburger" onclick="toggleMenu()" aria-label="Menu">&#9776;</button>
-    <ul id="mobileMenu">
-      <li><a href="#donate-section" class="nav-cta">Donate</a></li>
-      <li><a href="#shop">Shop</a></li>
-      <li><a href="#progress">Progress</a></li>
-      <li><a href="#story">Our Story</a></li>
-      <li><a href="#vision">The Vision</a></li>
-      <li><a href="#phases">Phases</a></li>
-      <li><a href="#location">Find Us</a></li>
-      <li><a href="#share">Share</a></li>
-    </ul>
+    <div id="mobileMenu">
+      <a href="#donate-section" class="nav-cta">Donate</a>
+      <a href="#shop">Shop</a>
+      <a href="#progress">Progress</a>
+      <a href="#story">Our Story</a>
+      <a href="#vision">The Vision</a>
+      <a href="#phases">Phases</a>
+      <a href="#location">Find Us</a>
+      <a href="#share">Share</a>
+    </div>
   </nav>
 
 <!-- MOBILE MENU DRAWER -->
