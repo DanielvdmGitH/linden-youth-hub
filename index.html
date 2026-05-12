@@ -33,17 +33,17 @@
   nav { position:sticky; top:0; z-index:200; background:rgba(255,255,255,0.97); backdrop-filter:blur(12px); border-bottom:1px solid rgba(42,138,126,0.15); padding:0 32px; }
   .nav-inner { max-width:1200px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; height:64px; position:relative; }
   .nav-logo { text-decoration:none; display:flex; align-items:center; gap:0; }
-  .nav-logo-img { height:36px; width:auto; filter:invert(40%) sepia(60%) saturate(400%) hue-rotate(130deg) brightness(0.8); }
+  .nav-logo-img { height:52px; width:auto; filter:invert(40%) sepia(60%) saturate(400%) hue-rotate(130deg) brightness(0.8); }
   
   #hamburger { display:none; background:none; border:none; font-size:1.6rem; cursor:pointer; color:var(--teal); padding:4px 8px; line-height:1; }
-  .nav-links { display:flex; align-items:center; gap:2px; list-style:none; margin:0; padding:0; }
-  .nav-links a { text-decoration:none; font-size:0.75rem; font-weight:700; color:#555; padding:7px 14px; border-radius:8px; transition:color 0.2s,background 0.2s; letter-spacing:0.06em; text-transform:uppercase; white-space:nowrap; }
+  .nav-links { display:flex; align-items:center; gap:8px; list-style:none; margin:0; padding:0; }
+  .nav-links a { text-decoration:none; font-size:0.78rem; font-weight:700; color:#555; padding:8px 16px; border-radius:8px; transition:color 0.2s,background 0.2s; letter-spacing:0.06em; text-transform:uppercase; white-space:nowrap; }
   .nav-links a:hover { color:var(--teal); background:var(--teal-pale); }
   .nav-cta { background:var(--teal)!important; color:#fff!important; border-radius:8px!important; }
   .nav-cta:hover { background:var(--teal-dark)!important; }
   @media(max-width:900px){
     #hamburger { display:block; }
-    .nav-links { display:none; flex-direction:column; position:absolute; top:64px; left:-32px; right:-32px; background:#fff; padding:8px 0; box-shadow:0 6px 20px rgba(0,0,0,0.12); z-index:999; border-top:2px solid var(--teal); }
+    .nav-links { display:none; flex-direction:column; position:absolute; top:72px; left:-32px; right:-32px; background:#fff; padding:8px 0; box-shadow:0 6px 20px rgba(0,0,0,0.12); z-index:999; border-top:2px solid var(--teal); }
     .nav-links.open { display:flex; }
     .nav-links a { padding:14px 28px; font-size:0.9rem; color:#333; border-bottom:1px solid #f0f0f0; border-radius:0; }
     .nav-links a:last-child { border-bottom:none; }
