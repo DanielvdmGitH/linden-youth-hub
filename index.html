@@ -847,48 +847,52 @@
 <!-- PP SHOP ORDER MODAL PP -->
 
 <div id="shopModal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.6);z-index:1000;align-items:center;justify-content:center;">
-  <div style="background:#fff;border-radius:16px;padding:32px;max-width:480px;width:90%;max-height:90vh;overflow-y:auto;position:relative;">
+  <div style="background:#fff;border-radius:16px;padding:28px;max-width:500px;width:92%;max-height:92vh;overflow-y:auto;position:relative;">
     <button onclick="closeShopModal()" style="position:absolute;top:14px;right:18px;background:none;border:none;font-size:1.4rem;cursor:pointer;color:#888;">&times;</button>
     <h3 style="font-family:'Bebas Neue',sans-serif;color:#1a8a78;font-size:1.6rem;letter-spacing:1px;margin:0 0 4px;">ORDER YOUR SHIRT</h3>
-    <p style="color:#888;font-size:0.88rem;margin:0 0 20px;">Collection only &mdash; 42 7th Street, Linden</p>
-    <label style="display:block;margin-bottom:14px;">
-      <span style="font-size:0.85rem;font-weight:600;color:#333;display:block;margin-bottom:4px;">Full Name *</span>
-      <input id="shopName" type="text" placeholder="Your name" style="width:100%;padding:10px 12px;border:1.5px solid #ddd;border-radius:8px;font-size:0.95rem;box-sizing:border-box;">
-    </label>
-    <label style="display:block;margin-bottom:14px;">
-      <span style="font-size:0.85rem;font-weight:600;color:#333;display:block;margin-bottom:4px;">Email *</span>
-      <input id="shopEmail" type="email" placeholder="your@email.com" style="width:100%;padding:10px 12px;border:1.5px solid #ddd;border-radius:8px;font-size:0.95rem;box-sizing:border-box;">
-    </label>
-    <label style="display:block;margin-bottom:14px;">
-      <span style="font-size:0.85rem;font-weight:600;color:#333;display:block;margin-bottom:4px;">Phone</span>
-      <input id="shopPhone" type="tel" placeholder="Your phone number" style="width:100%;padding:10px 12px;border:1.5px solid #ddd;border-radius:8px;font-size:0.95rem;box-sizing:border-box;">
-    </label>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px;">
-      <label style="display:block;">
-        <span style="font-size:0.85rem;font-weight:600;color:#333;display:block;margin-bottom:4px;">Size *</span>
-        <select id="modalSize" onchange="updateShopTotal()" style="width:100%;padding:10px 12px;border:1.5px solid #ddd;border-radius:8px;font-size:0.95rem;box-sizing:border-box;background:#fff;">
-          <option value="">-- Select --</option>
-          <optgroup label="Adult (180g)">
-            <option>XS</option><option>S</option><option>M</option>
-            <option>L</option><option>XL</option><option>2XL</option>
-          </optgroup>
-          <optgroup label="Kiddies (140g)">
-            <option>Kids 3-4</option><option>Kids 5-6</option><option>Kids 7-8</option>
-          </optgroup>
-        </select>
-      </label>
-      <label style="display:block;">
-        <span style="font-size:0.85rem;font-weight:600;color:#333;display:block;margin-bottom:4px;">Qty *</span>
-        <select id="shopQty" onchange="updateShopTotal()" style="width:100%;padding:10px 12px;border:1.5px solid #ddd;border-radius:8px;font-size:0.95rem;box-sizing:border-box;background:#fff;">
-          <option>1</option><option>2</option><option>3</option><option>4</option><option>5</option>
-        </select>
-      </label>
+    <p style="color:#888;font-size:0.85rem;margin:0 0 18px;">Collection only &mdash; 42 7th Street, Linden &nbsp;&bull;&nbsp; R350 per shirt</p>
+
+    <!-- SIZE PICKER -->
+    <div style="margin-bottom:16px;">
+      <p style="font-size:0.8rem;font-weight:700;color:#333;letter-spacing:0.5px;margin:0 0 8px;text-transform:uppercase;">Adult Sizes (180g)</p>
+      <div style="display:grid;grid-template-columns:repeat(6,1fr);gap:6px;margin-bottom:14px;" id="adultSizes">
+        <div class="size-cell" data-size="XS"></div>
+        <div class="size-cell" data-size="S"></div>
+        <div class="size-cell" data-size="M"></div>
+        <div class="size-cell" data-size="L"></div>
+        <div class="size-cell" data-size="XL"></div>
+        <div class="size-cell" data-size="2XL"></div>
+      </div>
+      <p style="font-size:0.8rem;font-weight:700;color:#333;letter-spacing:0.5px;margin:0 0 8px;text-transform:uppercase;">Kiddies Sizes (140g)</p>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:6px;" id="kidsSizes">
+        <div class="size-cell" data-size="Kids 3-4"></div>
+        <div class="size-cell" data-size="Kids 5-6"></div>
+        <div class="size-cell" data-size="Kids 7-8"></div>
+      </div>
     </div>
-    <div id="modalTotal" style="background:#f4faf9;border-radius:8px;padding:12px 16px;margin-bottom:20px;font-size:0.95rem;color:#333;">
-      Total: <strong id="shopTotalAmt">R350</strong> &nbsp;&bull;&nbsp; <span style="color:#888;font-size:0.85rem;">EFT or SnapScan on collection</span>
+
+    <!-- RUNNING TOTAL -->
+    <div id="modalTotal" style="background:#f4faf9;border-radius:8px;padding:10px 16px;margin-bottom:16px;font-size:0.9rem;color:#555;min-height:36px;">
+      <span id="shopTotalAmt" style="font-weight:700;color:#1a8a78;">R0</span>
+      <span id="shopTotalDetail" style="font-size:0.82rem;color:#888;"></span>
     </div>
+
+    <!-- CONTACT FIELDS -->
+    <label style="display:block;margin-bottom:10px;">
+      <span style="font-size:0.82rem;font-weight:600;color:#333;display:block;margin-bottom:3px;">Full Name *</span>
+      <input id="shopName" type="text" placeholder="Your name" style="width:100%;padding:9px 12px;border:1.5px solid #ddd;border-radius:8px;font-size:0.9rem;box-sizing:border-box;">
+    </label>
+    <label style="display:block;margin-bottom:10px;">
+      <span style="font-size:0.82rem;font-weight:600;color:#333;display:block;margin-bottom:3px;">Email *</span>
+      <input id="shopEmail" type="email" placeholder="your@email.com" style="width:100%;padding:9px 12px;border:1.5px solid #ddd;border-radius:8px;font-size:0.9rem;box-sizing:border-box;">
+    </label>
+    <label style="display:block;margin-bottom:16px;">
+      <span style="font-size:0.82rem;font-weight:600;color:#333;display:block;margin-bottom:3px;">Phone</span>
+      <input id="shopPhone" type="tel" placeholder="Your phone number" style="width:100%;padding:9px 12px;border:1.5px solid #ddd;border-radius:8px;font-size:0.9rem;box-sizing:border-box;">
+    </label>
+
     <button id="shopSubmitBtn" onclick="submitShopOrder()" style="width:100%;background:#1a8a78;color:#fff;border:none;padding:13px;border-radius:30px;font-size:1rem;font-weight:700;letter-spacing:1px;cursor:pointer;">PLACE ORDER</button>
-    <p id="shopFormMsg" style="text-align:center;margin-top:12px;font-size:0.88rem;color:#1a8a78;display:none;"></p>
+    <p id="shopFormMsg" style="text-align:center;margin-top:10px;font-size:0.88rem;color:#1a8a78;display:none;"></p>
   </div>
 </div>
 
@@ -1222,57 +1226,107 @@
     document.body.style.overflow = 'hidden';
   }
 
+  // -- SHOP FUNCTIONS ----------------------------------------------------------
+  var SHOP_PRICE = 350;
+
+  function buildSizeCells() {
+    var cells = document.querySelectorAll('.size-cell');
+    cells.forEach(function(cell) {
+      var size = cell.getAttribute('data-size');
+      cell.innerHTML =
+        '<div style="border:1.5px solid #ddd;border-radius:8px;padding:6px 4px;text-align:center;">' +
+          '<div style="font-size:0.8rem;font-weight:700;color:#333;margin-bottom:4px;">' + size + '</div>' +
+          '<div style="display:flex;align-items:center;justify-content:center;gap:4px;">' +
+            '<button onclick="changeQty(this,-1)" style="width:22px;height:22px;border:1px solid #ccc;border-radius:50%;background:#f5f5f5;cursor:pointer;font-size:0.9rem;line-height:1;">-</button>' +
+            '<span class="qty-val" style="min-width:16px;text-align:center;font-size:0.9rem;font-weight:600;">0</span>' +
+            '<button onclick="changeQty(this,1)" style="width:22px;height:22px;border:none;border-radius:50%;background:#1a8a78;color:#fff;cursor:pointer;font-size:0.9rem;line-height:1;">+</button>' +
+          '</div>' +
+        '</div>';
+    });
+  }
+
+  function changeQty(btn, delta) {
+    var qtyEl = btn.parentNode.querySelector('.qty-val');
+    var cell = btn.closest('.size-cell') || btn.parentNode.parentNode.parentNode;
+    var current = parseInt(qtyEl.textContent) || 0;
+    var newVal = Math.max(0, current + delta);
+    qtyEl.textContent = newVal;
+    var cardDiv = btn.parentNode.parentNode;
+    cardDiv.style.borderColor = newVal > 0 ? '#1a8a78' : '#ddd';
+    cardDiv.style.background = newVal > 0 ? '#f0faf8' : '#fff';
+    updateShopTotal();
+  }
+
+  function updateShopTotal() {
+    var cells = document.querySelectorAll('.size-cell');
+    var total = 0;
+    var details = [];
+    cells.forEach(function(cell) {
+      var qty = parseInt(cell.querySelector('.qty-val').textContent) || 0;
+      if (qty > 0) {
+        total += qty * SHOP_PRICE;
+        details.push(qty + 'x ' + cell.getAttribute('data-size'));
+      }
+    });
+    document.getElementById('shopTotalAmt').textContent = 'R' + total;
+    document.getElementById('shopTotalDetail').textContent = total > 0 ? '  --  ' + details.join(', ') : '';
+  }
+
   function openShopModal() {
     var m = document.getElementById('shopModal');
     m.style.display = 'flex';
     document.body.style.overflow = 'hidden';
+    buildSizeCells();
     updateShopTotal();
   }
+
   function closeShopModal() {
     document.getElementById('shopModal').style.display = 'none';
     document.body.style.overflow = '';
     document.getElementById('shopFormMsg').style.display = 'none';
   }
-  function updateShopTotal() {
-    var qty = parseInt(document.getElementById('shopQty').value) || 1;
-    document.getElementById('shopTotalAmt').textContent = 'R' + (qty * 350);
-  }
+
   function submitShopOrder() {
     var name  = document.getElementById('shopName').value.trim();
     var email = document.getElementById('shopEmail').value.trim();
-    var size  = document.getElementById('modalSize').value;
-    var qty   = document.getElementById('shopQty').value;
     var phone = document.getElementById('shopPhone').value.trim();
     var msg   = document.getElementById('shopFormMsg');
-    if (!name || !email || !size) {
-      msg.style.display = 'block';
-      msg.style.color = '#c0392b';
-      msg.textContent = 'Please fill in name, email and size.';
-      return;
+    // Build sizes summary
+    var cells = document.querySelectorAll('.size-cell');
+    var lines = [], totalQty = 0;
+    cells.forEach(function(cell) {
+      var qty = parseInt(cell.querySelector('.qty-val').textContent) || 0;
+      if (qty > 0) { lines.push(qty + 'x ' + cell.getAttribute('data-size')); totalQty += qty; }
+    });
+    if (!name || !email) {
+      msg.style.display = 'block'; msg.style.color = '#c0392b';
+      msg.textContent = 'Please fill in your name and email.'; return;
     }
+    if (totalQty === 0) {
+      msg.style.display = 'block'; msg.style.color = '#c0392b';
+      msg.textContent = 'Please select at least one shirt.'; return;
+    }
+    var sizesSummary = lines.join(', ');
+    var total = 'R' + (totalQty * SHOP_PRICE);
     var btn = document.getElementById('shopSubmitBtn');
-    btn.disabled = true;
-    btn.textContent = 'Sending...';
-    var total = 'R' + (parseInt(qty) * 350);
-    var url = 'https://script.google.com/macros/s/AKfycbziuOfwGKKh4PQp6w83bl3tXE3QyxCUBU4wjuz2mmkWtCAsxGbeCdJQ-kJ7Rnw2nVo0/exec?action=shopOrder&name=' + encodeURIComponent(name) +
+    btn.disabled = true; btn.textContent = 'Sending...';
+    var url = 'https://script.google.com/macros/s/AKfycbziuOfwGKKh4PQp6w83bl3tXE3QyxCUBU4wjuz2mmkWtCAsxGbeCdJQ-kJ7Rnw2nVo0/exec?action=shopOrder' +
+      '&name=' + encodeURIComponent(name) +
       '&email=' + encodeURIComponent(email) +
       '&phone=' + encodeURIComponent(phone) +
-      '&size=' + encodeURIComponent(size) +
-      '&qty=' + encodeURIComponent(qty) +
+      '&size=' + encodeURIComponent(sizesSummary) +
+      '&qty=' + encodeURIComponent(totalQty) +
       '&total=' + encodeURIComponent(total);
     fetch(url)
       .then(function() {
-        msg.style.display = 'block';
-        msg.style.color = '#1a8a78';
+        msg.style.display = 'block'; msg.style.color = '#1a8a78';
         msg.textContent = 'Order received! We will be in touch to confirm collection.';
         btn.textContent = 'ORDER SENT';
       })
       .catch(function() {
-        msg.style.display = 'block';
-        msg.style.color = '#c0392b';
+        msg.style.display = 'block'; msg.style.color = '#c0392b';
         msg.textContent = 'Something went wrong. Please try again.';
-        btn.disabled = false;
-        btn.textContent = 'PLACE ORDER';
+        btn.disabled = false; btn.textContent = 'PLACE ORDER';
       });
   }
 
