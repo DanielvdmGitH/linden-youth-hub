@@ -511,25 +511,22 @@
 </div>
 
 <!-- NAV -->
-<nav>
-  <div class="nav-inner">
-    <a class="nav-logo" href="/">
-      <span class="stand-logo">THE STAND</span>
+<nav id="mainNav">
+    <a href="/" class="nav-brand">
+      <img src="images/the-stand-logo-white.png.png" alt="The Stand" style="height:32px;vertical-align:middle;" onerror="this.style.display='none';this.nextSibling.style.display='inline'"><span style="display:none;font-family:'Bebas Neue',sans-serif;letter-spacing:2px;">THE STAND</span>
     </a>
-    <ul class="nav-links">
+    <button id="hamburger" onclick="toggleMenu()" aria-label="Menu">&#9776;</button>
+    <ul id="mobileMenu">
+      <li><a href="#donate-section" class="nav-cta">Donate</a></li>
+      <li><a href="#shop">Shop</a></li>
+      <li><a href="#progress">Progress</a></li>
       <li><a href="#story">Our Story</a></li>
       <li><a href="#vision">The Vision</a></li>
       <li><a href="#phases">Phases</a></li>
-      <li><a href="#donate-section" class="nav-cta">Donate</a></li>
       <li><a href="#location">Find Us</a></li>
-      <li><a href="#shop">Shop</a></li>
       <li><a href="#share">Share</a></li>
     </ul>
-    <button class="hamburger" id="hamburger" onclick="document.getElementById('mobileMenu').classList.toggle('open');this.classList.toggle('open')">
-      <span></span><span></span><span></span>
-    </button>
-  </div>
-</nav>
+  </nav>
 
 <!-- MOBILE MENU DRAWER -->
 <div class="mobile-menu" id="mobileMenu" onclick="closeMobileMenuOnBg(event)">
