@@ -1401,17 +1401,22 @@
       fetch(APPS_SCRIPT_URL + '?action=getStats')
         .then(function(r) { return r.json(); })
         .then(function(data) {
-          var raised = data.raised || 0;
+          var raised = parseInt(data.raised) || 0;
           var goal = 180000;
           var pct = Math.min(100, Math.round((raised / goal) * 100));
-          var el = document.getElementById('raisedAmt');
-          if (el) el.textContent = 'R' + raised.toLocaleString();
+          var needed = Math.max(0, goal - raised);
+          // raisedAmt is a <span> containing just the number (R prefix is outside)
+          var elRaised = document.getElementById('raisedAmt');
+          if (elRaised) elRaised.textContent = raised.toLocaleString();
+          // progressBar is a <div> with width style
           var pb = document.getElementById('progressBar');
           if (pb) pb.style.width = pct + '%';
-          var pctEl = document.getElementById('pct');
-          if (pctEl) pctEl.textContent = pct + '% funded';
-          var needed = document.getElementById('stillNeeded');
-          if (needed) needed.textContent = 'R' + Math.max(0, goal - raised).toLocaleString();
+          // pct is a <span> containing just the number
+          var elPct = document.getElementById('pct');
+          if (elPct) elPct.textContent = pct;
+          // stillNeeded contains full text like R180,000
+          var elNeeded = document.getElementById('stillNeeded');
+          if (elNeeded) elNeeded.textContent = 'R' + needed.toLocaleString();
         })
         .catch(function(e) { console.log('Stats fetch error', e); });
     }
