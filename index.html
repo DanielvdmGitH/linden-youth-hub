@@ -33,7 +33,7 @@
   nav { position:sticky; top:0; z-index:200; background:rgba(255,255,255,0.97); backdrop-filter:blur(12px); border-bottom:1px solid rgba(42,138,126,0.15); padding:0 32px; }
   .nav-inner { max-width:1200px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; height:80px; position:relative; }
   .nav-logo { text-decoration:none; display:flex; align-items:center; gap:0; }
-  .nav-logo-img { width:220px; height:auto; filter:invert(38%) sepia(50%) saturate(450%) hue-rotate(132deg) brightness(0.75); }  
+  .nav-logo-img { width:220px; height:auto; filter:brightness(0) saturate(100%) invert(47%) sepia(72%) saturate(364%) hue-rotate(122deg) brightness(88%) contrast(91%); }  
   #hamburger { display:none; background:none; border:none; font-size:1.6rem; cursor:pointer; color:var(--teal); padding:4px 8px; line-height:1; }
   .nav-links { display:flex; align-items:center; gap:8px; list-style:none; margin:0; padding:0; }
   .nav-links a { text-decoration:none; font-size:0.78rem; font-weight:700; color:#555; padding:8px 16px; border-radius:8px; transition:color 0.2s,background 0.2s; letter-spacing:0.06em; text-transform:uppercase; white-space:nowrap; }
@@ -1365,24 +1365,14 @@
     const el = document.getElementById('deadlineText');
     if (el) el.textContent = DEADLINE_DATE + ' — ' + PHASE_NAME;
   })();
-</script>
-
 
   function toggleMenu() {
     var m = document.getElementById('mobileMenu');
-    m.classList.toggle('open');
-  }
-
-  function closeMenu() { document.getElementById('mobileMenu').classList.remove('open'); }
-
-  function toggleMenu() {
-    var m = document.getElementById('mobileMenu');
-    m.classList.toggle('open');
+    if (m) m.classList.toggle('open');
   }
   function closeMenu() {
     var m = document.getElementById('mobileMenu');
     if (m) m.classList.remove('open');
   }
-</script>
-</body>
+</script></body>
 </html>
