@@ -587,20 +587,21 @@
       <div class="deadline-pill" id="deadlinePill">🗓️ Deadline: <span id="deadlineText"></span></div>
       <div class="donate-row">
           <a class="btn-primary" href="https://pos.snapscan.io/qr/bbn5zRjJ" target="_blank" rel="noopener" style="display:flex;align-items:center;justify-content:center;text-decoration:none;"> CONTRIBUTE HERE </a>
-      <div style="text-align:center;margin-top:12px;">
-        <button onclick="toggleBankDetails()" style="background:none;border:none;cursor:pointer;color:rgba(255,255,255,0.75);font-size:0.85rem;letter-spacing:0.5px;text-decoration:underline;">
-          For International or EFT payment <span id="bankArrow">&#9660;</span>
+      <div style="margin-top:12px;text-align:center;">
+        <button onclick="toggleBankDetails()" style="background:none;border:none;cursor:pointer;color:rgba(255,255,255,0.65);font-size:0.82rem;letter-spacing:0.5px;padding:4px 0;display:inline-flex;align-items:center;gap:6px;">
+          <span>Prefer EFT or international transfer?</span>
+          <span id="bankArrow" style="transition:transform 0.3s;display:inline-block;">&#9660;</span>
         </button>
-        <div id="bankDetails" style="display:none;margin-top:12px;background:rgba(255,255,255,0.08);border-radius:10px;padding:16px;text-align:left;max-width:420px;margin-left:auto;margin-right:auto;">
-          <table style="width:100%;border-collapse:collapse;font-size:0.85rem;color:#fff;">
-            <tr><td style="padding:6px 10px;opacity:0.7;width:110px;">Bank</td><td style="padding:6px 10px;font-weight:600;">INVESTEC</td></tr>
-            <tr style="background:rgba(255,255,255,0.05);"><td style="padding:6px 10px;opacity:0.7;">Account Name</td><td style="padding:6px 10px;font-weight:600;">VIDA BUILDING FUND</td></tr>
-            <tr><td style="padding:6px 10px;opacity:0.7;">Account No.</td><td style="padding:6px 10px;font-weight:600;">50022422006</td></tr>
-            <tr style="background:rgba(255,255,255,0.05);"><td style="padding:6px 10px;opacity:0.7;">Branch Code</td><td style="padding:6px 10px;font-weight:600;">580105</td></tr>
-            <tr><td style="padding:6px 10px;opacity:0.7;">SWIFT / BIC</td><td style="padding:6px 10px;font-weight:600;">IVESZAJJ</td></tr>
-            <tr style="background:rgba(255,255,255,0.05);"><td style="padding:6px 10px;opacity:0.7;">Reference</td><td style="padding:6px 10px;font-weight:700;color:#7de8d4;">Your Name + STAND</td></tr>
+        <div id="bankDetails" style="display:none;margin-top:10px;border-top:1px solid rgba(255,255,255,0.15);padding-top:14px;">
+          <table style="width:100%;max-width:380px;margin:0 auto;border-collapse:collapse;font-size:0.83rem;text-align:left;">
+            <tr><td style="padding:5px 8px;color:rgba(255,255,255,0.55);width:110px;">Bank</td><td style="padding:5px 8px;color:#fff;font-weight:600;">INVESTEC</td></tr>
+            <tr><td style="padding:5px 8px;color:rgba(255,255,255,0.55);">Account Name</td><td style="padding:5px 8px;color:#fff;font-weight:600;">VIDA BUILDING FUND</td></tr>
+            <tr><td style="padding:5px 8px;color:rgba(255,255,255,0.55);">Account No.</td><td style="padding:5px 8px;color:#fff;font-weight:600;">50022422006</td></tr>
+            <tr><td style="padding:5px 8px;color:rgba(255,255,255,0.55);">Branch Code</td><td style="padding:5px 8px;color:#fff;font-weight:600;">580105</td></tr>
+            <tr><td style="padding:5px 8px;color:rgba(255,255,255,0.55);">SWIFT / BIC</td><td style="padding:5px 8px;color:#fff;font-weight:600;">IVESZAJJ</td></tr>
+            <tr><td style="padding:5px 8px;color:rgba(255,255,255,0.55);">Reference</td><td style="padding:5px 8px;color:#7de8d4;font-weight:700;">Your Name + STAND</td></tr>
           </table>
-          <p style="margin:10px 0 0;font-size:0.78rem;opacity:0.65;text-align:center;">Feel free to donate anonymously &mdash; no reference needed.</p>
+          <p style="margin:10px 0 0;font-size:0.75rem;color:rgba(255,255,255,0.45);">Anonymous donations welcome &mdash; no reference needed.</p>
         </div>
       </div>
         </div>
