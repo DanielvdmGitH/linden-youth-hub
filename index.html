@@ -625,7 +625,7 @@
         </ul>
       </div>
     <div style="text-align:center;">
-      <p style="font-size:1.5rem;font-weight:700;color:#1a8a78;margin-bottom:6px;">R<span id="shopPrice">350</span> <span style="font-size:1rem;color:#888;font-weight:400;">per shirt</span></p>
+      <p style="font-size:1.5rem;font-weight:700;color:#1a8a78;margin-bottom:6px;">R<span id="shopPrice">350</span> <span style="font-size:1rem;color:#888;font-weight:400;">adult &bull; R250 kiddies</span></p>
       <p id="deliveryNote" style="color:#888;font-size:0.9rem;margin-bottom:20px;">Collection from 42 7th Street, Linden, Randburg</p>
       <button id="shopOrderBtn" onclick="openShopModal()" style="background:#1a8a78;color:#fff;border:none;padding:14px 40px;border-radius:30px;font-size:1rem;font-weight:700;letter-spacing:1px;cursor:pointer;">ORDER MY SHIRT</button>
     </div>
@@ -1115,7 +1115,8 @@
   }
 
   // -- SHOP FUNCTIONS ----------------------------------------------------------
-  var SHOP_PRICE = 350;
+  var PRICE_ADULT = 350;
+  var PRICE_KIDS = 250;
 
   function buildSizeCells() {
     var cells = document.querySelectorAll('.size-cell');
@@ -1154,8 +1155,10 @@
     cells.forEach(function(cell) {
       var qty = parseInt(cell.querySelector('.qty-val').textContent) || 0;
       if (qty > 0) {
-        total += qty * SHOP_PRICE;
-        details.push(qty + 'x ' + cell.getAttribute('data-size'));
+        var size = cell.getAttribute('data-size');
+        var price = size.indexOf('Kids') === 0 ? PRICE_KIDS : PRICE_ADULT;
+        total += qty * price;
+        details.push(qty + 'x ' + size);
       }
     });
     document.getElementById('shopTotalAmt').textContent = 'R' + total;
@@ -1323,7 +1326,7 @@
   <div style="background:#fff;border-radius:16px;padding:24px 20px;max-width:480px;width:100%;max-height:90vh;overflow-y:auto;position:relative;box-sizing:border-box;">
     <button onclick="closeShopModal()" style="position:absolute;top:12px;right:14px;background:none;border:none;font-size:1.3rem;cursor:pointer;color:#aaa;line-height:1;">&times;</button>
     <h3 style="font-family:'Bebas Neue',sans-serif;color:#1a8a78;font-size:1.5rem;letter-spacing:1px;margin:0 0 3px;padding-right:24px;">ORDER YOUR SHIRT</h3>
-    <p style="color:#888;font-size:0.82rem;margin:0 0 18px;">Collection only &mdash; 42 7th Street, Linden &nbsp;&bull;&nbsp; R350 per shirt</p>
+    <p style="color:#888;font-size:0.82rem;margin:0 0 18px;">Collection only &mdash; 42 7th Street, Linden &nbsp;&bull;&nbsp; R350 adult &bull; R250 kiddies</p>
     <p style="font-size:0.75rem;font-weight:700;color:#555;letter-spacing:0.8px;margin:0 0 6px;text-transform:uppercase;">Adult Sizes (180g)</p>
     <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:14px;">
       <div class="size-cell" data-size="XS"></div><div class="size-cell" data-size="S"></div><div class="size-cell" data-size="M"></div>
