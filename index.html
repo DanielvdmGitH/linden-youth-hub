@@ -587,9 +587,9 @@
       <div class="deadline-pill" id="deadlinePill">🗓️ Deadline: <span id="deadlineText"></span></div>
       <div class="donate-row">
           <a class="btn-primary" href="https://pos.snapscan.io/qr/bbn5zRjJ" target="_blank" rel="noopener" style="display:flex;align-items:center;justify-content:center;text-decoration:none;"> CONTRIBUTE HERE </a>
-      <div style="text-align:center;margin-top:10px;">
-        <button onclick="toggleBankDetails()" style="background:none;border:none;cursor:pointer;color:rgba(255,255,255,0.7);font-size:0.82rem;text-decoration:underline;letter-spacing:0.5px;">
-          For International or EFT payment &#9660;
+      <div style="text-align:center;margin-top:12px;">
+        <button onclick="toggleBankDetails()" style="background:none;border:none;cursor:pointer;color:rgba(255,255,255,0.75);font-size:0.85rem;letter-spacing:0.5px;text-decoration:underline;">
+          For International or EFT payment <span id="bankArrow">&#9660;</span>
         </button>
         <div id="bankDetails" style="display:none;margin-top:12px;background:rgba(255,255,255,0.08);border-radius:10px;padding:16px;text-align:left;max-width:420px;margin-left:auto;margin-right:auto;">
           <table style="width:100%;border-collapse:collapse;font-size:0.85rem;color:#fff;">
@@ -1394,15 +1394,12 @@
   function toggleBankDetails() {
     var d = document.getElementById('bankDetails');
     var a = document.getElementById('bankArrow');
-    var btn = a.parentNode.parentNode;
     if (d.style.display === 'none') {
       d.style.display = 'block';
-      a.style.transform = 'rotate(180deg)';
-      btn.style.borderRadius = '10px 10px 0 0';
+      if (a) a.textContent = ' \u25B2';
     } else {
       d.style.display = 'none';
-      a.style.transform = 'rotate(0deg)';
-      btn.style.borderRadius = '10px';
+      if (a) a.textContent = ' \u25BC';
     }
   }
 
