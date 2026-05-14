@@ -6,7 +6,7 @@ var ZOHO_USER = 'info@thestandlinden.co.za';
 var ZOHO_PASS = 'dNDdXNcpv7Kk';
 var PRICE_ADULT = 350;
 var PRICE_KIDS = 250;
-var ADMIN_EMAIL = 'daniel@thepopmarket.co.za';
+var ADMIN_EMAIL = 'daniel@mpmarketing.co.za';
 var SNAPSCAN_URL = 'https://pos.snapscan.io/qr/bbn5zRjJ';
 var SITE_URL = 'https://thestandlinden.co.za';
 
