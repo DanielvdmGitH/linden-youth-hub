@@ -616,23 +616,35 @@
     <div style="text-align:center;margin-bottom:36px;">
       <img src="images/tshirt.png" alt="The Stand T-Shirt" style="max-width:100%;width:620px;border-radius:12px;box-shadow:0 4px 20px rgba(0,0,0,0.12);">
     </div>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-bottom:36px;">
-      <div style="background:#fff;border-radius:10px;padding:24px;box-shadow:0 2px 10px rgba(0,0,0,0.07);">
-        <h3 style="font-family:'Bebas Neue',sans-serif;color:#1a8a78;letter-spacing:1px;margin-bottom:12px;">FABRIC &amp; FIT</h3>
-        <ul style="list-style:none;padding:0;margin:0;color:#444;font-size:0.95rem;line-height:1.8;">
-          <li>&#10003; 100% Combed Cotton &mdash; single knit</li>
-          <li>&#10003; 180g Endura weight &mdash; durable &amp; breathable</li>
-          <li>&#10003; Classic fit &mdash; designed for everyday use</li>
-          <li>&#10003; Double-stitched hem &amp; sleeves</li>
-          <li>&#10003; Short sleeve with 1x1 neck rib</li>
-        </ul>
+        <div style="margin-bottom:28px;">
+
+      <!-- Price + Order button - full width -->
+      <div style="background:#1a8a78;border-radius:14px;padding:20px 24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;margin-bottom:16px;">
+        <div>
+          <p style="margin:0;color:#fff;font-size:1.8rem;font-weight:900;letter-spacing:1px;">R350 <span style="font-size:1rem;font-weight:400;opacity:0.85;">adult</span> &nbsp;&bull;&nbsp; R250 <span style="font-size:1rem;font-weight:400;opacity:0.85;">kiddies</span></p>
+          <p style="margin:4px 0 0;color:rgba(255,255,255,0.75);font-size:0.85rem;">Collection only &mdash; 42 7th Street, Linden, Randburg</p>
+        </div>
+        <button id="shopOrderBtn" onclick="openShopModal()" style="background:#fff;color:#1a8a78;border:none;padding:14px 32px;border-radius:30px;font-size:1rem;font-weight:800;letter-spacing:1px;cursor:pointer;white-space:nowrap;box-shadow:0 2px 8px rgba(0,0,0,0.15);">ORDER MY SHIRT</button>
       </div>
-    <div style="text-align:center;">
-      <p style="font-size:1.5rem;font-weight:700;color:#1a8a78;margin-bottom:6px;">R<span id="shopPrice">350</span> <span style="font-size:1rem;color:#888;font-weight:400;">adult &bull; R250 kiddies</span></p>
-      <p id="deliveryNote" style="color:#888;font-size:0.9rem;margin-bottom:20px;">Collection from 42 7th Street, Linden, Randburg</p>
-      <button id="shopOrderBtn" onclick="openShopModal()" style="background:#1a8a78;color:#fff;border:none;padding:14px 40px;border-radius:30px;font-size:1rem;font-weight:700;letter-spacing:1px;cursor:pointer;">ORDER MY SHIRT</button>
+
+      <!-- Collapsible Fabric & Fit -->
+      <div style="border:1.5px solid #e0e0e0;border-radius:12px;overflow:hidden;">
+        <button onclick="toggleFabric()" style="width:100%;background:#fff;border:none;padding:14px 20px;display:flex;align-items:center;justify-content:space-between;cursor:pointer;font-family:'Bebas Neue',sans-serif;font-size:1rem;letter-spacing:1px;color:#1a8a78;">
+          <span>FABRIC &amp; FIT DETAILS</span>
+          <span id="fabricArrow" style="font-size:1.2rem;transition:transform 0.3s;">&#8964;</span>
+        </button>
+        <div id="fabricDetails" style="display:none;padding:16px 20px;border-top:1.5px solid #e0e0e0;background:#fafafa;">
+          <ul style="list-style:none;padding:0;margin:0;color:#444;font-size:0.9rem;line-height:2;">
+            <li>&#10003; 100% Combed Cotton &mdash; single knit</li>
+            <li>&#10003; 180g Endura weight &mdash; durable &amp; breathable</li>
+            <li>&#10003; Classic fit &mdash; designed for everyday use</li>
+            <li>&#10003; Double-stitched hem &amp; sleeves</li>
+            <li>&#10003; Short sleeve with 1x1 neck rib</li>
+          </ul>
+        </div>
+      </div>
+
     </div>
-  </div>
 </section>
 
 <section id="progress" style="background:#fff;padding:60px 20px;">
@@ -1322,6 +1334,18 @@
   function closeMenu() {
     var m = document.getElementById('mobileMenu');
     if (m) m.classList.remove('open');
+  }
+
+  function toggleFabric() {
+    var d = document.getElementById('fabricDetails');
+    var a = document.getElementById('fabricArrow');
+    if (d.style.display === 'none') {
+      d.style.display = 'block';
+      a.style.transform = 'rotate(180deg)';
+    } else {
+      d.style.display = 'none';
+      a.style.transform = 'rotate(0deg)';
+    }
   }
 </script>
 <div id="shopModal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.6);z-index:1000;align-items:center;justify-content:center;padding:16px;box-sizing:border-box;">
