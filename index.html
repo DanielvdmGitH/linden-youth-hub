@@ -492,6 +492,15 @@
 
   /* Offset for sticky nav */
   section { scroll-margin-top: 90px; }
+
+  @keyframes shirtFloat {
+    0%   { transform: translateY(0px) rotate(0deg); }
+    25%  { transform: translateY(-8px) rotate(0.3deg); }
+    50%  { transform: translateY(-12px) rotate(0deg); }
+    75%  { transform: translateY(-8px) rotate(-0.3deg); }
+    100% { transform: translateY(0px) rotate(0deg); }
+  }
+  #shirtImg.zoomed { animation: none !important; }
 </style>
 </head>
 <body>
@@ -613,8 +622,27 @@
   <div style="max-width:900px;margin:0 auto;">
     <h2 style="text-align:center;font-family:'Bebas Neue',sans-serif;font-size:2.2rem;color:#1a8a78;letter-spacing:2px;margin-bottom:8px;">THE STAND MERCH</h2>
     <p style="text-align:center;color:#555;margin-bottom:36px;font-size:1rem;">Support the build. Every purchase goes directly to The Stand Youth Hub, Linden building fund.</p>
-    <div style="text-align:center;margin-bottom:36px;">
-      <img src="images/tshirt.png" alt="The Stand T-Shirt" style="max-width:100%;width:620px;border-radius:12px;box-shadow:0 4px 20px rgba(0,0,0,0.12);">
+    <div style="text-align:center;margin-bottom:28px;position:relative;">
+
+      <!-- Floating animation + zoom overlay -->
+      <div id="shirtViewer" style="position:relative;display:inline-block;cursor:zoom-in;border-radius:16px;overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,0.12);">
+        <img src="images/tshirt.png" alt="The Stand Supporters T-Shirt" id="shirtImg"
+          style="max-width:100%;width:620px;display:block;border-radius:16px;
+                 animation:shirtFloat 4s ease-in-out infinite;
+                 transition:transform 0.4s ease, filter 0.3s ease;"
+          onclick="zoomShirt(this)"
+          onmouseenter="hoverShirt(this)"
+          onmouseleave="unhoverShirt(this)">
+        <!-- Zoom hint -->
+        <div id="zoomHint" style="position:absolute;bottom:12px;right:12px;background:rgba(0,0,0,0.45);color:#fff;font-size:0.75rem;padding:4px 10px;border-radius:20px;pointer-events:none;transition:opacity 0.3s;">&#128269; tap to zoom</div>
+      </div>
+
+      <!-- Fullscreen lightbox -->
+      <div id="shirtLightbox" onclick="closeLightbox()" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.85);z-index:2000;align-items:center;justify-content:center;cursor:zoom-out;">
+        <img src="images/tshirt.png" style="max-width:95vw;max-height:95vh;border-radius:12px;box-shadow:0 20px 60px rgba(0,0,0,0.5);">
+        <div style="position:absolute;top:16px;right:20px;color:#fff;font-size:2rem;cursor:pointer;" onclick="closeLightbox()">&times;</div>
+      </div>
+
     </div>
         <div style="margin-bottom:28px;">
 
@@ -1345,6 +1373,29 @@
       a.style.transform = 'rotate(0deg)';
     }
   }
+
+  function hoverShirt(img) {
+    img.style.filter = 'brightness(1.05) contrast(1.05)';
+    img.style.transform = 'scale(1.02)';
+    img.style.animationPlayState = 'paused';
+    document.getElementById('zoomHint').style.opacity = '1';
+  }
+  function unhoverShirt(img) {
+    img.style.filter = '';
+    img.style.transform = '';
+    img.style.animationPlayState = 'running';
+    document.getElementById('zoomHint').style.opacity = '0.7';
+  }
+  function zoomShirt(img) {
+    var lb = document.getElementById('shirtLightbox');
+    lb.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+  }
+  function closeLightbox() {
+    document.getElementById('shirtLightbox').style.display = 'none';
+    document.body.style.overflow = '';
+  }
+
 </script>
 <div id="shopModal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.6);z-index:1000;align-items:center;justify-content:center;padding:16px;box-sizing:border-box;">
   <div style="background:#fff;border-radius:16px;padding:24px 20px;max-width:480px;width:100%;max-height:90vh;overflow-y:auto;position:relative;box-sizing:border-box;">
