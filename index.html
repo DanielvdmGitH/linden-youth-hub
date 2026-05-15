@@ -1419,6 +1419,18 @@
       if (a) a.style.transform = 'rotate(0deg)';
     }
   }
+
+  function toggleMeasureGuide() {
+    var d = document.getElementById('measureGuide');
+    var a = document.getElementById('measureArrow');
+    if (d.style.display === 'none') {
+      d.style.display = 'block';
+      if (a) a.style.transform = 'rotate(180deg)';
+    } else {
+      d.style.display = 'none';
+      if (a) a.style.transform = 'rotate(0deg)';
+    }
+  }
 </script>
 <div id="shopModal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.6);z-index:1000;align-items:center;justify-content:center;padding:16px;box-sizing:border-box;">
   <div style="background:#fff;border-radius:16px;padding:24px 20px;max-width:480px;width:100%;max-height:90vh;overflow-y:auto;position:relative;box-sizing:border-box;">
@@ -1435,6 +1447,37 @@
       <div class="size-cell" data-size="Kids 3-4"></div><div class="size-cell" data-size="Kids 5-6"></div><div class="size-cell" data-size="Kids 7-8"></div>
     </div>
         <!-- Measurement Guide -->
+    <div style="margin-bottom:14px;border:1.5px solid #e0e0e0;border-radius:8px;overflow:hidden;">
+      <button onclick="toggleMeasureGuide()" style="width:100%;background:#f9f9f9;border:none;padding:10px 14px;display:flex;align-items:center;justify-content:space-between;cursor:pointer;font-size:0.82rem;font-weight:700;color:#555;letter-spacing:0.5px;text-transform:uppercase;">
+        <span>&#128207; Measurement Guide</span>
+        <span id="measureArrow" style="transition:transform 0.3s;display:inline-block;">&#9660;</span>
+      </button>
+      <div id="measureGuide" style="display:none;padding:12px 14px;background:#fff;border-top:1px solid #e0e0e0;overflow-x:auto;">
+        <p style="font-size:0.75rem;font-weight:700;color:#555;margin:0 0 8px;text-transform:uppercase;letter-spacing:0.5px;">Adult Sizes (cm)</p>
+        <table style="width:100%;border-collapse:collapse;font-size:0.8rem;text-align:center;margin-bottom:12px;">
+          <thead>
+            <tr style="background:#1a8a78;color:#fff;">
+              <th style="padding:6px 4px;text-align:left;">Measurement</th>
+              <th style="padding:6px 4px;">XS</th><th style="padding:6px 4px;">S</th>
+              <th style="padding:6px 4px;">M</th><th style="padding:6px 4px;">L</th>
+              <th style="padding:6px 4px;">XL</th><th style="padding:6px 4px;">2XL</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="background:#f4faf9;">
+              <td style="padding:6px 4px;text-align:left;font-weight:600;">Half Chest</td>
+              <td>48</td><td>50</td><td>53</td><td>56</td><td>59</td><td>62</td>
+            </tr>
+            <tr>
+              <td style="padding:6px 4px;text-align:left;font-weight:600;">Length</td>
+              <td>70</td><td>72</td><td>74</td><td>76</td><td>78</td><td>80</td>
+            </tr>
+          </tbody>
+        </table>
+        <p style="font-size:0.72rem;color:#999;margin:0;">&plusmn;2cm tolerance. Chest measured 2cm below armhole. Length is the longest point.</p>
+      </div>
+    </div>
+    <!-- Measurement Guide -->
     <div style="margin-bottom:14px;border:1.5px solid #e0e0e0;border-radius:8px;overflow:hidden;">
       <button onclick="toggleMeasureGuide()" style="width:100%;background:#f9f9f9;border:none;padding:10px 14px;display:flex;align-items:center;justify-content:space-between;cursor:pointer;font-size:0.82rem;font-weight:700;color:#555;letter-spacing:0.5px;text-transform:uppercase;">
         <span>&#128207; Measurement Guide</span>
